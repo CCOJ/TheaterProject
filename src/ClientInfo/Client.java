@@ -9,9 +9,9 @@ package ClientInfo;
  */
 public class Client {
 
-	protected String clientName, address, phoneNumber;
-	protected int clientID;
-	protected double balance;
+	private String clientName, address, phoneNumber;
+	private int clientID;
+	private double balance;
 	
 	/**
 	 * Client constructor that asks for the given input of name, address, and phone number.
