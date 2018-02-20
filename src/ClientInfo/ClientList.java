@@ -120,6 +120,9 @@ public class ClientList implements Serializable {
 		}
 	}
 	
+	/**
+	 * Returns a list of all the clients in clientList
+	 */
 	public String toString() {
 		return clients.toString();
 	}

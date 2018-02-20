@@ -14,6 +14,8 @@ public class Client implements Serializable{
 	private String clientName, address, phoneNumber, clientId;
 	private double balance;
 	
+	//TODO:
+	
 	/**
 	 * A client object is created with given inputs, unique ID, and balance set to 0.
 	 * Client will be added to clientList once created.
@@ -107,6 +109,16 @@ public class Client implements Serializable{
 	 */
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+	
+	/**
+	 * Returns the string form of the client object's information
+	 */
+	public String toString() {
+		String string = "Client name: " + clientName + ", Address: " + address +
+				", Phone number: " + phoneNumber + ", Client ID: " + clientId +
+				", balance: " + balance;
+		return string;
 	}
 	
 }
