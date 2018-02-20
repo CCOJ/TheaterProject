@@ -10,15 +10,11 @@ import java.io.Serializable;
  */
 public class Client implements Serializable{
 
-	private static final long serialVersionUID = 1L;
 	private String clientName, address, phoneNumber, clientId;
 	private double balance;
 	
-	//TODO:
-	
 	/**
 	 * A client object is created with given inputs, unique ID, and balance set to 0.
-	 * Client will be added to clientList once created.
 	 * 
 	 * @param clientName Name of client
 	 * @param address Client's address
@@ -28,7 +24,7 @@ public class Client implements Serializable{
 		this.clientName = clientName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		this.clientId = "0"; //TODO: Generate unique ID
+		this.clientId = "0"; //TODO: Generate unique ID -Randy
 		this.balance = 0;
 	}
 	
