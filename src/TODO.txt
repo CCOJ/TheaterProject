@@ -1,0 +1,3 @@
+Client:
+-Possible LinkedList of shows
+-A way to generate a unique ID
