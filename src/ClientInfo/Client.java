@@ -3,16 +3,15 @@ import java.io.Serializable;
 
 /**
  * Client holds information about name, address, and phone number.
- * 
- * A unique id is generated and balance is set to 0.
- * 
+ * A unique id is generated and balance is set to 0. 
  * Current iteration states the balance will remain 0 for now.
+ * 
+ * @author Ricky, Noah, Randy
  */
 public class Client implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private String clientName, address, phoneNumber;
-	private int clientId;
+	private String clientName, address, phoneNumber, clientId;
 	private double balance;
 	
 	/**
@@ -27,7 +26,7 @@ public class Client implements Serializable{
 		this.clientName = clientName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		this.clientId = 0; //TODO: Generate unique ID
+		this.clientId = "0"; //TODO: Generate unique ID
 		this.balance = 0;
 	}
 	
@@ -59,7 +58,7 @@ public class Client implements Serializable{
 	 * Get client's ID
 	 * @return clientID
 	 */
-	public int getClientId() {
+	public String getClientId() {
 		return clientId;
 	}
 	
@@ -98,7 +97,7 @@ public class Client implements Serializable{
 	 * Set client's ID (must be unique)
 	 * @param clientId Client's ID
 	 */
-	public void setclientId(int clientId) {
+	public void setclientId(String clientId) {
 		this.clientId = clientId;
 	}
 	
