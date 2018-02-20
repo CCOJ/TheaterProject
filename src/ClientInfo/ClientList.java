@@ -115,7 +115,7 @@ public class ClientList implements Serializable {
 			System.out.println("Could not load clientList from disk: ");
 			ioe.printStackTrace();
 		} catch(ClassNotFoundException cnfe) {
-			System.out.println("Could not find classL ");
+			System.out.println("Could not find class: ");
 			cnfe.printStackTrace();
 		}
 	}
