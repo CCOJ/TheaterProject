@@ -32,7 +32,7 @@ public class ClientList implements Serializable {
 	
 	/**
 	 * Singleton pattern allows us to return the only
-	 * created clientList without creating anymore.
+	 * created list without creating anymore.
 	 * This also creates one, if none were created.
 	 * 
 	 * @return clientList
@@ -75,6 +75,15 @@ public class ClientList implements Serializable {
 		clients.add(client);
 		return true;
 	}
+	
+	/**
+	 * Remove client from list
+	 * @param client the client to be removed from the list
+	 * @return true when removed
+	 */
+	public boolean removeClient(Client client) {
+		clients.remove(client);
+		return true;
 	
 	/**
 	 * Saves the clientList object to disk.

@@ -50,5 +50,26 @@ public class Theater {
         customers.add(new Customer(name, address, phoneNumber, creditCardNumber,
                 expirationDate));
     }
+	/* Credit card check if customer has more than one or if it's the only one
+	 for(CreditCard card : creditCards) {
+            if(card.getNumber().equals(number)) {
+                
+                if(creditCards.size() > 1){
+                    
+                    creditCards.remove(card);
+                    return "Credit Card " + card.getNumber() + " has been removed "
+                            + "successfully.";
+                }
+                else{
+                    
+                    return "Credit Card " + card.getNumber() + " could not be "
+                            + "removed because this is the only card "
+                            + this.name + " has on file.";
+                            
+                }
+            }
+		}
+        return "Credit Card " + number + " could not be found.";
+	*/
 
 }

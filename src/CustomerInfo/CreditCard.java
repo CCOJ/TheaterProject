@@ -34,5 +34,10 @@ public class CreditCard {
     public String getExpirationDate() {
         return expirationDate;
     }
+	
+	public String toString() {
+		String string = "Number: " + number + ", expiry date" + expirationDate;
+		return string;
+	}
 
 }
