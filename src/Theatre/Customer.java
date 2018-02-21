@@ -2,6 +2,8 @@ package Theatre;
 
 import java.util.ArrayList;
 
+import Abstract.Person;
+
 /**
  * The customer class. It extends person, adding the credit card property. It
  * allows for multiple cards to be in the persons name.
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 public class Customer extends Person{
 
     private ArrayList<CreditCard> creditCards = new ArrayList<>();
+    
+    
     
     public Customer(String name, String address, String phoneNumber,
             String creditCardNumber, String expirationDate) {

@@ -1,6 +1,7 @@
 package ClientInfo;
-import Theatre.Person;
 import java.io.Serializable;
+
+import Abstract.Person;
 
 /**
  * Client holds information about name, address, and phone number.

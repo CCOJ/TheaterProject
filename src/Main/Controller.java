@@ -1,7 +1,9 @@
 package Main;
 
+import java.util.Date;
 import API.Application_API;
 import GUI.CL_Gui;
+import Theatre.Theater;
 import Utils.InputUtils;
 import Utils.Strings;
 /**
@@ -14,6 +16,7 @@ import Utils.Strings;
 public class Controller implements Application_API
 {
 	private CL_Gui cL_Gui; //The command-line gui
+	private Theater theater;
 	private static InputUtils inputUtils; // Functions to get user input
 	private static boolean running; // If false, run() will stop executing and the program terminates
 	/**
@@ -25,6 +28,7 @@ public class Controller implements Application_API
 	{
 		inputUtils = new InputUtils();
 		cL_Gui = new CL_Gui(this);
+		theater = new Theater(Strings.CINEMA_NAME);
 		running = true;
 	}
 	/**
@@ -32,12 +36,19 @@ public class Controller implements Application_API
 	 * 
 	 */
 	public void run()
-	{
-		promptRetrieveData();
+	{	
+		//Need to finish so user can decide to load file.
+		/*
+		if(promptRetrieveData())
+		{
+			retrieveData();
+		}
+		*/
 		// Running is defaulted to true. False when user selects close program.
 		while(running)
 		{
 			cL_Gui.displayMainMenu();
+			commandSwitch(inputUtils.getIntInput());
 		}
 	}
 	/**
@@ -114,18 +125,42 @@ public class Controller implements Application_API
 					inputUtils.enterToContinue(message);
 					break;
 			default: 
-					System.out.println(Strings.SELECTION_NOT_IN_RANGE);
+					cL_Gui.displaySystemNotify(Strings.ERROR_SELECTION_NOT_IN_RANGE);
 					break;
 		}
 	}
 	/**
 	 * Prompts the user asking if they would like to retrieve data
 	 */
-	private void promptRetrieveData()
+	private boolean promptRetrieveData()
 	{
+		String input;
+		boolean badInput = true;
+		boolean loadData = true;
 		/*
-		 * If yes call retrieveData() else return
+		 * This function should be done within inputUtils. Create getYesOrNo()
 		 */
+		while(badInput)
+		{
+			cL_Gui.displayPrompt(Strings.PROMPT_RETRIEVE_DATA);
+			input = inputUtils.getStringInput();
+			
+			if(input == "y" || input == "Y")
+			{
+				badInput = false;
+				loadData = true;
+			}
+			else if(input == "n" || input == "N")
+			{
+				badInput = false;
+				loadData = false;
+			}
+			else
+			{
+				cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT);
+			}
+		}
+		return loadData;
 	}
 	/**
 	 * Stores the program data and sets running to false causing the program 
@@ -134,8 +169,9 @@ public class Controller implements Application_API
 	@Override
 	public void exitApplication()
 	{
-		System.out.println(Strings.CLOSING_APPLICATION);
-		System.out.println(Strings.SERIALIZING_DATA);
+		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLOSING_APPLICATION);
+		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SERIALIZING_DATA);
+
 		// TO-DO serialize all data to disk
 		running = false;
 		storeData();
@@ -146,7 +182,25 @@ public class Controller implements Application_API
 	@Override
 	public void addClient()
 	{
+		String name, address, phoneNumber;
+		//cL_Gui.displayAddClient();
+		cL_Gui.displayPageHeader(Strings.HEADER_ADD_CLIENT);
 		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_NAME);
+		name = inputUtils.getStringInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_ADDRESS);
+		//cL_Gui.displayAskAddress();
+		address = inputUtils.getStringInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_PHONE_NUMBER);
+		//cL_Gui.displayAskPhoneNumber();
+		phoneNumber = inputUtils.getStringInput();
+		
+		//verify that information is entered correctly
+		
+		theater.addClient(name, address, phoneNumber);
+		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_ADDED);
 	}
 	/**
 	 * 
@@ -162,7 +216,7 @@ public class Controller implements Application_API
 	@Override
 	public void listAllClients()
 	{
-		
+		cL_Gui.displayAllClientsList(theater.getClientList());
 	}
 	/**
 	 * 
@@ -210,6 +264,44 @@ public class Controller implements Application_API
 	@Override
 	public void addShowOrPlay()
 	{
+		String showName;
+		int clientID, begYear, begMonth, begDay, endYear, endMonth, endDay;
+		Date begDate, endDate;
+		
+		cL_Gui.displayPageHeader(Strings.HEADER_ADD_SHOW);
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_SHOW_NAME);
+		showName = inputUtils.getStringInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
+		clientID = inputUtils.getIntInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_YEAR);
+		begYear = inputUtils.getIntInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_MONTH);
+		begMonth = inputUtils.getIntInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_DAY);
+		begDay = inputUtils.getIntInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_END_YEAR);
+		endYear = inputUtils.getIntInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_END_MONTH);
+		endMonth = inputUtils.getIntInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_END_DAY);
+		endDay = inputUtils.getIntInput();
+		
+		//CHECK IF DATE HAS ANY OVERLAP FAILS IF TRUE
+		//CHECK IF ID EXISTS
+		
+		begDate = new Date(begYear, begMonth, begDay);
+		endDate = new Date(endYear, endMonth, endDay);
+		
+		theater.addShow(showName, clientID, begDate, endDate);
+		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_ADDED);
 		
 	}
 	/**
@@ -218,7 +310,7 @@ public class Controller implements Application_API
 	@Override
 	public void listAllShows()
 	{
-
+		cL_Gui.displayAllShowsList(theater.getShowList());
 	}
 	/**
 	 * 

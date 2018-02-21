@@ -1,9 +1,11 @@
 package CustomerInfo;
 
 import Theatre.CreditCard;
-import Theatre.Person;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import Abstract.Person;
 
 /**
  * The customer class. It extends person, adding the credit card property. It

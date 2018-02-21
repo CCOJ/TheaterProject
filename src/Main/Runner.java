@@ -30,6 +30,6 @@ public class Runner
 	{
 		Controller controller = new Controller();
 		controller.run();
-		System.out.println(Strings.APPLICATION_CLOSE_SUCCESS);
+		System.out.println(Strings.NOTIFICATION_APPLICATION_CLOSED);
 	}
 }

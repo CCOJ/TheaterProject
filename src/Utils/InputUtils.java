@@ -30,6 +30,17 @@ public class InputUtils
 		}
 	}
 	
+	public String getYesOrNo()
+	{
+		
+		return null;
+	}
+	
+	public String getStringInput()
+	{
+		return scanner.nextLine();
+	}
+	
 	public void enterToContinue()
 	{
 		scanner.nextLine();

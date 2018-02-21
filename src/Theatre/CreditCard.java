@@ -11,7 +11,8 @@ public class CreditCard {
     private String number;
     private String expirationDate;
 
-    public CreditCard(String number, String expirationDate) {
+    public CreditCard(String number, String expirationDate)
+    {
         this.number = number;
         this.expirationDate = expirationDate;
     }
@@ -21,7 +22,8 @@ public class CreditCard {
      *
      * @return the value of number
      */
-    public String getNumber() {
+    public String getNumber()
+    {
         return number;
     }
 
@@ -31,7 +33,8 @@ public class CreditCard {
      *
      * @return the value of expirationDate
      */
-    public String getExpirationDate() {
+    public String getExpirationDate()
+    {
         return expirationDate;
     }
 
