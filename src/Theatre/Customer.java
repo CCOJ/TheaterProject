@@ -1,8 +1,5 @@
-package customerinfo;
+package com.project1.Theatre;
 
-import com.project1.Theatre.CreditCard;
-import com.project1.Theatre.Person;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +8,7 @@ import java.util.ArrayList;
  * 
  * @author Noah
  */
-public class Customer extends Person implements Serializable{
+public class Customer extends Person{
 
     private ArrayList<CreditCard> creditCards = new ArrayList<>();
     

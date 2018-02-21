@@ -1,4 +1,5 @@
 package ClientInfo;
+import com.project1.Theatre.Person;
 import java.io.Serializable;
 
 /**
@@ -8,9 +9,9 @@ import java.io.Serializable;
  * 
  * @author Ricky, Noah, Randy
  */
-public class Client implements Serializable{
+public class Client extends Person implements Serializable{
 
-	private String clientName, address, phoneNumber, clientId;
+	private String clientId;
 	private double balance;
 	
 	/**
@@ -21,37 +22,10 @@ public class Client implements Serializable{
 	 * @param phoneNumber Client's phone number
 	 */
 	public Client (String clientName, String address, String phoneNumber) {
-		this.clientName = clientName;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
+		super(clientName, address, phoneNumber);
 		this.clientId = "0"; //TODO: Generate unique ID -Randy
 		this.balance = 0;
-	}
-	
-	/**
-	 * Gets name of client's Name
-	 * @return clientName
-	 */
-	public String getClientName() {
-		return clientName;
-	}
-	
-	/**
-	 * Gets client's address
-	 * @return address
-	 */
-	public String getAddress() {
-		return address;
-	}
-	
-	/**
-	 * Get client's phone number
-	 * @return phoneNumber
-	 */
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	
+	}	
 	/**
 	 * Get client's ID
 	 * @return clientID
@@ -66,29 +40,6 @@ public class Client implements Serializable{
 	 */
 	public double getBalance() {
 		return balance;
-	}
-	
-	/**
-	 * Set client's name
-	 * @param clientName Client's address
-	 */
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
-	}
-	/**
-	 * Set client's address
-	 * @param address Client's address
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
-	/**
-	 * Set client's phone number
-	 * @param phoneNumber Client's phone number
-	 */
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 	
 	/**
@@ -111,7 +62,7 @@ public class Client implements Serializable{
 	 * Returns the string form of the client object's information
 	 */
 	public String toString() {
-		String string = "Client name: " + clientName + ", Address: " + address +
+		String string = "Client name: " + name + ", Address: " + address +
 				", Phone number: " + phoneNumber + ", Client ID: " + clientId +
 				", balance: " + balance;
 		return string;
