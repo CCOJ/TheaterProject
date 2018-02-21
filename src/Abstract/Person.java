@@ -1,12 +1,14 @@
 package Abstract;
 
+import java.io.Serializable;
+
 /**
  * This abstract class will allow for specific kinds of people classes for the 
  * theater project to be created with this class being the first building block
  * 
  * @author Noah
  */
-public abstract class Person
+public abstract class Person implements Serializable
 {
     
     protected String name;

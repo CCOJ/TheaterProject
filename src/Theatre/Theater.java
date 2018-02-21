@@ -1,8 +1,8 @@
 package Theatre;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import Abstract.Person;
@@ -10,11 +10,11 @@ import Abstract.Person;
  *
  * @author Noah, Randy, Ricky
  */
-public class Theater
+public class Theater implements Serializable
 {
 
 	private String name;
-	private int seatingCapacity;
+	private int seatingCapacity = 3000;
 	private ArrayList<Customer> customers;
 	private ArrayList<Client> clients;
 	private ArrayList<Show> shows;
@@ -22,11 +22,11 @@ public class Theater
 	public Theater(String name)
 	{
 		this.name = name;
-		seatingCapacity = 3000;
 		customers = new ArrayList<>();
 		clients = new ArrayList<>();
 		shows = new ArrayList<>();
 	}
+	
 
 	public String getName()
 	{

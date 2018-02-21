@@ -1,12 +1,14 @@
 package Theatre;
 
+import java.io.Serializable;
+
 import Abstract.Person;
 
 /**
  *
  * @author Noah
  */
-public class Client extends Person
+public class Client extends Person implements Serializable
 {
 	private int uniqueID;
 	private int balance;

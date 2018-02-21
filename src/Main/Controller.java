@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 
 import API.Application_API;
 import GUI.CL_Gui;
+import Serializer.Serializer;
 import Theatre.CreditCard;
 import Theatre.Customer;
 import Theatre.Theater;
@@ -51,6 +52,7 @@ public class Controller implements Application_API
 			retrieveData();
 		}
 		*/
+		retrieveData();
 		// Running is defaulted to true. False when user selects close program.
 		while(running)
 		{
@@ -176,12 +178,13 @@ public class Controller implements Application_API
 	@Override
 	public void exitApplication()
 	{
+		storeData();
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLOSING_APPLICATION);
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SERIALIZING_DATA);
 
 		// TO-DO serialize all data to disk
 		running = false;
-		storeData();
+
 	}
 	/***
 	 * 
@@ -396,7 +399,8 @@ public class Controller implements Application_API
 	@Override
 	public void storeData()
 	{
-		
+		Serializer serializer = new Serializer();
+		serializer.serializeTheater(theater);
 	}
 	/**
 	 * 
@@ -404,6 +408,13 @@ public class Controller implements Application_API
 	@Override
 	public void retrieveData()
 	{
+		Serializer serializer = new Serializer();
+		Theater tempTheater = serializer.deserializeTheater();
+		
+		if(tempTheater != null)
+		{
+			theater = tempTheater;
+		}
 		/*
 		 * Retrieve all information related to the theater. 
 		 * If stored data is found, the user has the option to use it. 
