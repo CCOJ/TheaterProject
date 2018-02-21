@@ -1,5 +1,5 @@
 package ClientInfo;
-import com.project1.Theatre.Person;
+import Theatre.Person;
 import java.io.Serializable;
 
 /**

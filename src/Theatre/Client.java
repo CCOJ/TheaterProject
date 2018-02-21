@@ -1,4 +1,4 @@
-package com.project1.Theatre;
+package Theatre;
 
 /**
  *

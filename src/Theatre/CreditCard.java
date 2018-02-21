@@ -1,4 +1,4 @@
-package com.project1.Theatre;
+package Theatre;
 
 /**
  * Credit card class so that credit card objects may be created for efficient

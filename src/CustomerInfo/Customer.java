@@ -1,7 +1,7 @@
-package customerinfo;
+package CustomerInfo;
 
-import com.project1.Theatre.CreditCard;
-import com.project1.Theatre.Person;
+import Theatre.CreditCard;
+import Theatre.Person;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -61,13 +61,18 @@ public class Customer extends Person implements Serializable{
                     
                     return "Credit Card " + card.getNumber() + " could not be "
                             + "removed because this is the only card "
-                            + this.name + " has on file.";
-                            
+                            + this.name + " has on file.";   
                 }
             }
             
         }
         return "Credit Card " + number + " could not be found.";
     }
+
+	public Object getCustomerID()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }

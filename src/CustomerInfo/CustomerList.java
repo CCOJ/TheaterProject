@@ -20,6 +20,7 @@ import java.util.List;
  * @param <E>
  *
  */
+@SuppressWarnings("serial")
 public class CustomerList implements Serializable{
     private List customers = new LinkedList();
     private static CustomerList customerList;

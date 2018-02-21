@@ -1,4 +1,4 @@
-package com.project1.Theatre;
+
 
 /**
  * This abstract class will allow for specific kinds of people classes for the 

@@ -1,9 +1,9 @@
-package theaterProject.Main;
+package Main;
 
-import theaterProject.API.Application_API;
-import theaterProject.GUI.CL_Gui;
-import theaterProject.Utils.InputUtils;
-import theaterProject.Utils.Strings;
+import API.Application_API;
+import GUI.CL_Gui;
+import Utils.InputUtils;
+import Utils.Strings;
 /**
  * This class is the main controller or the application. The CL_Gui is the 
  * command line interface. It will get user input and make a call to this 

@@ -13,7 +13,9 @@ public class CreditCardList implements Serializable {
 	/**
 	 * Private constructor designed for singleton pattern
 	 */
-	private CreditCardlist() {
+	public CreditCardList()
+	{
+		
 	}
 	
 	/**
@@ -67,7 +69,8 @@ public class CreditCardList implements Serializable {
      */
     public String removeCreditCard(CreditCard creditCard){ 
         creditCards.remove(creditCard);
-		return true;
+		//return true;
+        return null;
         
     }
 	

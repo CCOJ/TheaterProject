@@ -1,4 +1,4 @@
-package theaterProject.Utils;
+package Utils;
 /**
  * This class contains all the strings used in the application so 
  * location and maintenance of strings is made easer

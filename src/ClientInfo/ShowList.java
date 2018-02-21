@@ -48,7 +48,7 @@ public class ShowList implements Serializable{
 	 * @return show object
 	 */
 	public Show findShow(String showName) {
-		for (Iterator iterator = shows.iterator(); iterator.hasNext()) {
+		for (Iterator iterator = shows.iterator(); iterator.hasNext();) {
 			Show show = (Show) iterator.next();
 			
 			if (show.getShowName().equals(showName)) {

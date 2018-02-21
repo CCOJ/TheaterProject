@@ -1,8 +1,8 @@
-package theaterProject.GUI;
+package GUI;
 
-import theaterProject.Main.Controller;
-import theaterProject.Utils.InputUtils;
-import theaterProject.Utils.Strings;
+import Main.Controller;
+import Utils.InputUtils;
+import Utils.Strings;
 /**
  * CL_Gui - (Command Line GUI)
  * This class is the controller for the GUI portion of the

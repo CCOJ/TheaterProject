@@ -84,6 +84,7 @@ public class ClientList implements Serializable {
 	public boolean removeClient(Client client) {
 		clients.remove(client);
 		return true;
+	}
 	
 	/**
 	 * Saves the clientList object to disk.

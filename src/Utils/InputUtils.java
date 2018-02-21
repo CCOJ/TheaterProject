@@ -1,4 +1,4 @@
-package theaterProject.Utils;
+package Utils;
 
 import java.util.Scanner;
 /**

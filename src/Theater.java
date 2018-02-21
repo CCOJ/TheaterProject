@@ -1,6 +1,10 @@
-package com.project1.Theatre;
+
 
 import java.util.ArrayList;
+
+import CustomerInfo.Customer;
+import ClientInfo.Client;
+import Theatre.Show;
 
 /**
  *
@@ -15,6 +19,9 @@ public class Theater {
     
     public Theater(String name){
         this.name = name;
+    	customers = new ArrayList<>();
+    	clients = new ArrayList<>();
+    	shows = new ArrayList<>();
     }
 
 

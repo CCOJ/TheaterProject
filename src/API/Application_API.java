@@ -1,4 +1,4 @@
-package theaterProject.API;
+package API;
 /**
  * This interface contains the basic functionality of 
  * the application

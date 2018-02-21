@@ -1,6 +1,8 @@
-package theaterProject.Main;
+package Main;
 
-import theaterProject.Utils.Strings;
+import Main.Controller;
+import Utils.Strings;
+
 /**
  * This class is the starting point of the application and simply starts 
  * itself to start the controller. Keeps the controller less cluttered.
