@@ -1,4 +1,4 @@
-package ClientInfo;
+package MiscellaneousUnused;
 import java.io.Serializable;
 
 import Abstract.Person;

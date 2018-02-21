@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Main.Controller;
 import Theatre.Client;
+import Theatre.Customer;
 import Theatre.Show;
 import Utils.InputUtils;
 import Utils.Strings;
@@ -82,8 +83,20 @@ public class CL_Gui
 		}
 	}
 	
+	public void displayAllCustomersList(ArrayList<Customer> customers)
+	{
+		System.out.println(Strings.HEADER_LIST_ALL_CUSTOMERS);
+		
+		for(int i = 0; i < customers.size(); ++i)
+		{
+			System.out.println(customers.get(i).toString());
+		}
+	}
+	
 	public void displayHelp()
 	{
 		
 	}
+
+
 }

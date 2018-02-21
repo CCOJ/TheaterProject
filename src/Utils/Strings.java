@@ -20,7 +20,11 @@ public class Strings
 	public static final String HEADER_ADD_CLIENT = "ADD CLIENT";
 	public static final String HEADER_ADD_SHOW = "ADD SHOW";
 	public static final String HEADER_LIST_ALL_CLIENTS = "Listing all Clients";
-	public static final String HEADER_LIST_ALL_SHOWS = "Listing all Shows";	
+	public static final String HEADER_LIST_ALL_SHOWS = "Listing all Shows";
+	public static final String HEADER_ADD_CREDIT_CARD = "ADD CREDIT CARD";
+	public static final String HEADER_LIST_ALL_CUSTOMERS = "Listing all Customers and Cards";
+	public static final String HEADER_REMOVE_CREDIT_CARD = "REMOVE CREDIT CARD";
+	public static final String HEADER_ADD_CUSTOMER = "ADD CUSTOMER";
 	public static final String MESSAGE_WELCOME = "Welcome";
 	public static final String NOTIFICATION_CLOSING_APPLICATION = "CLOSING APPLICATION";
 	public static final String NOTIFICATION_SERIALIZING_DATA = "SERIALIZING DATA";
@@ -32,6 +36,9 @@ public class Strings
 	public static final String PROMPT_FOR_PHONE_NUMBER = "Please enter a phone number:";	
 	public static final String PROMPT_FOR_SHOW_NAME = "Please enter show name:";
 	public static final String PROMPT_FOR_CLIENT_ID = "Please enter the client ID:";
+	public static final String PROMPT_FOR_CUSTOMER_ID = "Please enter the customer ID:";
+	public static final String PROMPT_FOR_CARD_EXPIRATION = "Please enter the credit cards expiration";
+	public static final String PROMPT_FOR_CREDIT_CARD_NUMBER = "Please enter the credit card number";
 	public static final String PROMPT_FOR_BEGIN_YEAR = "Please enter starting year:";
 	public static final String PROMPT_FOR_BEGIN_MONTH = "Please enter starting month:";
 	public static final String PROMPT_FOR_BEGIN_DAY = "Please enter a starting day:";
@@ -45,6 +52,9 @@ public class Strings
 	public static final String HELP_MENU = "Details of possible user application commands";
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";
 	public static final String CINEMA_NAME = "Cinema 10";
+
+
+
 
 	
 }

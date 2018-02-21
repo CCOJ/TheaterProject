@@ -86,11 +86,46 @@ public class Theater
 	{
 		customers.add(new Customer(name, address, phoneNumber, creditCardNumber, expirationDate));
 	}
+	
+	public void addCustomer(Customer customer)
+	{
+		customers.add(customer);
+	}
 
 	public void addShow(String showName, int clientID, Date begDate, Date endDate)
 	{
 		Show show = new Show(showName, clientID, begDate, endDate);
 		shows.add(show);
+	}
+	
+	public void addCustomerCreditCard(int customerID, CreditCard card)
+	{
+		for(int i = 0; i < customers.size(); ++i)
+		{
+			if(customers.get(i).getUniqueID() == customerID)
+			{
+				customers.get(i).addCreditCard(card);
+				return;
+			}
+		}
+	}
+	
+	public void removeCustomerCard(int customerID, String cardNumber)
+	{
+		for(int i = 0; i < customers.size(); ++i)
+		{
+			if(customers.get(i).getUniqueID() == customerID)
+			{
+				customers.get(i).removeCreditCard(cardNumber);
+				return;
+			}
+		}	
+	}
+
+	public void addCustomer(String customerName, String address, String phoneNumber, CreditCard creditCard)
+	{
+		
+		
 	}
 	/**
 	 * Check to see if the credit card is already on file. If it is, return true
@@ -98,15 +133,19 @@ public class Theater
 	 * @param number
 	 * @return 
 	 */
+	/*
 	public boolean creditCardExists(String number){
 		for(int i = 0; i < customers.size(); i++){
 			for(int j = 0; j < customers.get(i).getCreditCards().size(); j ++){
 				if(number.equals(customers.get(i).getCreditCards().get(j)
-						.getNumber())){
+						.getCardNumber())){
 					return true;
 				}
 			}
 		}
 		return false;
 	}
+	*/
+
+
 }

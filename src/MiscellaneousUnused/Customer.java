@@ -1,4 +1,4 @@
-package CustomerInfo;
+package MiscellaneousUnused;
 
 import Theatre.CreditCard;
 
@@ -51,17 +51,17 @@ public class Customer extends Person implements Serializable{
     public String removeCreditCard(String number){ 
         
         for(CreditCard card : creditCards) {
-            if(card.getNumber().equals(number)) {
+            if(card.getCardNumber().equals(number)) {
                 
                 if(creditCards.size() > 1){
                     
                     creditCards.remove(card);
-                    return "Credit Card " + card.getNumber() + " has been removed "
+                    return "Credit Card " + card.getCardNumber() + " has been removed "
                             + "successfully.";
                 }
                 else{
                     
-                    return "Credit Card " + card.getNumber() + " could not be "
+                    return "Credit Card " + card.getCardNumber() + " could not be "
                             + "removed because this is the only card "
                             + this.name + " has on file.";   
                 }

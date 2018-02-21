@@ -1,4 +1,4 @@
-package CustomerInfo;
+package MiscellaneousUnused;
 
 import java.io.IOException;
 import java.io.Serializable;

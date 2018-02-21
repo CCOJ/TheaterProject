@@ -1,10 +1,12 @@
-package CustomerInfo;
+package MiscellaneousUnused;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import Theatre.CreditCard;
 
 public class CreditCardList implements Serializable {
 	private List creditCards = new LinkedList<>();
@@ -43,7 +45,7 @@ public class CreditCardList implements Serializable {
 		for (Iterator iterator = creditCards.iterator(); iterator.hasNext(); ) {
 			CreditCard creditCard = (CreditCard) iterator.next();
 			
-			if (creditCard.getNumber().equals(number)) {
+			if (creditCard.getCardNumber().equals(number)) {
 				return creditCard;
 			}
 		}

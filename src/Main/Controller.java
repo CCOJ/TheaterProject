@@ -3,6 +3,8 @@ package Main;
 import java.util.Date;
 import API.Application_API;
 import GUI.CL_Gui;
+import Theatre.CreditCard;
+import Theatre.Customer;
 import Theatre.Theater;
 import Utils.InputUtils;
 import Utils.Strings;
@@ -224,7 +226,31 @@ public class Controller implements Application_API
 	@Override
 	public void addCustomer()
 	{
+		/*
+		 * tomer. The system accepts the name, address, phone number, and the number and expiry 
+		 * date of exactly one credit card. The system generates a unique id for the custome
+		 */
+		Customer customer;
+		String customerName, address, phoneNumber, cardNumber, expirationDate;
+		cL_Gui.displayPageHeader(Strings.HEADER_ADD_CUSTOMER);
 		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_NAME);
+		customerName = inputUtils.getStringInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_ADDRESS);
+		address = inputUtils.getStringInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_PHONE_NUMBER);
+		phoneNumber = inputUtils.getStringInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
+		cardNumber = inputUtils.getStringInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CARD_EXPIRATION);
+		expirationDate = inputUtils.getStringInput();
+		
+		customer = new Customer(customerName, address, phoneNumber, cardNumber, expirationDate);
+		theater.addCustomer(customer);
 	}
 	/**
 	 * 
@@ -240,6 +266,23 @@ public class Controller implements Application_API
 	@Override
 	public void addCreditCard()
 	{
+		CreditCard creditCard;
+		int customerID;
+		String cardNumber, expirationDate;
+		
+		cL_Gui.displayPageHeader(Strings.HEADER_ADD_CREDIT_CARD);
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
+		customerID = inputUtils.getIntInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
+		cardNumber = inputUtils.getStringInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CARD_EXPIRATION);
+		expirationDate = inputUtils.getStringInput();
+		
+		creditCard = new CreditCard(cardNumber, expirationDate);
+		theater.addCustomerCreditCard(customerID, creditCard);
 		
 	}
 	/**
@@ -248,7 +291,18 @@ public class Controller implements Application_API
 	@Override
 	public void removeCreditCard()
 	{
+		int customerID;
+		String cardNumber;
 		
+		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CREDIT_CARD);
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
+		customerID = inputUtils.getIntInput();
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
+		cardNumber = inputUtils.getStringInput();
+		
+		theater.removeCustomerCard(customerID, cardNumber);
 	}
 	/**
 	 * 
@@ -256,11 +310,12 @@ public class Controller implements Application_API
 	@Override
 	public void listAllCustomers()
 	{
-		
+		cL_Gui.displayAllCustomersList(theater.getCustomerList());
 	}
 	/**
 	 * 
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void addShowOrPlay()
 	{
