@@ -1,7 +1,10 @@
 package Theatre;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
 import Abstract.Person;
 /**
  *
@@ -75,7 +78,6 @@ public class Theater
 		this.shows = shows;
 	}
 
-
 	public void addClient(String name, String address, String phoneNumber)
 	{
 		Person client = new Client(name, address, phoneNumber);
@@ -91,9 +93,10 @@ public class Theater
 	{
 		customers.add(customer);
 	}
-
-	public void addShow(String showName, int clientID, Date begDate, Date endDate)
+	
+	public void addShow(String showName, int clientID, Calendar begDate, Calendar endDate)
 	{
+		//Need to check if date overlaps any other events.
 		Show show = new Show(showName, clientID, begDate, endDate);
 		shows.add(show);
 	}
@@ -110,6 +113,19 @@ public class Theater
 		}
 	}
 	
+	public void removeCustomer(int customerID)
+	{
+		for(int i = 0; i < customers.size(); ++i)
+		{
+			if(customers.get(i).getUniqueID() == customerID)
+			{
+				customers.get(i).removeAllCreditCards();
+				customers.remove(i);
+				return;
+			}
+		}
+	}
+	
 	public void removeCustomerCard(int customerID, String cardNumber)
 	{
 		for(int i = 0; i < customers.size(); ++i)
@@ -120,6 +136,25 @@ public class Theater
 				return;
 			}
 		}	
+	}
+	
+	public void removeClient(int clientID)
+	{
+		for(int i = 0; i < shows.size(); ++i)
+		{
+			if(shows.get(i).getClientID() == clientID)
+			{
+				Calendar now = new GregorianCalendar(); //gets the current time and date
+				
+				if(shows.get(i).getEndDate().compareTo((Calendar) now) > 0) //if end date of the show is later in the future than right now, then client can't be removed
+				{
+					System.out.println("Client not removed");
+					return;
+				}
+			}
+		}
+		System.out.println("Client Removed");
+		clients.remove(clientID);
 	}
 
 	public void addCustomer(String customerName, String address, String phoneNumber, CreditCard creditCard)
@@ -146,6 +181,10 @@ public class Theater
 		return false;
 	}
 	*/
+
+
+
+
 
 
 }

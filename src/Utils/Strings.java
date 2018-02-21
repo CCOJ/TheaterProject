@@ -25,6 +25,8 @@ public class Strings
 	public static final String HEADER_LIST_ALL_CUSTOMERS = "Listing all Customers and Cards";
 	public static final String HEADER_REMOVE_CREDIT_CARD = "REMOVE CREDIT CARD";
 	public static final String HEADER_ADD_CUSTOMER = "ADD CUSTOMER";
+	public static final String HEADER_REMOVE_CUSTOMER = "REMOVE CUSTOMER";
+	public static final String HEADER_REMOVE_CLIENT = "REMOVE CLIENT";
 	public static final String MESSAGE_WELCOME = "Welcome";
 	public static final String NOTIFICATION_CLOSING_APPLICATION = "CLOSING APPLICATION";
 	public static final String NOTIFICATION_SERIALIZING_DATA = "SERIALIZING DATA";
@@ -52,6 +54,7 @@ public class Strings
 	public static final String HELP_MENU = "Details of possible user application commands";
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";
 	public static final String CINEMA_NAME = "Cinema 10";
+
 
 
 

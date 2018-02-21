@@ -1,6 +1,11 @@
 package Main;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
 import API.Application_API;
 import GUI.CL_Gui;
 import Theatre.CreditCard;
@@ -210,7 +215,15 @@ public class Controller implements Application_API
 	@Override
 	public void removeClient()
 	{
+		//Remove a client with the given id. If a show is scheduled for the current or a future date for this client, the client cannot be remove
+		int clientID;
+		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CLIENT);
 		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
+		clientID = inputUtils.getIntInput();
+		
+		theater.removeClient(clientID);
+	
 	}
 	/**
 	 * 
@@ -258,7 +271,15 @@ public class Controller implements Application_API
 	@Override
 	public void removeCustomer()
 	{
+		//mer. Remove a customer with the given id. All credit cards related to the customer are also delete
+		int customerID;
 		
+		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CUSTOMER);
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
+		customerID = inputUtils.getIntInput();
+		
+		theater.removeCustomer(customerID);
 	}
 	/**
 	 * 
@@ -283,7 +304,6 @@ public class Controller implements Application_API
 		
 		creditCard = new CreditCard(cardNumber, expirationDate);
 		theater.addCustomerCreditCard(customerID, creditCard);
-		
 	}
 	/**
 	 * 
@@ -321,7 +341,7 @@ public class Controller implements Application_API
 	{
 		String showName;
 		int clientID, begYear, begMonth, begDay, endYear, endMonth, endDay;
-		Date begDate, endDate;
+		//Date begDate, endDate;
 		
 		cL_Gui.displayPageHeader(Strings.HEADER_ADD_SHOW);
 		
@@ -352,10 +372,13 @@ public class Controller implements Application_API
 		//CHECK IF DATE HAS ANY OVERLAP FAILS IF TRUE
 		//CHECK IF ID EXISTS
 		
-		begDate = new Date(begYear, begMonth, begDay);
-		endDate = new Date(endYear, endMonth, endDay);
-		
+		Calendar begDate = new GregorianCalendar(begYear, begMonth, begDay);
+		Calendar endDate = new GregorianCalendar(endYear, endMonth, endDay);
+		//begDate = new Date(begYear, begMonth, begDay);
+		//endDate = new Date(endYear, endMonth, endDay);
+
 		theater.addShow(showName, clientID, begDate, endDate);
+		//Add an error check for overlapping dates.
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_ADDED);
 		
 	}

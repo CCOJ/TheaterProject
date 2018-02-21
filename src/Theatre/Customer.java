@@ -17,14 +17,15 @@ public class Customer extends Person
 	{
 		super(name, address, phoneNumber);
 		creditCards.add(new CreditCard(creditCardNumber,  expirationDate));
+		uniqueID = getGeneratedID(); //GeneratedID is in the parent class. Static auto-increments for ID
 	}
 
 	public Customer(String name, String address, String phoneNumber, CreditCard card)
 	{
 		super(name, address, phoneNumber);
 		creditCards.add(card);
+		uniqueID = getGeneratedID(); //GeneratedID is in the parent class. Static auto-increments for ID
 	}
-
 	/**
 	 * Get the value of creditCards
 	 *
@@ -70,7 +71,7 @@ public class Customer extends Person
 	 * @param number
 	 * @return 
 	 */
-	public String removeCreditCard(String number)
+	public boolean removeCreditCard(String number)
 	{ 
 		for(CreditCard card : creditCards)
 		{
@@ -79,20 +80,30 @@ public class Customer extends Person
 				if(creditCards.size() > 1)
 				{
 					creditCards.remove(card);
-					return "Credit Card " + card.getCardNumber() + " has been removed "
-					+ "successfully.";
+					System.out.println("Credit Card " + card.getCardNumber() + " has been removed " + "successfully.");
+					return true;
 				}
 				else
 				{
-					return "Credit Card " + card.getCardNumber() + " could not be "
-							+ "removed because this is the only card "
-							+ this.name + " has on file.";       
+					System.out.println("Credit Card " + card.getCardNumber() + " could not be " + "removed because this is the only card " + this.name + " has on file.");       
+					return false;
 				}
 			}
 		}
-		return "Credit Card " + number + " could not be found.";
+		return false;
+		//return "Credit Card " + number + " could not be found.";
 	}
 
+	public void removeAllCreditCards()
+	{
+		creditCards.removeAll(creditCards);
+	}
+	
+	public void removeCustomer()
+	{
+		
+	}
+	
 	public String creditCardsToString()
 	{
 		StringBuilder strCards = new StringBuilder();
