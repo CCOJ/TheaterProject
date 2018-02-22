@@ -1,4 +1,4 @@
-package MiscellaneousUnused;
+package Theatre;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -17,7 +17,6 @@ import java.util.List;
  * relationship. Hence, a singleton design is best for this.
  * 
  * @author Ricky, Noah, Randy
- * @param <E>
  *
  */
 public class ClientList implements Serializable {
@@ -51,14 +50,14 @@ public class ClientList implements Serializable {
 	 * has a match with a client, or to the end of the
 	 * list.
 	 * 
-	 * @param clientID client's ID
+	 * @param ID client's ID
 	 * @return client object
 	 */
-	public Client findClient(String clientID) {
+	public Client findClient(int ID) {
 		for (Iterator iterator = clients.iterator(); iterator.hasNext(); ) {
 			Client client = (Client) iterator.next();
 			
-			if (client.getClientId().equals(clientID)) {
+			if (client.getID() == (ID)) {
 				return client;
 			}
 		}
