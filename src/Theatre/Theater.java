@@ -15,16 +15,24 @@ public class Theater implements Serializable
 
 	private String name;
 	private int seatingCapacity = 3000;
-	private ArrayList<Customer> customers;
-	private ArrayList<Client> clients;
-	private ArrayList<Show> shows;
+	//private ArrayList<Customer> customers;
+	//private ArrayList<Client> clients;
+	//private ArrayList<Show> shows;
+	private CreditCardList creditCardList;
+	private CustomerList customerList;
+	private ShowList showsList;
+	private ClientList clientList;
 
 	public Theater(String name)
 	{
 		this.name = name;
-		customers = new ArrayList<>();
-		clients = new ArrayList<>();
-		shows = new ArrayList<>();
+		//customers = new ArrayList<>();
+		//clients = new ArrayList<>();
+		//shows = new ArrayList<>();
+		creditCardList = new CreditCardList();
+		customerList = new CustomerList();
+		showsList = new ShowList();
+		clientList = new ClientList();
 	}
 	
 
@@ -47,7 +55,29 @@ public class Theater implements Serializable
 	{
 		this.seatingCapacity = seatingCapacity;
 	}
+	
+	public CustomerList getCustomerList()
+	{
+		return customerList;
+	}
+	
+	public CreditCardList getCreditCardList()
+	{
+		return creditCardList;
+	}	
 
+	public ClientList getClientList()
+	{
+		return clientList;
+	}
+	
+	public ShowList getShowsList()
+	{
+		return showsList;
+	}
+	
+
+	/*
 	public ArrayList<Customer> getCustomerList()
 	{
 		return customers;
@@ -57,7 +87,9 @@ public class Theater implements Serializable
 	{
 		this.customers = customers;
 	}
+	*/
 
+	/*
 	public ArrayList<Client> getClientList()
 	{
 		return clients;
@@ -67,7 +99,9 @@ public class Theater implements Serializable
 	{
 		this.clients = clients;
 	}
+	*/
 
+	/*
 	public ArrayList<Show> getShowList()
 	{
 		return shows;
@@ -77,30 +111,50 @@ public class Theater implements Serializable
 	{
 		this.shows = shows;
 	}
+	*/
 
+	public void addClient(Person client)
+	{
+		clientList.addClient((Client) client);
+	}
+	
+	public void addClient(Client client)
+	{
+		clientList.addClient(client);
+	}
+	
 	public void addClient(String name, String address, String phoneNumber)
 	{
 		Person client = new Client(name, address, phoneNumber);
-		clients.add((Client) client);
-	}   
-
-	public void addCustomer(String name, String address, String phoneNumber, String creditCardNumber, String expirationDate)
-	{
-		customers.add(new Customer(name, address, phoneNumber, creditCardNumber, expirationDate));
+		clientList.addClient((Client) client);
 	}
 	
 	public void addCustomer(Customer customer)
 	{
-		customers.add(customer);
+		
+		customerList.addCustomer(customer);
 	}
 	
-	public void addShow(String showName, int clientID, Calendar begDate, Calendar endDate)
+	
+	/*
+	public void addCustomer(Customer customer)
+	{
+		customers.add(customer);
+	}
+	*/
+	
+	public void addShow(String showName, long clientID, Calendar begDate, Calendar endDate)
 	{
 		//Need to check if date overlaps any other events.
 		Show show = new Show(showName, clientID, begDate, endDate);
-		shows.add(show);
+		showsList.addShow(show);
 	}
 	
+	public void addShow(Show show)
+	{
+		showsList.addShow(show);
+	}
+	/*
 	public void addCustomerCreditCard(int customerID, CreditCard card)
 	{
 		for(int i = 0; i < customers.size(); ++i)
@@ -112,49 +166,26 @@ public class Theater implements Serializable
 			}
 		}
 	}
+	*/
 	
-	public void removeCustomer(int customerID)
+	public void addCustomerCreditCard(CreditCard creditCard)
 	{
-		for(int i = 0; i < customers.size(); ++i)
-		{
-			if(customers.get(i).getUniqueID() == customerID)
-			{
-				customers.get(i).removeAllCreditCards();
-				customers.remove(i);
-				return;
-			}
-		}
+		creditCardList.addCreditCard(creditCard);
 	}
 	
-	public void removeCustomerCard(int customerID, String cardNumber)
+	public void removeCustomer(long customerID)
 	{
-		for(int i = 0; i < customers.size(); ++i)
-		{
-			if(customers.get(i).getUniqueID() == customerID)
-			{
-				customers.get(i).removeCreditCard(cardNumber);
-				return;
-			}
-		}	
+		customerList.removeCustomer(customerID);
 	}
 	
-	public void removeClient(int clientID)
+	public void removeCustomerCard(String cardNumber)
 	{
-		for(int i = 0; i < shows.size(); ++i)
-		{
-			if(shows.get(i).getClientID() == clientID)
-			{
-				Calendar now = new GregorianCalendar(); //gets the current time and date
-				
-				if(shows.get(i).getEndDate().compareTo((Calendar) now) > 0) //if end date of the show is later in the future than right now, then client can't be removed
-				{
-					System.out.println("Client not removed");
-					return;
-				}
-			}
-		}
-		System.out.println("Client Removed");
-		clients.remove(clientID);
+		creditCardList.removeCreditCard(cardNumber);
+	}
+	
+	public void removeClient(long clientID)
+	{
+		clientList.removeClient(clientID);
 	}
 
 	public void addCustomer(String customerName, String address, String phoneNumber, CreditCard creditCard)
@@ -181,6 +212,12 @@ public class Theater implements Serializable
 		return false;
 	}
 	*/
+
+
+
+
+
+
 
 
 

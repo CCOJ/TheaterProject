@@ -15,14 +15,14 @@ import java.util.Date;
 public class Show
 {
 	private String showName;
-	private int clientID;
+	private long clientID;
 	private Calendar begDate;
 	private Calendar endDate;
 
-    public Show(String showName, int clientID, Calendar begDate, Calendar endDate)
+    public Show(String showName, long clientID2, Calendar begDate, Calendar endDate)
     {
         this.showName = showName;
-        this.clientID = clientID;
+        this.clientID = clientID2;
         this.begDate = begDate;
         this.endDate = endDate;
 	}
@@ -38,7 +38,8 @@ public class Show
 	 * Get the show's client's ID
 	 * @return clientID
 	 */
-	public int getClientID() {
+	public long getClientID()
+	{
 		return clientID;
 	}
 

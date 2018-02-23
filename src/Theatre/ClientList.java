@@ -2,6 +2,9 @@ package Theatre;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,60 +22,63 @@ import java.util.List;
  * @author Ricky, Noah, Randy
  *
  */
-public class ClientList implements Serializable {
-	private List clients = new LinkedList();
-	private static ClientList clientList;
+public class ClientList implements Serializable
+{
+	private ArrayList<Client> clientList;
 	
 	/**
 	 * Private constructor designed for the singleton pattern
 	 */
-	private ClientList() {
+	public ClientList()
+	{
+		clientList = new ArrayList<Client>();
 	}
 	
-	/**
-	 * Singleton pattern allows us to return the only
-	 * created list without creating anymore.
-	 * This also creates one, if none were created.
-	 * 
-	 * @return clientList
-	 */
-	public static ClientList instance() {
-		if (clientList == null) {
-			return (clientList = new ClientList());
-		} else {
-			return clientList;
-		}
+	public ArrayList<Client> getClientList()
+	{
+		return clientList;
 	}
 	
-	/**
-	 * Finds the client in clientList if they exist.
-	 * This iterates through clientList until clientId
-	 * has a match with a client, or to the end of the
-	 * list.
-	 * 
-	 * @param ID client's ID
-	 * @return client object
-	 */
-	public Client findClient(int ID) {
-		for (Iterator iterator = clients.iterator(); iterator.hasNext(); ) {
-			Client client = (Client) iterator.next();
-			
-			if (client.getID() == (ID)) {
-				return client;
+	public void removeClient(long clientID)
+	{
+		//Check if all shows have played. If one's end date is not past todays date, don't remove.
+		/*
+		for(int i = 0; i < shows.size(); ++i)
+		{
+			if(shows.get(i).getClientID() == clientID)
+			{
+				Calendar now = new GregorianCalendar(); //gets the current time and date
+				
+				if(shows.get(i).getEndDate().compareTo((Calendar) now) > 0) //if end date of the show is later in the future than right now, then client can't be removed
+				{
+					System.out.println("Client not removed");
+					return;
+				}
 			}
 		}
-		return null;
+		System.out.println("Client Removed");
+		clients.remove(clientID);
+		*/
+		for(int i = 0; i < clientList.size(); ++i)
+		{
+			if(clientList.get(i).getID() == clientID)
+			{
+				clientList.remove(i);
+			}
+		}
+		
 	}
 	
+
 	/**
 	 * Add client to list of clients
 	 * 
 	 * @param client the client to be added to the list
 	 * @return true when added
 	 */
-	public boolean addClient(Client client) {
-		clients.add(client);
-		return true;
+	public void addClient(Client client)
+	{
+		clientList.add(client);
 	}
 	
 	/**
@@ -80,59 +86,12 @@ public class ClientList implements Serializable {
 	 * @param client the client to be removed from the list
 	 * @return true when removed
 	 */
-	public boolean removeClient(Client client) {
-		clients.remove(client);
-		return true;
+	public void removeClient(Client client)
+	{
+		clientList.remove(client);
 	}
+
+
 	
-	/**
-	 * Saves the clientList object to disk.
-	 * If it is unable to, it returns an error
-	 * stating it cannot save with the reason why.
-	 * 
-	 * @param output the stream for write
-	 */
-	private void writeObject(java.io.ObjectOutputStream output) {
-		try {
-			output.defaultWriteObject();
-			output.writeObject(clientList);
-		} catch (IOException ioe) {
-			System.out.println("Could not save clientList to disk: ");
-			ioe.printStackTrace();
-		}
-	}
 	
-	/**
-	 * Loads clientList object from disk.
-	 * Otherwise, it prints out errors with
-	 * reasons why.
-	 * @param input the stream for input
-	 */
-	private void readObject(java.io.ObjectInputStream input) {
-		try {
-			if (clientList != null) {
-				return;
-			} else {
-				input.defaultReadObject();
-				if (clientList == null) {
-					clientList = (ClientList) input.readObject();
-				} else {
-					input.readObject();
-				}
-			}
-		} catch (IOException ioe) {
-			System.out.println("Could not load clientList from disk: ");
-			ioe.printStackTrace();
-		} catch(ClassNotFoundException cnfe) {
-			System.out.println("Could not find class: ");
-			cnfe.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Returns a list of all the clients in clientList
-	 */
-	public String toString() {
-		return clients.toString();
-	}
 }

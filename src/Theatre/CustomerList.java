@@ -3,6 +3,7 @@ package Theatre;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,28 +22,21 @@ import java.util.List;
  * @param <E>
  *
  */
-public class CustomerList implements Serializable{
-    private List customers = new LinkedList();
-    private static CustomerList customerList;
+public class CustomerList implements Serializable
+{
+	private final ArrayList<Customer> customerList;
     
     /**
      * Private constructor, for singleton pattern
      */
-    private CustomerList(){
-        
+    public CustomerList()
+    {
+        customerList = new ArrayList<Customer>();
     }
     
-    /**
-     * With the singleton pattern, we create one available instance of
-     * customerList at a time. It creates one if necessary 
-     */
-    public static CustomerList instance(){
-        if(customerList == null){
-            return (customerList = new CustomerList());
-        }
-        else{
-            return customerList;
-        }
+    public ArrayList<Customer> getCustomerList()
+    {
+    	return customerList;
     }
     
     /**
@@ -51,14 +45,15 @@ public class CustomerList implements Serializable{
      * @param customerID
      * @return 
      */
-    public Customer findCustomer(String customerID){
-        for(Iterator iterator = customers.iterator(); iterator.hasNext();){
-            Customer customer = (Customer)iterator.next();
-            
-            if(customer.getCustomerID().equals(customerID)){
-                return customer;
-            }
-        }
+    public Customer getCustomer(long customerID)
+    {
+    	for(int i = 0; i < customerList.size(); ++i)
+    	{
+    		if(customerList.get(i).getUniqueID() == customerID)
+    		{
+    			return customerList.get(i);
+    		}
+    	}
         return null;
     }
     /**
@@ -66,67 +61,38 @@ public class CustomerList implements Serializable{
      * @param customer
      * @return 
      */
-    public boolean addCustomer(Customer customer){
-        customers.add(customer);
-        return true;
+    public void addCustomer(Customer customer)
+    {
+        customerList.add(customer);
     }
     /**
      * Removes the specified customer from the list
      * @param customer
      * @return 
      */
-    public boolean removeCustomer(Customer customer){
-        customers.remove(customer);
-        return true;
+    public void removeCustomer(Customer customer)
+    {
+    	for(int i = 0; i < customerList.size(); ++i)
+    	{
+    		if(customerList.get(i).equals(customer))
+    		{
+    			customerList.remove(i);
+    		}
+    	}
     }
     /**
-     * Saves the customerList to the disk
-     * Returns an error if it cannot, with the reason why
-     * @param output 
+     * Removes the specified customer from the list
+     * @param customer
+     * @return 
      */
-    private void writeObject(java.io.ObjectOutputStream output){
-        try{
-            output.defaultWriteObject();
-            output.writeObject(customerList);
-            
-        }
-        catch(IOException io){
-            System.out.println("Could not save customerList to disk: ");
-            io.printStackTrace();
-        }
+    public void removeCustomer(long customerID)
+    {
+    	for(int i = 0; i < customerList.size(); ++i)
+    	{
+    		if(customerList.get(i).getUniqueID() == customerID)
+    		{
+    			customerList.remove(i);
+    		}
+    	}
     }
-    
-	/**
-	 * Loads clientList object from disk.
-	 * Otherwise, it prints out errors with
-	 * reasons why.
-	 * @param input the stream for input
-	 */
-	private void readObject(java.io.ObjectInputStream input) {
-		try {
-			if (customerList != null) {
-				return;
-			} else {
-				input.defaultReadObject();
-				if (customerList == null) {
-					customerList = (CustomerList) input.readObject();
-				} else {
-					input.readObject();
-				}
-			}
-		} catch (IOException ioe) {
-			System.out.println("Could not load clientList from disk: ");
-			ioe.printStackTrace();
-		} catch(ClassNotFoundException cnfe) {
-			System.out.println("Could not find class: ");
-			cnfe.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Returns a list of all the clients in clientList
-	 */
-	public String toString() {
-		return customers.toString();
-	}
 }

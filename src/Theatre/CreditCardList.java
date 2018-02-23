@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class CreditCardList implements Serializable
 {
-	private final ArrayList<CreditCard> creditCards;
+	private ArrayList<CreditCard> creditCards;
 
 	/**
 	 * Private constructor designed for singleton pattern
@@ -14,6 +14,13 @@ public class CreditCardList implements Serializable
 	{
 		creditCards = new ArrayList<>();
 	}
+	
+	public ArrayList<CreditCard> getCreditCardList()
+	{
+		return creditCards;
+	}
+	
+	
 	/**
 	 * Finds the credit card in creditCardList if they exist.
 	 * Iterates through creditCardList until the number matches or not.
@@ -42,6 +49,7 @@ public class CreditCardList implements Serializable
     {     
         creditCards.add(creditCard);
     }
+    
     /**
      * Removes a credit card with the given credit card number
      * 
@@ -65,5 +73,17 @@ public class CreditCardList implements Serializable
     	}
     	return false;
     }
+	public void removeAllCustomerCards(long customerID)
+	{
+		for(int i = 0; i < creditCards.size(); ++i)
+		{
+			if(creditCards.get(i).getCustomerID() == customerID)
+			{
+				creditCards.remove(i);
+			}
+		}
+	}
+
+
 
 }

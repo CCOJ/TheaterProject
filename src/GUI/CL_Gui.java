@@ -4,8 +4,13 @@ import java.util.ArrayList;
 
 import Main.Controller;
 import Theatre.Client;
+import Theatre.ClientList;
+import Theatre.CreditCard;
+import Theatre.CreditCardList;
 import Theatre.Customer;
+import Theatre.CustomerList;
 import Theatre.Show;
+import Theatre.ShowList;
 import Utils.InputUtils;
 import Utils.Strings;
 /**
@@ -73,6 +78,18 @@ public class CL_Gui
 		}
 	}
 	
+	public void displayAllShowsList(ShowList showsList)
+	{
+		ArrayList<Show> shows = showsList.getShowsList();
+		
+		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CLIENTS);
+		
+		for(int i = 0; i < shows.size(); ++i)
+		{
+			System.out.println(shows.get(i).toString());
+		}
+	}
+	
 	public void displayAllClientsList(ArrayList<Client> clients)
 	{
 		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CLIENTS);
@@ -83,8 +100,33 @@ public class CL_Gui
 		}
 	}
 	
+	public void displayAllClientsList(ClientList clientList)
+	{
+		ArrayList<Client> clients = clientList.getClientList();
+		
+		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CLIENTS);
+		
+		for(int i = 0; i < clients.size(); ++i)
+		{
+			System.out.println(clients.get(i).toString());
+		}
+	}
+	
+	
 	public void displayAllCustomersList(ArrayList<Customer> customers)
 	{
+		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CUSTOMERS);
+		
+		for(int i = 0; i < customers.size(); ++i)
+		{
+			System.out.println(customers.get(i).toString());
+		}
+	}
+	
+	public void displayAllCustomersList(CustomerList customerList)
+	{
+		ArrayList<Customer> customers = customerList.getCustomerList();
+		
 		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CUSTOMERS);
 		
 		for(int i = 0; i < customers.size(); ++i)
@@ -97,6 +139,34 @@ public class CL_Gui
 	{
 		
 	}
+
+	public void displayAllCustomerInformation(CustomerList customerList, CreditCardList creditCardList)
+	{
+		ArrayList<Customer> customers = customerList.getCustomerList();
+		ArrayList<CreditCard> cards = creditCardList.getCreditCardList();
+		
+		StringBuilder str = new StringBuilder();
+		
+		for(int i = 0; i < customers.size(); ++i)
+		{
+			str.append(customers.get(i).toString());
+			str.append(", creditCards:[");
+			for(int j = 0; j < cards.size(); ++j)
+			{
+				if(cards.get(j).getCustomerID() == customers.get(i).getUniqueID())
+				{
+					str.append("{" + cards.get(j).toString() + "}, ");
+				}
+			}
+			str.append("]");
+			System.out.println(str.toString());
+			str.delete(0, str.length());
+		}
+		
+	}
+
+
+
 
 
 }

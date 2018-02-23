@@ -4,12 +4,13 @@ public class CreditCard {
     
     private String creditCardNumber;
     private String expirationDate;
-    private String customerID;   
+    private long customerID;   
 
-    public CreditCard(String creditCardNumber, String expirationDate, String customerID) {
+    public CreditCard(long customerID, String creditCardNumber, String expirationDate)
+    {
+        this.customerID = customerID;
         this.creditCardNumber = creditCardNumber;
         this.expirationDate = expirationDate;
-        this.customerID = customerID;
     }
     
 
@@ -18,7 +19,8 @@ public class CreditCard {
      *
      * @return the value of creditCardNumber
      */
-    public String getCreditCardNumber() {
+    public String getCreditCardNumber()
+    {
         return creditCardNumber;
     }
 
@@ -54,7 +56,8 @@ public class CreditCard {
      *
      * @return the value of customerID
      */
-    public String getCustomerID() {
+    public long getCustomerID()
+    {
         return customerID;
     }
 
@@ -63,8 +66,15 @@ public class CreditCard {
      *
      * @param customerID new value of customerID
      */
-    public void setCustomerID(String customerID) {
+    public void setCustomerID(long customerID)
+    {
         this.customerID = customerID;
+    }
+    
+    public String toString()
+    {
+        //customerID   return "customerID:" + customerID + ", cardNumber:" + creditCardNumber + ", expirationDate:" + expirationDate;
+		return "cardNumber:" + creditCardNumber + ", expirationDate:" + expirationDate;
     }
 
 }

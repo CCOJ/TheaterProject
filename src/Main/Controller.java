@@ -3,10 +3,13 @@ package Main;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import API.Application_API;
+import Abstract.Person;
 import GUI.CL_Gui;
 import Serializer.Serializer;
+import Theatre.Client;
 import Theatre.CreditCard;
 import Theatre.Customer;
+import Theatre.Show;
 import Theatre.Theater;
 import Utils.InputUtils;
 import Utils.Strings;
@@ -194,7 +197,9 @@ public class Controller implements Application_API
 		
 		//verify that information is entered correctly
 		
-		theater.addClient(name, address, phoneNumber);
+		Person client = new Client(name, address, phoneNumber);
+		theater.addClient((Client) client);
+		
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_ADDED);
 	}
 	/**
@@ -204,11 +209,11 @@ public class Controller implements Application_API
 	public void removeClient()
 	{
 		//Remove a client with the given id. If a show is scheduled for the current or a future date for this client, the client cannot be remove
-		int clientID;
+		long clientID;
 		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CLIENT);
 		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
-		clientID = inputUtils.getIntInput();
+		clientID = inputUtils.getLongInput();
 		
 		theater.removeClient(clientID);
 	}
@@ -231,6 +236,7 @@ public class Controller implements Application_API
 		 * date of exactly one credit card. The system generates a unique id for the custome
 		 */
 		Customer customer;
+		CreditCard creditCard;
 		String customerName, address, phoneNumber, cardNumber, expirationDate;
 		cL_Gui.displayPageHeader(Strings.HEADER_ADD_CUSTOMER);
 		
@@ -249,8 +255,13 @@ public class Controller implements Application_API
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CARD_EXPIRATION);
 		expirationDate = inputUtils.getStringInput();
 		
-		customer = new Customer(customerName, address, phoneNumber, cardNumber, expirationDate);
+		customer = new Customer(customerName, address, phoneNumber);
+		creditCard = new CreditCard(customer.getUniqueID(), cardNumber, expirationDate);
 		theater.addCustomer(customer);
+		theater.addCustomerCreditCard(creditCard);
+		
+		//customer = new Customer(customerName, address, phoneNumber, cardNumber, expirationDate);
+		//theater.addCustomer(customer);
 	}
 	/**
 	 * RemoveCustomer 
@@ -259,11 +270,13 @@ public class Controller implements Application_API
 	public void removeCustomer()
 	{
 		//mer. Remove a customer with the given id. All credit cards related to the customer are also delete
-		int customerID;
+		long customerID;
 		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CUSTOMER);
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
-		customerID = inputUtils.getIntInput();
+		customerID = inputUtils.getLongInput();
+		
 		theater.removeCustomer(customerID);
+		theater.getCreditCardList().removeAllCustomerCards(customerID);
 	}
 	/**
 	 * 
@@ -272,13 +285,13 @@ public class Controller implements Application_API
 	public void addCreditCard()
 	{
 		CreditCard creditCard;
-		int customerID;
+		long customerID;
 		String cardNumber, expirationDate;
 		
 		cL_Gui.displayPageHeader(Strings.HEADER_ADD_CREDIT_CARD);
 		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
-		customerID = inputUtils.getIntInput();
+		customerID = inputUtils.getLongInput();
 		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
 		cardNumber = inputUtils.getStringInput();
@@ -286,8 +299,12 @@ public class Controller implements Application_API
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CARD_EXPIRATION);
 		expirationDate = inputUtils.getStringInput();
 		
-		creditCard = new CreditCard(cardNumber, expirationDate);
-		theater.addCustomerCreditCard(customerID, creditCard);
+		
+		creditCard = new CreditCard(customerID, cardNumber, expirationDate);
+		theater.addCustomerCreditCard(creditCard);
+		
+		//creditCard = new CreditCard(cardNumber, expirationDate);
+		//theater.addCustomerCreditCard(customerID, creditCard);
 	}
 	/**
 	 * 
@@ -295,18 +312,14 @@ public class Controller implements Application_API
 	@Override
 	public void removeCreditCard()
 	{
-		int customerID;
 		String cardNumber;
 		
 		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CREDIT_CARD);
 		
-		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
-		customerID = inputUtils.getIntInput();
-		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
 		cardNumber = inputUtils.getStringInput();
 		
-		theater.removeCustomerCard(customerID, cardNumber);
+		theater.removeCustomerCard(cardNumber);
 	}
 	/**
 	 * 
@@ -314,7 +327,7 @@ public class Controller implements Application_API
 	@Override
 	public void listAllCustomers()
 	{
-		cL_Gui.displayAllCustomersList(theater.getCustomerList());
+		cL_Gui.displayAllCustomerInformation(theater.getCustomerList(), theater.getCreditCardList());
 	}
 	/**
 	 * 
@@ -324,7 +337,8 @@ public class Controller implements Application_API
 	public void addShowOrPlay()
 	{
 		String showName;
-		int clientID, begYear, begMonth, begDay, endYear, endMonth, endDay;
+		int begYear, begMonth, begDay, endYear, endMonth, endDay;
+		long clientID;
 		//Date begDate, endDate;
 		
 		cL_Gui.displayPageHeader(Strings.HEADER_ADD_SHOW);
@@ -333,7 +347,7 @@ public class Controller implements Application_API
 		showName = inputUtils.getStringInput();
 		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
-		clientID = inputUtils.getIntInput();
+		clientID = inputUtils.getLongInput();
 		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_YEAR);
 		begYear = inputUtils.getIntInput();
@@ -361,7 +375,10 @@ public class Controller implements Application_API
 		//begDate = new Date(begYear, begMonth, begDay);
 		//endDate = new Date(endYear, endMonth, endDay);
 
+		Show show = new Show(showName, clientID, begDate, endDate);
 		theater.addShow(showName, clientID, begDate, endDate);
+		
+
 		//Add an error check for overlapping dates.
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_ADDED);
 		
@@ -372,7 +389,7 @@ public class Controller implements Application_API
 	@Override
 	public void listAllShows()
 	{
-		cL_Gui.displayAllShowsList(theater.getShowList());
+		cL_Gui.displayAllShowsList(theater.getShowsList());
 	}
 	/**
 	 * 
