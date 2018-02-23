@@ -169,8 +169,6 @@ public class Controller implements Application_API
 		storeData();
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLOSING_APPLICATION);
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SERIALIZING_DATA);
-
-		// TO-DO serialize all data to disk
 		running = false;
 	}
 	/***
@@ -213,7 +211,6 @@ public class Controller implements Application_API
 		clientID = inputUtils.getIntInput();
 		
 		theater.removeClient(clientID);
-	
 	}
 	/**
 	 * 
@@ -256,19 +253,16 @@ public class Controller implements Application_API
 		theater.addCustomer(customer);
 	}
 	/**
-	 * 
+	 * RemoveCustomer 
 	 */
 	@Override
 	public void removeCustomer()
 	{
 		//mer. Remove a customer with the given id. All credit cards related to the customer are also delete
 		int customerID;
-		
 		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CUSTOMER);
-		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
 		customerID = inputUtils.getIntInput();
-		
 		theater.removeCustomer(customerID);
 	}
 	/**
@@ -417,7 +411,6 @@ public class Controller implements Application_API
 		 * that session.
 		 */
 	}
-
 	/**
 	 * 
 	 */

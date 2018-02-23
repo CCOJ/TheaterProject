@@ -30,6 +30,20 @@ public class InputUtils
 		}
 	}
 	
+	public long getLongInput()
+	{
+		try
+		{
+			String input = scanner.nextLine();
+			return Long.parseLong(input);
+		}
+		catch(NumberFormatException nfe)
+		{
+			System.out.println(nfe);
+			return -1;
+		}
+	}
+	
 	public String getYesOrNo()
 	{
 		String input = scanner.nextLine();

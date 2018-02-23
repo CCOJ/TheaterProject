@@ -1,110 +1,63 @@
-package Theatre;
+package customerinfo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import Abstract.Person;
+
 /**
  * The customer class. It extends person, adding the credit card property. It
  * allows for multiple cards to be in the persons name.
  * 
- * @author Noah, Randy, Ricky
+ * @author Noah
  */
-public class Customer extends Person
-{
-	private ArrayList<CreditCard> creditCards = new ArrayList<>();
+public class Customer extends Person implements Serializable{
 
-	public Customer(String name, String address, String phoneNumber, String creditCardNumber, String expirationDate)
-	{
-		super(name, address, phoneNumber);
-		creditCards.add(new CreditCard(creditCardNumber,  expirationDate));
-	}
+    private String customerID;
+    
+    /**
+     * Creates the customer object with the supplied name, address phone number
+     * credit card and creadit card expiration.
+     * 
+     * @param name
+     * @param address
+     * @param phoneNumber
+     * @param creditCardNumber
+     * @param expirationDate 
+     */
+    public Customer(String name, String address, String phoneNumber,
+            String creditCardNumber, String expirationDate) {
+        
+        super(name, address, phoneNumber);
+        CreditCardList ccl = new CreditCardList();
+        ccl.add(new CreditCard(creditCardNumber,  expirationDate, customerID));
+    }
 
-	public Customer(String name, String address, String phoneNumber, CreditCard card)
-	{
-		super(name, address, phoneNumber);
-		creditCards.add(card);
-	}
+        
+
+    /**
+     * Get the value of customerID
+     *
+     * @return the value of customerID
+     */
+    public String getCustomerID() {
+        return customerID;
+    }
+
+    /**
+     * Set the value of customerID
+     *
+     * @param customerID new value of customerID
+     */
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
+    }
 	/**
-	 * Get the value of creditCards
-	 *
-	 * @return the value of creditCards
+	 * Returns the string form of the client object's information
 	 */
-	public ArrayList<CreditCard> getCreditCards()
-	{
-		return creditCards;
-	}
-
-	public void setCreditCards(ArrayList<CreditCard> creditCards)
-	{
-		this.creditCards = creditCards;
-	}
-
-	public void addCreditCard(CreditCard card)
-	{
-		creditCards.add(card);
-	}
-	/**
-	 * Adds a credit card to the customers file
-	 * 
-	 * @param number
-	 * @param expirationDate 
-	 */
-	public void addCreditCard(String number, String expirationDate)
-	{     
-		creditCards.add(new CreditCard(number,  expirationDate));
-	}
-	/**
-	 * Removes a credit card with the given credit card number
-	 * 
-	 * @param number
-	 * @return 
-	 */
-	public boolean removeCreditCard(String number)
-	{ 
-		for(CreditCard card : creditCards)
-		{
-			if(card.getCardNumber().equals(number))
-			{
-				if(creditCards.size() > 1)
-				{
-					creditCards.remove(card);
-					System.out.println("Credit Card " + card.getCardNumber() + " has been removed " + "successfully.");
-					return true;
-				}
-				else
-				{
-					System.out.println("Credit Card " + card.getCardNumber() + " could not be " + "removed because this is the only card " + this.name + " has on file.");       
-					return false;
-				}
-			}
-		}
-		return false;
-		//return "Credit Card " + number + " could not be found.";
-	}
-
-	public void removeAllCreditCards()
-	{
-		creditCards.removeAll(creditCards);
-	}
-	
-	public void removeCustomer()
-	{
-		
-	}
-	
-	public String creditCardsToString()
-	{
-		StringBuilder strCards = new StringBuilder();
-
-		for(int i = 0; i < creditCards.size(); ++i)
-		{
-			strCards.append(creditCards.get(i).toString() + ", ");
-		}
-
-		return strCards.toString();
-	}
-
-	public String toString()
-	{
-		return "uniqueID:" + uniqueID + ", name:" + name + ", address:" + address + ", phoneNumber:" + phoneNumber + ", creditCards[" + creditCardsToString() + "]";
-	}
+    @Override
+    public String toString() {
+		String string = "Customer name: " +  name + ", Address: " 
+                        + address + ", Phone number: " + phoneNumber + 
+                        ", Customer ID: " + customerID;
+		return string;
+    }
 }

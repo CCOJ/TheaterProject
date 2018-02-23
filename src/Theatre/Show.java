@@ -1,9 +1,16 @@
 package Theatre;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
+import java.util.Date;
 /**
+ * Show holds information of show name, client ID, and period (range of dates)
+ * of the show playing.
  *
- * @author Noah, Randy, Ricky
+ * @author Ricky, Noah, Randy
+ *
  */
 public class Show
 {
@@ -19,49 +26,100 @@ public class Show
         this.begDate = begDate;
         this.endDate = endDate;
 	}
-
-	public String getShowName()
-	{
+	/**
+	 * Get the show's name
+	 * @return showName
+	 */
+	public String getShowName() {
 		return showName;
 	}
 
-	public void setShowName(String showName)
-	{
-		this.showName = showName;
-	}
-
-	public int getClientID()
-	{
+	/**
+	 * Get the show's client's ID
+	 * @return clientID
+	 */
+	public int getClientID() {
 		return clientID;
 	}
 
-	public void setClientID(int clientID)
-	{
-		this.clientID = clientID;
-	}
-
+	/**
+	 * Gets the show's beginning date
+	 * @return begDate
+	 */
 	public Calendar getBegDate()
 	{
 		return begDate;
 	}
 
-	public void setBegDate(Calendar begDate)
-	{
-		this.begDate = begDate;
-	}
-
+	/**
+	 * Get the show's end date
+	 * @return endDate
+	 */
 	public Calendar getEndDate()
 	{
 		return endDate;
 	}
 
+	/**
+	 * Set the show's name
+	 * @param showName Name of show
+	 */
+	public void setShowName(String showName) {
+		this.showName = showName;
+	}
+
+	/**
+	 * Set the client's ID
+	 * @param clientID Client's ID
+	 */
+	public void setClientId(int clientID) {
+		this.clientID = clientID;
+	}
+
+	/**
+	 * Set the show's beginning date
+	 * @param begDate
+	 */
+	public void setBegDate(Calendar begDate)
+	{
+		this.begDate = begDate;
+	}
+
+	/**
+	 * Set the show's end date
+	 * @param endDate
+	 */
 	public void setEndDate(Calendar endDate)
 	{
 		this.endDate = endDate;
 	}
 
+	/**
+	 * Gets the date ranges for the show premiere
+	 * @return The date range
+	 */
+	public String getDates() {
+		LocalDate localStartDate = begDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		int startMonth = localStartDate.getYear();
+		int startDay = localStartDate.getDayOfMonth();
+
+		LocalDate localEndDate = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		int endMonth = localEndDate.getYear();
+		int endDay = localEndDate.getDayOfMonth();
+
+		String start = startMonth + "/" + startDay;
+		String end = endMonth + "/" + endDay;
+
+		return start + " to " + end;
+	}
+
+	/**
+	 * Returns the string form of the show's name, client ID, and date range
+	 * of the show
+	 */
 	public String toString()
     {
-    	return "showName:" + showName + ", clientID:" + clientID + ", begDate:" + begDate.getTime() + ", endDate:" + endDate.getTime();
+    	return "showName:" + showName + ", clientID:" + clientID +
+				"Dates: " + getDates();
     }
 }

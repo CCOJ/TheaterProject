@@ -1,0 +1,13 @@
+List of bugs when running the application:
+
+- ClientID, cardNumber, expirationDate are allowing null values when adding a new Client.
+- When Client ID is left blank when removing removing a client the program crashes
+- Name, address, phoneNumber, cardNumber, and card expiration date are allowing null when adding a Customer.
+
+
+
+
+Missing Functionality:
+- Adding a show there needs to be a check to make sure that the Client is in the system.
+- Adding a show needs to check that it won't overlap with any other shows.
+- 

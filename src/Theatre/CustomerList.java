@@ -1,4 +1,4 @@
-package MiscellaneousUnused;
+package CustomerInfo;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -6,21 +6,20 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 /**
- * CustomerList holds a list of all client objects created.
+ * CustomerList holds a list of all customer objects created.
  * This uses a linked list as the data structure.
  * 
  * Credits given to the textbook authors' (Brahma Dathan
  * and Sarnath Ramnath) class "MemberList" for suggestions.
  * 
  * This also uses the singleton pattern, as we only want a 
- * relationship of a one to many (ClientList to Client)
+ * relationship of a one to many (CustomerList to Customer)
  * relationship. Hence, a singleton design is best for this.
  * 
  * @author Ricky, Noah, Randy
  * @param <E>
  *
  */
-@SuppressWarnings("serial")
 public class CustomerList implements Serializable{
     private List customers = new LinkedList();
     private static CustomerList customerList;

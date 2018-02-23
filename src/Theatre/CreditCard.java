@@ -1,71 +1,67 @@
-package Theatre;
+package CustomerInfo;
 
-import java.util.Date;
+public class CreditCard {
+    
+    private String creditCardNumber;
+    private String expirationDate;
+    private String customerID;   
+    
+    public CreditCard(String creditCardNumber, String expirationDate,
+            String customerID){
+        
+    }
+    /**
+     * Get the value of creditCardNumber
+     *
+     * @return the value of creditCardNumber
+     */
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
 
-/**
- * Credit card class so that credit card objects may be created for efficient
- * use and deletion.
- * 
- * @author Noah
- */
-public class CreditCard
-{
+    /**
+     * Set the value of creditCardNumber
+     *
+     * @param creditCardNumber new value of creditCardNumber
+     */
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
 
-	private String cardNumber;
-	private String expirationDate;
-	private Date expireDate;
+    /**
+     * Get the value of expirationDate
+     *
+     * @return the value of expirationDate
+     */
+    public String getExpirationDate() {
+        return expirationDate;
+    }
 
+    /**
+     * Set the value of expirationDate
+     *
+     * @param expirationDate new value of expirationDate
+     */
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
 
-	public CreditCard(String number, String expirationDate)
-	{
-		this.cardNumber = number;
-		this.expirationDate = expirationDate;
-	}
-	
-	/**
-	 * Get the value of number
-	 *
-	 * @return the value of number
-	 */
-	public String getCardNumber()
-	{
-		return cardNumber;
-	}
-	
-	public void setCardNumber(String cardNumber)
-	{
-		this.cardNumber = cardNumber; 
-	}
+    /**
+     * Get the value of customerID
+     *
+     * @return the value of customerID
+     */
+    public String getCustomerID() {
+        return customerID;
+    }
 
-	public Date getExpireDate()
-	{
-		return expireDate;
-	}
+    /**
+     * Set the value of customerID
+     *
+     * @param customerID new value of customerID
+     */
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
+    }
 
-	public void setExpireDate(Date expireDate)
-	{
-		this.expireDate = expireDate;
-	}
-
-	/**
-	 * Get the value of expirationDate
-	 *
-	 * @return the value of expirationDate
-	 */
-	public String getExpirationDate()
-	{
-		return expirationDate;
-	}
-
-	public String toString()
-	{
-		return "{cardNumber: " + cardNumber + ", expirationDate:" + expirationDate + "}";
-	}
-	/*
-	public Object getCardNumber()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-	*/
 }

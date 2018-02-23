@@ -15,7 +15,7 @@ public class Serializer implements Serializable
 	{
 		try
 		{
-			FileOutputStream fileOut = new FileOutputStream("theater.ser");
+			FileOutputStream fileOut = new FileOutputStream("theater2.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(theater);
 			out.close();
@@ -32,7 +32,7 @@ public class Serializer implements Serializable
 	{
 		try
 		{
-			FileInputStream fileIn = new FileInputStream("theater.ser");
+			FileInputStream fileIn = new FileInputStream("theater2.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			Theater theater = (Theater) in.readObject();
 			return theater;

@@ -1,0 +1,3 @@
+The Controller class is passed as a reference to the GUI so that when a command is called upon the GUI the GUI can make the call on the proper Controller function. Code has been modified from what was written previously to maintain consistency. Previously a call to a controller function that was supposed to be made from the GUI was being called inside of the Controller itself.
+
+Contact Ricky with any issues or if more details are needed.
