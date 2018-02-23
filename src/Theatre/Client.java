@@ -18,7 +18,7 @@ public class Client extends Person implements Serializable
 	/**
 	 * A client object is created with given inputs, unique ID, and balance set to 0.
 	 * 
-	 * @param clientName Name of client
+	 * @param name Name of client
 	 * @param address Client's address
 	 * @param phoneNumber Client's phone number
 	 */
@@ -32,7 +32,7 @@ public class Client extends Person implements Serializable
 	 * Get client's ID
 	 * @return uniqueID
 	 */
-	public int getID() {
+	public long getID() {
 		return uniqueID;
 	}
 	
@@ -56,7 +56,7 @@ public class Client extends Person implements Serializable
 	 * Set the client's balance
 	 * @param balance Client's balance
 	 */
-	public void setBalance(double balance) {
+	public void setBalance(int balance) {
 		this.balance = balance;
 	}
 	

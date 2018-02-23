@@ -38,7 +38,7 @@ public class Show
 	 * Get the show's client's ID
 	 * @return clientID
 	 */
-	public int getClientId() {
+	public int getClientID() {
 		return clientID;
 	}
 
