@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import Theatre.CreditCard;
-
 public class CreditCardList implements Serializable {
 	private List creditCards = new LinkedList<>();
 	private static CreditCardList creditCardList;
@@ -45,7 +43,7 @@ public class CreditCardList implements Serializable {
 		for (Iterator iterator = creditCards.iterator(); iterator.hasNext(); ) {
 			CreditCard creditCard = (CreditCard) iterator.next();
 			
-			if (creditCard.getCardNumber().equals(number)) {
+			if (creditCard.getCreditCardNumber().equals(number)) {
 				return creditCard;
 			}
 		}

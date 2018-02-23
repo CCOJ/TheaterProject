@@ -5,11 +5,14 @@ public class CreditCard {
     private String creditCardNumber;
     private String expirationDate;
     private String customerID;   
-    
-    public CreditCard(String creditCardNumber, String expirationDate,
-            String customerID){
-        
+
+    public CreditCard(String creditCardNumber, String expirationDate, String customerID) {
+        this.creditCardNumber = creditCardNumber;
+        this.expirationDate = expirationDate;
+        this.customerID = customerID;
     }
+    
+
     /**
      * Get the value of creditCardNumber
      *

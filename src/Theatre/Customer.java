@@ -2,6 +2,7 @@ package theatre;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import Abstract.Person;
 
 /**
  * The customer class. It extends person, adding the credit card property. It
@@ -27,8 +28,9 @@ public class Customer extends Person implements Serializable{
             String creditCardNumber, String expirationDate) {
         
         super(name, address, phoneNumber);
+        
         CreditCardList ccl = new CreditCardList();
-        ccl.add(new CreditCard(creditCardNumber,  expirationDate, customerID));
+        ccl.addCreditCard(new CreditCard(creditCardNumber,  expirationDate, customerID));
     }
 
         
