@@ -1,4 +1,4 @@
-package theatre;
+package Theatre;
 
 import java.io.Serializable;
 import java.util.ArrayList;
