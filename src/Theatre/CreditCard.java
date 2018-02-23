@@ -1,6 +1,8 @@
 package Theatre;
 
-public class CreditCard {
+import java.io.Serializable;
+
+public class CreditCard implements Serializable {
 
 	private String creditCardNumber;
 	private String expirationDate;
