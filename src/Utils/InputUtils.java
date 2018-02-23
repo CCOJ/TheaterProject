@@ -32,8 +32,20 @@ public class InputUtils
 	
 	public String getYesOrNo()
 	{
+		String input = scanner.nextLine();
 		
-		return null;
+		switch(input)
+		{
+			case "y":	return "YES";
+			case "Y":	return "YES";
+			case "yes":	return "YES";
+			case "YES":	return "YES";
+			case "n":	return "NO";
+			case "N":	return "NO";
+			case "no":	return "NO";
+			case "NO":	return "NO";
+			default:	return null;
+		}
 	}
 	
 	public String getStringInput()

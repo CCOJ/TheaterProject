@@ -10,13 +10,11 @@ import Abstract.Person;
  */
 public class Client extends Person implements Serializable
 {
-	private int uniqueID;
 	private int balance;
 	
     public Client(String name, String address, String phoneNumber)
     {
         super(name, address, phoneNumber);
-        uniqueID = getGeneratedID(); //GeneratedID is in the parent class. Static auto-increments for ID
         balance = 0;
     }
     

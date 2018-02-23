@@ -15,8 +15,9 @@ public class Strings
 														};
 	
 	//System Strings
-	public static final String ERROR_SELECTION_NOT_IN_RANGE =  "Selection input not within proper range";
+	public static final String ERROR_SELECTION_NOT_IN_RANGE =  "ERROR: Selection input not within proper range";
 	public static final String ERROR_BAD_INPUT = "ERROR: Input value not within range";
+	public static final String ERROR_BAD_INPUT_YES_NO = "ERROR: Input value must be: Y/N";
 	public static final String HEADER_ADD_CLIENT = "ADD CLIENT";
 	public static final String HEADER_ADD_SHOW = "ADD SHOW";
 	public static final String HEADER_LIST_ALL_CLIENTS = "Listing all Clients";
@@ -32,7 +33,7 @@ public class Strings
 	public static final String NOTIFICATION_SERIALIZING_DATA = "SERIALIZING DATA";
 	public static final String NOTIFICATION_SHOW_ADDED = "Show successfully added:";
 	public static final String NOTIFICATION_CLIENT_ADDED = "Client Added Successfully";
-	public static final String NOTIFICATION_APPLICATION_CLOSED = "APP CLOSED SUCCESSFULLY";
+	public static final String NOTIFICATION_APPLICATION_CLOSED = "APPLICATION CLOSED SUCCESSFULLY";
 	public static final String PROMPT_FOR_NAME = "Please enter a name:";
 	public static final String PROMPT_FOR_ADDRESS = "Please enter an address:";	
 	public static final String PROMPT_FOR_PHONE_NUMBER = "Please enter a phone number:";	

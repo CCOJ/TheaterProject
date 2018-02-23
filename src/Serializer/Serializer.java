@@ -49,4 +49,20 @@ public class Serializer implements Serializable
 			return null;
 		}
 	}
+	
+	public static boolean isPreviousTheaterDataAvailable()
+	{
+		try
+		{
+			FileInputStream fileIn = new FileInputStream("theater.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			//Theater theater = (Theater) in.readObject();
+			return true;
+		}
+		catch (IOException i)
+		{
+			//i.printStackTrace();
+			return false;
+		}
+	}
 }

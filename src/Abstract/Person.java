@@ -1,6 +1,7 @@
 package Abstract;
 
 import java.io.Serializable;
+import Utils.ID_Generator;
 
 /**
  * This abstract class will allow for specific kinds of people classes for the 
@@ -10,25 +11,29 @@ import java.io.Serializable;
  */
 public abstract class Person implements Serializable
 {
-    
+    protected long uniqueID;
     protected String name;
     protected String address;   
     protected String phoneNumber;
-    protected static int generatedID = 0; //auto-increments for unique id's
-
+    
     public Person(String name, String address, String phoneNumber)
     {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        ++generatedID;
+        uniqueID = ID_Generator.getUniqueGeneratedID();
     }
-  
-    public int getGeneratedID()
+    
+    public long getUniqueID()
     {
-    	return generatedID;
+    	return uniqueID;
     }
-
+    
+    public void setUniqueID(long uniqueID)
+    {
+    	this.uniqueID = uniqueID;
+    }
+    
     public String getName()
     {
         return name;

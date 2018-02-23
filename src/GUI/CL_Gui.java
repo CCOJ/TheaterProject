@@ -55,7 +55,7 @@ public class CL_Gui
 	{
 		String[] commands = Strings.ALL_API_CALLS; //Controller API commands
 		
-		System.out.printf("%s, %s \n", Strings.MESSAGE_WELCOME, Strings.PROMPT_MENU_OPTION);
+		System.out.printf("\n\n%s, %s \n", Strings.MESSAGE_WELCOME, Strings.PROMPT_MENU_OPTION);
 		
 		for(int i = 0; i < commands.length; ++i)
 		{
@@ -65,7 +65,7 @@ public class CL_Gui
 	
 	public void displayAllShowsList(ArrayList<Show> shows)
 	{
-		System.out.println(Strings.HEADER_LIST_ALL_SHOWS);
+		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_SHOWS);
 		
 		for(int i = 0; i < shows.size(); ++i)
 		{
@@ -75,7 +75,7 @@ public class CL_Gui
 	
 	public void displayAllClientsList(ArrayList<Client> clients)
 	{
-		System.out.println(Strings.HEADER_LIST_ALL_CLIENTS);
+		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CLIENTS);
 		
 		for(int i = 0; i < clients.size(); ++i)
 		{
@@ -85,7 +85,7 @@ public class CL_Gui
 	
 	public void displayAllCustomersList(ArrayList<Customer> customers)
 	{
-		System.out.println(Strings.HEADER_LIST_ALL_CUSTOMERS);
+		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CUSTOMERS);
 		
 		for(int i = 0; i < customers.size(); ++i)
 		{

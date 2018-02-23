@@ -6,25 +6,22 @@ import Abstract.Person;
  * The customer class. It extends person, adding the credit card property. It
  * allows for multiple cards to be in the persons name.
  * 
- * @author Noah
+ * @author Noah, Randy, Ricky
  */
 public class Customer extends Person
 {
 	private ArrayList<CreditCard> creditCards = new ArrayList<>();
-	private int uniqueID;
 
 	public Customer(String name, String address, String phoneNumber, String creditCardNumber, String expirationDate)
 	{
 		super(name, address, phoneNumber);
 		creditCards.add(new CreditCard(creditCardNumber,  expirationDate));
-		uniqueID = getGeneratedID(); //GeneratedID is in the parent class. Static auto-increments for ID
 	}
 
 	public Customer(String name, String address, String phoneNumber, CreditCard card)
 	{
 		super(name, address, phoneNumber);
 		creditCards.add(card);
-		uniqueID = getGeneratedID(); //GeneratedID is in the parent class. Static auto-increments for ID
 	}
 	/**
 	 * Get the value of creditCards
@@ -34,16 +31,6 @@ public class Customer extends Person
 	public ArrayList<CreditCard> getCreditCards()
 	{
 		return creditCards;
-	}
-
-	public int getUniqueID()
-	{
-		return uniqueID;
-	}
-
-	public void setUniqueID(int uniqueID)
-	{
-		this.uniqueID = uniqueID;
 	}
 
 	public void setCreditCards(ArrayList<CreditCard> creditCards)

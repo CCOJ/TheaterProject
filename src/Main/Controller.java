@@ -1,11 +1,7 @@
 package Main;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-
 import API.Application_API;
 import GUI.CL_Gui;
 import Serializer.Serializer;
@@ -19,7 +15,7 @@ import Utils.Strings;
  * command line interface. It will get user input and make a call to this 
  * class for functionality.
  * 
- * @author Ricky
+ * @author Noah, Randy, Ricky
  */
 public class Controller implements Application_API
 {
@@ -27,11 +23,7 @@ public class Controller implements Application_API
 	private Theater theater;
 	private static InputUtils inputUtils; // Functions to get user input
 	private static boolean running; // If false, run() will stop executing and the program terminates
-	/**
-	 * Gets a user input class for error checking and returning proper input
-	 * Gui so user can select commands
-	 * Variable to keep the program running until the user determines to close
-	 */
+
 	public Controller()
 	{
 		inputUtils = new InputUtils();
@@ -45,16 +37,15 @@ public class Controller implements Application_API
 	 */
 	public void run()
 	{	
-		//Need to finish so user can decide to load file.
-		/*
-		if(promptRetrieveData())
+		if(Serializer.isPreviousTheaterDataAvailable())
 		{
-			retrieveData();
+			if(promptRetrieveData())
+			{
+				retrieveData();
+			}
 		}
-		*/
-		retrieveData();
-		// Running is defaulted to true. False when user selects close program.
-		while(running)
+		
+		while(running)	//Running is defaulted to true. False when user selects close program.
 		{
 			cL_Gui.displayMainMenu();
 			commandSwitch(inputUtils.getIntInput());
@@ -83,58 +74,58 @@ public class Controller implements Application_API
 					break;
 			case 1:
 					addClient();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 2:
 					removeClient();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 3:
 					listAllClients();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 4: 
 					addCustomer();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 5: 
 					removeCustomer();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 6: 
 					addCreditCard();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 7: 
 					removeCreditCard();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 8: 
 					listAllCustomers();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 9: 
 					addShowOrPlay();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 10: 
 					listAllShows();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 11: 
 					storeData();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 12: 
 					retrieveData();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			case 13:
 					help();
-					inputUtils.enterToContinue(message);
+					//inputUtils.enterToContinue(message);
 					break;
 			default: 
-					cL_Gui.displaySystemNotify(Strings.ERROR_SELECTION_NOT_IN_RANGE);
+					cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT_YES_NO);
 					break;
 		}
 	}
@@ -143,33 +134,30 @@ public class Controller implements Application_API
 	 */
 	private boolean promptRetrieveData()
 	{
-		String input;
-		boolean badInput = true;
-		boolean loadData = true;
+		String input = null;
 		/*
 		 * This function should be done within inputUtils. Create getYesOrNo()
 		 */
-		while(badInput)
+		while(input == null)
 		{
 			cL_Gui.displayPrompt(Strings.PROMPT_RETRIEVE_DATA);
-			input = inputUtils.getStringInput();
+			//input = inputUtils.getStringInput();//
+			input = inputUtils.getYesOrNo();
 			
-			if(input == "y" || input == "Y")
+			if(input == "YES")
 			{
-				badInput = false;
-				loadData = true;
+				return true;
 			}
-			else if(input == "n" || input == "N")
+			else if(input == "NO")
 			{
-				badInput = false;
-				loadData = false;
+				return false;
 			}
 			else
 			{
 				cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT);
 			}
 		}
-		return loadData;
+		return false;
 	}
 	/**
 	 * Stores the program data and sets running to false causing the program 
@@ -184,7 +172,6 @@ public class Controller implements Application_API
 
 		// TO-DO serialize all data to disk
 		running = false;
-
 	}
 	/***
 	 * 
@@ -408,13 +395,20 @@ public class Controller implements Application_API
 	@Override
 	public void retrieveData()
 	{
+		/*
+		 * This function overwrites any previously used Serialized Theater.ser file if user decides they 
+		 * don't want to retrieve data.
+		 * 
+		 */
 		Serializer serializer = new Serializer();
-		Theater tempTheater = serializer.deserializeTheater();
+		Theater tempTheater = serializer.deserializeTheater(); 
 		
 		if(tempTheater != null)
 		{
 			theater = tempTheater;
 		}
+
+		theater.getClientList();
 		/*
 		 * Retrieve all information related to the theater. 
 		 * If stored data is found, the user has the option to use it. 
@@ -423,6 +417,7 @@ public class Controller implements Application_API
 		 * that session.
 		 */
 	}
+
 	/**
 	 * 
 	 */
