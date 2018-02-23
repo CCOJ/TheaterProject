@@ -2,7 +2,6 @@ package Abstract;
 
 import java.io.Serializable;
 import Utils.ID_Generator;
-
 /**
  * This abstract class will allow for specific kinds of people classes for the 
  * theater project to be created with this class being the first building block
