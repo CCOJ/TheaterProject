@@ -2,4 +2,5 @@
 *.xml
 *.iml
 *.class
-*.txt
+out/production/TheaterProject/README.txt
+out/production/TheaterProject/TODO.txt
