@@ -83,9 +83,14 @@ public class Theater implements Serializable
 		creditCardList.removeCreditCard(cardNumber);
 	}
 
-	public void removeClient(long clientID)
+	/**
+	 * Finds the client via clientID. Once found, removes the Client from the list.
+	 * @param clientID the Client's ID
+	 * @return true if removed, false if not
+	 */
+	public boolean removeClient(long clientID)
 	{
-		clientList.removeClient(clientID);
+		return clientList.removeClient(clientList.findClient(clientID));
 	}
 
 	public void addShow(String showName, long clientID, Calendar begDate, Calendar endDate)

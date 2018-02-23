@@ -203,7 +203,10 @@ public class Controller implements Application_API
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_ADDED);
 	}
 	/**
-	 * 
+	 * Removes the client from clientList. If a show is scheduled for current
+	 * or future date for this client, the client cannot be removed.
+	 *
+	 * Prints a success or failed message upon clientID input.
 	 */
 	@Override
 	public void removeClient()
@@ -215,7 +218,11 @@ public class Controller implements Application_API
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
 		clientID = inputUtils.getLongInput();
 
-		theater.removeClient(clientID);
+		if (theater.removeClient(clientID)) {
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED);
+		} else {
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED_FAILED);
+		};
 	}
 	/**
 	 * 

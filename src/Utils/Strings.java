@@ -33,6 +33,8 @@ public class Strings
 	public static final String NOTIFICATION_SERIALIZING_DATA = "SERIALIZING DATA";
 	public static final String NOTIFICATION_SHOW_ADDED = "Show successfully added:";
 	public static final String NOTIFICATION_CLIENT_ADDED = "Client Added Successfully";
+	public static final String NOTIFICATION_CLIENT_REMOVED = "Client removed successfully.";
+	public static final String NOTIFICATION_CLIENT_REMOVED_FAILED = "Client not found. Client removal failed.";
 	public static final String NOTIFICATION_APPLICATION_CLOSED = "APPLICATION CLOSED SUCCESSFULLY";
 	public static final String PROMPT_FOR_NAME = "Please enter a name:";
 	public static final String PROMPT_FOR_ADDRESS = "Please enter an address:";	
@@ -50,7 +52,7 @@ public class Strings
 	public static final String PROMPT_FOR_END_DAY = "Please enter an ending day";
 	public static final String PROMPT_MENU_OPTION = "input the numbered option you would like to execute";
 	public static final String PROMPT_RETRIEVE_DATA = "Would you like to retrieve previous data? Y/N";
-	
+
 	//Miscellaneous
 	public static final String HELP_MENU = "Details of possible user application commands";
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";

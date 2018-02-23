@@ -12,19 +12,24 @@ public class ClientList implements Serializable
 {
 	private ArrayList<Client> clientList;
 
-	/**
-	 * Private constructor designed for the singleton pattern
-	 */
 	public ClientList()
 	{
 		clientList = new ArrayList<Client>();
 	}
 
+	/**
+	 * Gets the list of clients
+	 * @return clientList
+	 */
 	public ArrayList<Client> getClientList()
 	{
 		return clientList;
 	}
 
+	/**
+	 * Remove client via clientID if known without using findClient()
+	 * @param clientID the Client's ID
+	 */
 	public void removeClient(long clientID)
 	{
 		//Check if all shows have played. If one's end date is not past todays date, don't remove.
@@ -54,15 +59,29 @@ public class ClientList implements Serializable
 		}
 
 	}
+
+	/**
+	 * Finds the Client object via clientID
+	 * @param clientID the Client's ID
+	 * @return the object if found, or null if not found
+	 */
+	public Client findClient(long clientID) {
+		for(int i = 0; i < clientList.size(); ++i) {
+			if(clientList.get(i).getID() == clientID) {
+				return clientList.get(i);
+			}
+		}
+		return null;
+	}
 	/**
 	 * Add client to list of clients
 	 * 
 	 * @param client the client to be added to the list
 	 * @return true when added
 	 */
-	public void addClient(Client client)
+	public boolean addClient(Client client)
 	{
-		clientList.add(client);
+		return clientList.add(client);
 	}
 
 	/**
@@ -70,8 +89,8 @@ public class ClientList implements Serializable
 	 * @param client the client to be removed from the list
 	 * @return true when removed
 	 */
-	public void removeClient(Client client)
+	public boolean removeClient(Client client)
 	{
-		clientList.remove(client);
+		return clientList.remove(client);
 	}
 }
