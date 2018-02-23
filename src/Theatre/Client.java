@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import Abstract.Person;
 
-**
+/**
 * Client holds information about name, address, and phone number.
 * A unique id is generated and balance is set to 0. 
 * Current iteration states the balance will remain 0 for now.
