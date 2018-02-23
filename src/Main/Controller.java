@@ -47,7 +47,7 @@ public class Controller implements Application_API
 				retrieveData();
 			}
 		}
-		
+
 		while(running)	//Running is defaulted to true. False when user selects close program.
 		{
 			cL_Gui.displayMainMenu();
@@ -69,67 +69,67 @@ public class Controller implements Application_API
 		 * programmer must scroll up to see command output.
 		 */
 		String message = Strings.CONTINUE_ON_ENTER;
-		
+
 		switch(userSelection)
 		{
-			case 0:
-					exitApplication(); 
-					break;
-			case 1:
-					addClient();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 2:
-					removeClient();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 3:
-					listAllClients();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 4: 
-					addCustomer();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 5: 
-					removeCustomer();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 6: 
-					addCreditCard();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 7: 
-					removeCreditCard();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 8: 
-					listAllCustomers();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 9: 
-					addShowOrPlay();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 10: 
-					listAllShows();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 11: 
-					storeData();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 12: 
-					retrieveData();
-					//inputUtils.enterToContinue(message);
-					break;
-			case 13:
-					help();
-					//inputUtils.enterToContinue(message);
-					break;
-			default: 
-					cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT_YES_NO);
-					break;
+		case 0:
+			exitApplication(); 
+			break;
+		case 1:
+			addClient();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 2:
+			removeClient();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 3:
+			listAllClients();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 4: 
+			addCustomer();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 5: 
+			removeCustomer();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 6: 
+			addCreditCard();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 7: 
+			removeCreditCard();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 8: 
+			listAllCustomers();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 9: 
+			addShowOrPlay();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 10: 
+			listAllShows();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 11: 
+			storeData();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 12: 
+			retrieveData();
+			//inputUtils.enterToContinue(message);
+			break;
+		case 13:
+			help();
+			//inputUtils.enterToContinue(message);
+			break;
+		default: 
+			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT_YES_NO);
+			break;
 		}
 	}
 	/**
@@ -146,7 +146,7 @@ public class Controller implements Application_API
 			cL_Gui.displayPrompt(Strings.PROMPT_RETRIEVE_DATA);
 			//input = inputUtils.getStringInput();//
 			input = inputUtils.getYesOrNo();
-			
+
 			if(input == "YES")
 			{
 				return true;
@@ -183,23 +183,23 @@ public class Controller implements Application_API
 		String name, address, phoneNumber;
 		//cL_Gui.displayAddClient();
 		cL_Gui.displayPageHeader(Strings.HEADER_ADD_CLIENT);
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_NAME);
 		name = inputUtils.getStringInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_ADDRESS);
 		//cL_Gui.displayAskAddress();
 		address = inputUtils.getStringInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_PHONE_NUMBER);
 		//cL_Gui.displayAskPhoneNumber();
 		phoneNumber = inputUtils.getStringInput();
-		
+
 		//verify that information is entered correctly
-		
+
 		Person client = new Client(name, address, phoneNumber);
 		theater.addClient((Client) client);
-		
+
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_ADDED);
 	}
 	/**
@@ -211,10 +211,10 @@ public class Controller implements Application_API
 		//Remove a client with the given id. If a show is scheduled for the current or a future date for this client, the client cannot be remove
 		long clientID;
 		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CLIENT);
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
 		clientID = inputUtils.getLongInput();
-		
+
 		theater.removeClient(clientID);
 	}
 	/**
@@ -239,27 +239,27 @@ public class Controller implements Application_API
 		CreditCard creditCard;
 		String customerName, address, phoneNumber, cardNumber, expirationDate;
 		cL_Gui.displayPageHeader(Strings.HEADER_ADD_CUSTOMER);
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_NAME);
 		customerName = inputUtils.getStringInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_ADDRESS);
 		address = inputUtils.getStringInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_PHONE_NUMBER);
 		phoneNumber = inputUtils.getStringInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
 		cardNumber = inputUtils.getStringInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CARD_EXPIRATION);
 		expirationDate = inputUtils.getStringInput();
-		
+
 		customer = new Customer(customerName, address, phoneNumber);
 		creditCard = new CreditCard(customer.getUniqueID(), cardNumber, expirationDate);
 		theater.addCustomer(customer);
 		theater.addCustomerCreditCard(creditCard);
-		
+
 		//customer = new Customer(customerName, address, phoneNumber, cardNumber, expirationDate);
 		//theater.addCustomer(customer);
 	}
@@ -274,7 +274,7 @@ public class Controller implements Application_API
 		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CUSTOMER);
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
 		customerID = inputUtils.getLongInput();
-		
+
 		theater.removeCustomer(customerID);
 		theater.getCreditCardList().removeAllCustomerCards(customerID);
 	}
@@ -287,22 +287,22 @@ public class Controller implements Application_API
 		CreditCard creditCard;
 		long customerID;
 		String cardNumber, expirationDate;
-		
+
 		cL_Gui.displayPageHeader(Strings.HEADER_ADD_CREDIT_CARD);
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
 		customerID = inputUtils.getLongInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
 		cardNumber = inputUtils.getStringInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CARD_EXPIRATION);
 		expirationDate = inputUtils.getStringInput();
-		
-		
+
+
 		creditCard = new CreditCard(customerID, cardNumber, expirationDate);
 		theater.addCustomerCreditCard(creditCard);
-		
+
 		//creditCard = new CreditCard(cardNumber, expirationDate);
 		//theater.addCustomerCreditCard(customerID, creditCard);
 	}
@@ -313,12 +313,12 @@ public class Controller implements Application_API
 	public void removeCreditCard()
 	{
 		String cardNumber;
-		
+
 		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CREDIT_CARD);
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
 		cardNumber = inputUtils.getStringInput();
-		
+
 		theater.removeCustomerCard(cardNumber);
 	}
 	/**
@@ -340,36 +340,36 @@ public class Controller implements Application_API
 		int begYear, begMonth, begDay, endYear, endMonth, endDay;
 		long clientID;
 		//Date begDate, endDate;
-		
+
 		cL_Gui.displayPageHeader(Strings.HEADER_ADD_SHOW);
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_SHOW_NAME);
 		showName = inputUtils.getStringInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
 		clientID = inputUtils.getLongInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_YEAR);
 		begYear = inputUtils.getIntInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_MONTH);
 		begMonth = inputUtils.getIntInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_DAY);
 		begDay = inputUtils.getIntInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_END_YEAR);
 		endYear = inputUtils.getIntInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_END_MONTH);
 		endMonth = inputUtils.getIntInput();
-		
+
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_END_DAY);
 		endDay = inputUtils.getIntInput();
-		
+
 		//CHECK IF DATE HAS ANY OVERLAP FAILS IF TRUE
 		//CHECK IF ID EXISTS
-		
+
 		Calendar begDate = new GregorianCalendar(begYear, begMonth, begDay);
 		Calendar endDate = new GregorianCalendar(endYear, endMonth, endDay);
 		//begDate = new Date(begYear, begMonth, begDay);
@@ -377,11 +377,11 @@ public class Controller implements Application_API
 
 		Show show = new Show(showName, clientID, begDate, endDate);
 		theater.addShow(showName, clientID, begDate, endDate);
-		
+
 
 		//Add an error check for overlapping dates.
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_ADDED);
-		
+
 	}
 	/**
 	 * 
@@ -409,24 +409,23 @@ public class Controller implements Application_API
 		/*
 		 * This function overwrites any previously used Serialized Theater.ser file if user decides they 
 		 * don't want to retrieve data.
-		 * 
+		 *
+		 * Retrieve all information related to the theater. 
+		 * If stored data is found, the user has the option to use it. 
+		 * The user may also invoke a command to load data, provided 
+		 * he/she has not yet issued any data-related commands in 
+		 * that session.
+		 *
 		 */
 		Serializer serializer = new Serializer();
 		Theater tempTheater = serializer.deserializeTheater(); 
-		
+
 		if(tempTheater != null)
 		{
 			theater = tempTheater;
 		}
 
 		theater.getClientList();
-		/*
-		 * Retrieve all information related to the theater. 
-		 * If stored data is found, the user has the option to use it. 
-		 * The user may also invoke a command to load data, provided 
-		 * he/she has not yet issued any data-related commands in 
-		 * that session.
-		 */
 	}
 	/**
 	 * 

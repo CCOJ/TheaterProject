@@ -1,10 +1,8 @@
 package Theatre;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
-import java.util.Date;
 /**
  * Show holds information of show name, client ID, and period (range of dates)
  * of the show playing.
@@ -19,18 +17,19 @@ public class Show
 	private Calendar begDate;
 	private Calendar endDate;
 
-    public Show(String showName, long clientID2, Calendar begDate, Calendar endDate)
-    {
-        this.showName = showName;
-        this.clientID = clientID2;
-        this.begDate = begDate;
-        this.endDate = endDate;
+	public Show(String showName, long clientID2, Calendar begDate, Calendar endDate)
+	{
+		this.showName = showName;
+		this.clientID = clientID2;
+		this.begDate = begDate;
+		this.endDate = endDate;
 	}
 	/**
 	 * Get the show's name
 	 * @return showName
 	 */
-	public String getShowName() {
+	public String getShowName()
+	{
 		return showName;
 	}
 
@@ -65,7 +64,8 @@ public class Show
 	 * Set the show's name
 	 * @param showName Name of show
 	 */
-	public void setShowName(String showName) {
+	public void setShowName(String showName)
+	{
 		this.showName = showName;
 	}
 
@@ -73,7 +73,8 @@ public class Show
 	 * Set the client's ID
 	 * @param clientID Client's ID
 	 */
-	public void setClientId(int clientID) {
+	public void setClientId(int clientID)
+	{
 		this.clientID = clientID;
 	}
 
@@ -99,7 +100,8 @@ public class Show
 	 * Gets the date ranges for the show premiere
 	 * @return The date range
 	 */
-	public String getDates() {
+	public String getDates()
+	{
 		LocalDate localStartDate = begDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		int startMonth = localStartDate.getYear();
 		int startDay = localStartDate.getDayOfMonth();
@@ -119,8 +121,8 @@ public class Show
 	 * of the show
 	 */
 	public String toString()
-    {
-    	return "showName:" + showName + ", clientID:" + clientID +
+	{
+		return "showName:" + showName + ", clientID:" + clientID +
 				"Dates: " + getDates();
-    }
+	}
 }

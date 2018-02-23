@@ -29,7 +29,7 @@ public class InputUtils
 			return -1;
 		}
 	}
-	
+
 	public long getLongInput()
 	{
 		try
@@ -43,35 +43,35 @@ public class InputUtils
 			return -1;
 		}
 	}
-	
+
 	public String getYesOrNo()
 	{
 		String input = scanner.nextLine();
-		
+
 		switch(input)
 		{
-			case "y":	return "YES";
-			case "Y":	return "YES";
-			case "yes":	return "YES";
-			case "YES":	return "YES";
-			case "n":	return "NO";
-			case "N":	return "NO";
-			case "no":	return "NO";
-			case "NO":	return "NO";
-			default:	return null;
+		case "y":	return "YES";
+		case "Y":	return "YES";
+		case "yes":	return "YES";
+		case "YES":	return "YES";
+		case "n":	return "NO";
+		case "N":	return "NO";
+		case "no":	return "NO";
+		case "NO":	return "NO";
+		default:	return null;
 		}
 	}
-	
+
 	public String getStringInput()
 	{
 		return scanner.nextLine();
 	}
-	
+
 	public void enterToContinue()
 	{
 		scanner.nextLine();
 	}
-	
+
 	public void enterToContinue(String message)
 	{
 		System.out.println(message);
