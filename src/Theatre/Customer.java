@@ -1,4 +1,4 @@
-package customerinfo;
+package theatre;
 
 import java.io.Serializable;
 import java.util.ArrayList;

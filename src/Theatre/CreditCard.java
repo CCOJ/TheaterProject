@@ -1,4 +1,4 @@
-package CustomerInfo;
+package Theatre;
 
 public class CreditCard {
     

@@ -1,8 +1,5 @@
-<<<<<<< HEAD:src/Theatre/CustomerList.java
-package CustomerInfo;
-=======
 package Theatre;
->>>>>>> 575ccd21ef36496b4a269f9922369ce608aa4f3f:src/Theatre/CustomerList.java
+
 
 import java.io.IOException;
 import java.io.Serializable;
