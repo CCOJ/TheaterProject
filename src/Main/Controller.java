@@ -144,7 +144,6 @@ public class Controller implements Application_API
 		while(input == null)
 		{
 			cL_Gui.displayPrompt(Strings.PROMPT_RETRIEVE_DATA);
-			//input = inputUtils.getStringInput();//
 			input = inputUtils.getYesOrNo();
 
 			if(input == "YES")
@@ -157,7 +156,7 @@ public class Controller implements Application_API
 			}
 			else
 			{
-				cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT);
+				cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT_YES_NO);
 			}
 		}
 		return false;
@@ -169,9 +168,16 @@ public class Controller implements Application_API
 	@Override
 	public void exitApplication()
 	{
-		storeData();
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLOSING_APPLICATION);
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SERIALIZING_DATA);
+		
+		if(storeData())
+		{
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SERIALIZE_FAILED);
+		}
+		
+		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SERIALIZE_SUCCESS);
+		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLOSE_SUCCESS);
 		running = false;
 	}
 	/***
@@ -181,28 +187,38 @@ public class Controller implements Application_API
 	public void addClient()
 	{
 		String name, address, phoneNumber;
-		//cL_Gui.displayAddClient();
 		cL_Gui.displayPageHeader(Strings.HEADER_ADD_CLIENT);
 
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_NAME);
 		name = inputUtils.getStringInput();
+		if(name == null)
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_INPUT_CANNOT_BE_BLANK);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CLIENT_FAILED);
+			return;
+		}
 
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_ADDRESS);
-		//cL_Gui.displayAskAddress();
 		address = inputUtils.getStringInput();
+		if(address == null)
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_INPUT_CANNOT_BE_BLANK);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CLIENT_FAILED);
+			return;
+		}
 
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_PHONE_NUMBER);
-		//cL_Gui.displayAskPhoneNumber();
 		phoneNumber = inputUtils.getPhoneNumberInput();
-
-		//verify that information is entered correctly
-		if (phoneNumber == null) { //Invalid phone number
+		if (phoneNumber == null)
+		{
 			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_PHONE_NUMBER);
-		} else {
-			Person client = new Client(name, address, phoneNumber);
-			theater.addClient((Client) client);
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_ADDED);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CLIENT_FAILED);
+			return;
 		}
+
+		Person client = new Client(name, address, phoneNumber);
+		theater.addClient((Client) client);
+		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_ADDED_SUCCESS);
 	}
 	/**
 	 * Removes the client from clientList. If a show is scheduled for current
@@ -215,14 +231,17 @@ public class Controller implements Application_API
 	{
 		//Remove a client with the given id. If a show is scheduled for the current or a future date for this client, the client cannot be remove
 		long clientID;
+		
 		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CLIENT);
-
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
 		clientID = inputUtils.getLongInput();
 
-		if (theater.removeClient(clientID)) {
+		if(theater.removeClient(clientID))
+		{
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED);
-		} else {
+		}
+		else
+		{
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED_FAILED);
 		}
 	}
@@ -251,27 +270,56 @@ public class Controller implements Application_API
 
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_NAME);
 		customerName = inputUtils.getStringInput();
-
+		if(customerName == null)
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_INPUT_CANNOT_BE_BLANK);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CUSTOMER_FAILED);
+			return;
+		}
+		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_ADDRESS);
 		address = inputUtils.getStringInput();
+		if(address == null)
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_INPUT_CANNOT_BE_BLANK);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CUSTOMER_FAILED);
+			return;
+		}
 
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_PHONE_NUMBER);
 		phoneNumber = inputUtils.getPhoneNumberInput();
-
+		if(phoneNumber == null)
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_PHONE_NUMBER);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CUSTOMER_FAILED);
+			return;
+		}
+		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
 		cardNumber = inputUtils.getStringInput();
+		if(cardNumber == null)
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_INPUT_CANNOT_BE_BLANK);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CUSTOMER_FAILED);
+			return;	
+		}
 
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CARD_EXPIRATION);
 		expirationDate = inputUtils.getStringInput();
-
-		if (phoneNumber == null) { //Invalid phone number
-			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_PHONE_NUMBER);
-		} else {
-			customer = new Customer(customerName, address, phoneNumber);
-			creditCard = new CreditCard(customer.getUniqueID(), cardNumber, expirationDate);
-			theater.addCustomer(customer);
-			theater.addCustomerCreditCard(creditCard);
+		if(expirationDate == null)
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_INPUT_CANNOT_BE_BLANK);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CUSTOMER_FAILED);
+			return;	
 		}
+		
+		customer = new Customer(customerName, address, phoneNumber);
+		creditCard = new CreditCard(customer.getUniqueID(), cardNumber, expirationDate);
+		theater.addCustomer(customer);
+		theater.addCustomerCreditCard(creditCard);
+		
+		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CUSTOMER_SUCCESS);
+
 		//customer = new Customer(customerName, address, phoneNumber, cardNumber, expirationDate);
 		//theater.addCustomer(customer);
 	}
@@ -387,7 +435,7 @@ public class Controller implements Application_API
 		//begDate = new Date(begYear, begMonth, begDay);
 		//endDate = new Date(endYear, endMonth, endDay);
 
-		Show show = new Show(showName, clientID, begDate, endDate);
+		//Show show = new Show(showName, clientID, begDate, endDate);
 		theater.addShow(showName, clientID, begDate, endDate);
 
 
@@ -404,13 +452,16 @@ public class Controller implements Application_API
 		cL_Gui.displayAllShowsList(theater.getShowsList());
 	}
 	/**
+	 * @return 
 	 * 
 	 */
 	@Override
-	public void storeData()
+	public boolean storeData()
 	{
 		Serializer serializer = new Serializer();
-		serializer.serializeTheater(theater);
+		boolean serializeSuccess = serializer.serializeTheater(theater);
+		
+		return serializeSuccess;
 	}
 	/**
 	 * 

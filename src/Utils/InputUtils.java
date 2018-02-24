@@ -1,6 +1,6 @@
 package Utils;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+//import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.util.Scanner;
 /**
@@ -66,7 +66,13 @@ public class InputUtils
 
 	public String getStringInput()
 	{
-		return scanner.nextLine();
+		String input = scanner.nextLine();
+		
+		if(input.length() == 0)
+		{
+			return null;
+		}
+		return input;
 	}
 
 	/**
@@ -74,15 +80,19 @@ public class InputUtils
 	 * Removes any dashes if added.
 	 * @return input if valid or null if not
 	 */
-	public String getPhoneNumberInput() {
+	public String getPhoneNumberInput()
+	{
 		String input = scanner.nextLine();
 		input = input.replace("-", "");
 		System.out.println("Input: " + input);
-			if(input.length() == 10 && input.matches("[0-9]+")) {
-				return input;
-			} else {
-				return null;
-			}
+		if(input.length() == 10 && input.matches("[0-9]+"))
+		{
+			return input;
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public void enterToContinue()

@@ -2,7 +2,6 @@ package Theatre;
 
 import java.io.Serializable;
 import java.util.Calendar;
-
 import Abstract.Person;
 /**
  *
@@ -90,7 +89,13 @@ public class Theater implements Serializable
 	 */
 	public boolean removeClient(long clientID)
 	{
-		return clientList.removeClient(clientList.findClient(clientID));
+		Client client = clientList.getClient(clientID);
+		
+		if(client != null)
+		{
+			return clientList.removeClient(client);
+		}
+		return false;
 	}
 
 	public void addShow(String showName, long clientID, Calendar begDate, Calendar endDate)
@@ -123,7 +128,6 @@ public class Theater implements Serializable
 
 	public void addCustomer(Customer customer)
 	{
-
 		customerList.addCustomer(customer);
 	}
 }

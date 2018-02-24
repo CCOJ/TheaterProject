@@ -19,7 +19,7 @@ public interface Application_API
 	public void listAllCustomers();
 	public void addShowOrPlay();
 	public void listAllShows();
-	public void storeData();
+	public boolean storeData();
 	public void retrieveData();
 	public void help();
 }

@@ -11,7 +11,7 @@ import Theatre.Theater;
 public class Serializer implements Serializable
 {
 
-	public void serializeTheater(Theater theater)
+	public boolean serializeTheater(Theater theater)
 	{
 		try
 		{
@@ -20,11 +20,12 @@ public class Serializer implements Serializable
 			out.writeObject(theater);
 			out.close();
 			fileOut.close();
-			System.out.printf("Serialized data is saved in theater.ser");
+			return true;
 		}
 		catch (IOException i)
 		{
 			i.printStackTrace();
+			return false;
 		}
 	}
 

@@ -30,7 +30,7 @@ public class ClientList implements Serializable
 	 * Remove client via clientID if known without using findClient()
 	 * @param clientID the Client's ID
 	 */
-	public void removeClient(long clientID)
+	public boolean removeClient(long clientID)
 	{
 		//Check if all shows have played. If one's end date is not past todays date, don't remove.
 		/*
@@ -55,9 +55,10 @@ public class ClientList implements Serializable
 			if(clientList.get(i).getID() == clientID)
 			{
 				clientList.remove(i);
+				return true;
 			}
 		}
-
+		return false;
 	}
 
 	/**
@@ -65,9 +66,12 @@ public class ClientList implements Serializable
 	 * @param clientID the Client's ID
 	 * @return the object if found, or null if not found
 	 */
-	public Client findClient(long clientID) {
-		for(int i = 0; i < clientList.size(); ++i) {
-			if(clientList.get(i).getID() == clientID) {
+	public Client getClient(long clientID)
+	{
+		for(int i = 0; i < clientList.size(); ++i)
+		{
+			if(clientList.get(i).getID() == clientID)
+			{
 				return clientList.get(i);
 			}
 		}
