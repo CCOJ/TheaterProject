@@ -86,14 +86,27 @@ public class CreditCardList implements Serializable
 	 * 
 	 * @param customerID
 	 */
-	public void removeAllCustomerCards(long customerID)
+	public boolean removeAllCustomerCards(long customerID)
 	{
+		boolean cardRemoved = false;
+		
 		for(int i = 0; i < creditCards.size(); ++i)
 		{
 			if(creditCards.get(i).getCustomerID() == customerID)
 			{
 				creditCards.remove(i);
+				cardRemoved = true;
 			}
 		}
+		
+		if(cardRemoved)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
 	}
 }

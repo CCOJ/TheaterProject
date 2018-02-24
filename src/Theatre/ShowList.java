@@ -21,9 +21,10 @@ public class ShowList implements Serializable{
 		return showsList;
 	}
 
-	public void addShow(Show show)
+	public boolean addShow(Show show)
 	{
 		//Check to make sure that dates do not overlap
 		showsList.add(show);
+		return true;
 	}
 }

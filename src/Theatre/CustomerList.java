@@ -64,6 +64,7 @@ public class CustomerList implements Serializable
 			if(customerList.get(i).equals(customer))
 			{
 				customerList.remove(i);
+				
 			}
 		}
 	}
@@ -72,14 +73,16 @@ public class CustomerList implements Serializable
 	 * @param customer
 	 * @return 
 	 */
-	public void removeCustomer(long customerID)
+	public boolean removeCustomer(long customerID)
 	{
 		for(int i = 0; i < customerList.size(); ++i)
 		{
 			if(customerList.get(i).getUniqueID() == customerID)
 			{
 				customerList.remove(i);
+				return true;
 			}
 		}
+		return false;
 	}
 }

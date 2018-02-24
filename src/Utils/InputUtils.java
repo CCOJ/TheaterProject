@@ -27,7 +27,7 @@ public class InputUtils
 		}
 		catch(NumberFormatException nfe)
 		{
-			System.out.println(nfe);
+			//System.out.println(nfe);
 			return -1;
 		}
 	}
@@ -83,8 +83,11 @@ public class InputUtils
 	public String getPhoneNumberInput()
 	{
 		String input = scanner.nextLine();
-		input = input.replace("-", "");
-		System.out.println("Input: " + input);
+		
+		input = input.replace("-", ""); //Remove -
+		input = input.replaceAll("\\s+",""); //Remove whitespace
+		//System.out.println("Input: " + input);
+		
 		if(input.length() == 10 && input.matches("[0-9]+"))
 		{
 			return input;

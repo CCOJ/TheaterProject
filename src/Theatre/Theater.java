@@ -72,14 +72,20 @@ public class Theater implements Serializable
 		creditCardList.addCreditCard(creditCard);
 	}
 
-	public void removeCustomer(long customerID)
+	public boolean removeCustomer(long customerID)
 	{
-		customerList.removeCustomer(customerID);
+		Customer customer = customerList.getCustomer(customerID);
+		
+		if(customer != null)
+		{
+			return customerList.removeCustomer(customerID);
+		}
+		return false;
 	}
 
-	public void removeCustomerCard(String cardNumber)
+	public boolean removeCustomerCard(String cardNumber)
 	{
-		creditCardList.removeCreditCard(cardNumber);
+		return creditCardList.removeCreditCard(cardNumber);
 	}
 
 	/**
@@ -98,16 +104,16 @@ public class Theater implements Serializable
 		return false;
 	}
 
-	public void addShow(String showName, long clientID, Calendar begDate, Calendar endDate)
+	public boolean addShow(String showName, long clientID, Calendar begDate, Calendar endDate)
 	{
 		//Need to check if date overlaps any other events.
 		Show show = new Show(showName, clientID, begDate, endDate);
-		showsList.addShow(show);
+		return showsList.addShow(show);
 	}
 
-	public void addShow(Show show)
+	public boolean addShow(Show show)
 	{
-		showsList.addShow(show);
+		return showsList.addShow(show);
 	}
 
 	public void addClient(Person client)
