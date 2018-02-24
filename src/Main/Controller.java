@@ -193,14 +193,16 @@ public class Controller implements Application_API
 
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_PHONE_NUMBER);
 		//cL_Gui.displayAskPhoneNumber();
-		phoneNumber = inputUtils.getStringInput();
+		phoneNumber = inputUtils.getPhoneNumberInput();
 
 		//verify that information is entered correctly
-
-		Person client = new Client(name, address, phoneNumber);
-		theater.addClient((Client) client);
-
-		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_ADDED);
+		if (phoneNumber == null) { //Invalid phone number
+			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_PHONE_NUMBER);
+		} else {
+			Person client = new Client(name, address, phoneNumber);
+			theater.addClient((Client) client);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_ADDED);
+		}
 	}
 	/**
 	 * Removes the client from clientList. If a show is scheduled for current
@@ -222,7 +224,7 @@ public class Controller implements Application_API
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED);
 		} else {
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED_FAILED);
-		};
+		}
 	}
 	/**
 	 * 
@@ -254,7 +256,7 @@ public class Controller implements Application_API
 		address = inputUtils.getStringInput();
 
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_PHONE_NUMBER);
-		phoneNumber = inputUtils.getStringInput();
+		phoneNumber = inputUtils.getPhoneNumberInput();
 
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
 		cardNumber = inputUtils.getStringInput();
@@ -262,11 +264,14 @@ public class Controller implements Application_API
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CARD_EXPIRATION);
 		expirationDate = inputUtils.getStringInput();
 
-		customer = new Customer(customerName, address, phoneNumber);
-		creditCard = new CreditCard(customer.getUniqueID(), cardNumber, expirationDate);
-		theater.addCustomer(customer);
-		theater.addCustomerCreditCard(creditCard);
-
+		if (phoneNumber == null) { //Invalid phone number
+			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_PHONE_NUMBER);
+		} else {
+			customer = new Customer(customerName, address, phoneNumber);
+			creditCard = new CreditCard(customer.getUniqueID(), cardNumber, expirationDate);
+			theater.addCustomer(customer);
+			theater.addCustomerCreditCard(creditCard);
+		}
 		//customer = new Customer(customerName, address, phoneNumber, cardNumber, expirationDate);
 		//theater.addCustomer(customer);
 	}

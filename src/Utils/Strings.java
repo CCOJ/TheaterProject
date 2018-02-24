@@ -18,6 +18,7 @@ public class Strings
 	public static final String ERROR_SELECTION_NOT_IN_RANGE =  "ERROR: Selection input not within proper range";
 	public static final String ERROR_BAD_INPUT = "ERROR: Input value not within range";
 	public static final String ERROR_BAD_INPUT_YES_NO = "ERROR: Input value must be: Y/N";
+	public static final String ERROR_BAD_PHONE_NUMBER = "ERROR: Invalid phone number.";
 	public static final String HEADER_ADD_CLIENT = "ADD CLIENT";
 	public static final String HEADER_ADD_SHOW = "ADD SHOW";
 	public static final String HEADER_LIST_ALL_CLIENTS = "Listing all Clients";
@@ -38,7 +39,7 @@ public class Strings
 	public static final String NOTIFICATION_APPLICATION_CLOSED = "APPLICATION CLOSED SUCCESSFULLY";
 	public static final String PROMPT_FOR_NAME = "Please enter a name:";
 	public static final String PROMPT_FOR_ADDRESS = "Please enter an address:";	
-	public static final String PROMPT_FOR_PHONE_NUMBER = "Please enter a phone number:";	
+	public static final String PROMPT_FOR_PHONE_NUMBER = "Please enter a phone number:";
 	public static final String PROMPT_FOR_SHOW_NAME = "Please enter show name:";
 	public static final String PROMPT_FOR_CLIENT_ID = "Please enter the client ID:";
 	public static final String PROMPT_FOR_CUSTOMER_ID = "Please enter the customer ID:";
