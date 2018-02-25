@@ -100,20 +100,22 @@ public class Show
 	 * Gets the date ranges for the show premiere
 	 * @return The date range
 	 */
-	public String getDates()
+	public String showingDatesToString()
 	{
+		StringBuilder strBuild = new StringBuilder();
+		String startDate, endingDate;
+		
 		LocalDate localStartDate = begDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		int startMonth = localStartDate.getYear();
-		int startDay = localStartDate.getDayOfMonth();
-
+		strBuild.append(localStartDate.getYear() + "/" + localStartDate.getMonthValue() + "/"+ localStartDate.getDayOfMonth());
+		startDate = strBuild.toString();
+		
+		strBuild.delete(0, strBuild.length());
+		
 		LocalDate localEndDate = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		int endMonth = localEndDate.getYear();
-		int endDay = localEndDate.getDayOfMonth();
+		strBuild.append(localEndDate.getYear() + "/" + localEndDate.getMonthValue() + "/"+ localEndDate.getDayOfMonth());
+		endingDate = strBuild.toString();
 
-		String start = startMonth + "/" + startDay;
-		String end = endMonth + "/" + endDay;
-
-		return start + " to " + end;
+		return startDate + " to " + endingDate;
 	}
 
 	/**
@@ -123,6 +125,6 @@ public class Show
 	public String toString()
 	{
 		return "showName:" + showName + ", clientID:" + clientID +
-				"Dates: " + getDates();
+				", dates:" + showingDatesToString();
 	}
 }

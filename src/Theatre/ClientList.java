@@ -33,23 +33,7 @@ public class ClientList implements Serializable
 	public boolean removeClient(long clientID)
 	{
 		//Check if all shows have played. If one's end date is not past todays date, don't remove.
-		/*
-		for(int i = 0; i < shows.size(); ++i)
-		{
-			if(shows.get(i).getClientID() == clientID)
-			{
-				Calendar now = new GregorianCalendar(); //gets the current time and date
 
-				if(shows.get(i).getEndDate().compareTo((Calendar) now) > 0) //if end date of the show is later in the future than right now, then client can't be removed
-				{
-					System.out.println("Client not removed");
-					return;
-				}
-			}
-		}
-		System.out.println("Client Removed");
-		clients.remove(clientID);
-		 */
 		for(int i = 0; i < clientList.size(); ++i)
 		{
 			if(clientList.get(i).getID() == clientID)
@@ -60,6 +44,8 @@ public class ClientList implements Serializable
 		}
 		return false;
 	}
+
+
 
 	/**
 	 * Finds the Client object via clientID
@@ -97,4 +83,5 @@ public class ClientList implements Serializable
 	{
 		return clientList.remove(client);
 	}
+
 }

@@ -57,6 +57,7 @@ public class Strings
 	public static final String NOTIFICATION_SERIALIZE_SUCCESS = "Serialization successful";
 	public static final String NOTIFICATION_SERIALIZE_FAILED = "Serialization failed";
 	public static final String NOTIFICATION_CLOSE_SUCCESS = "SUCCESS CLOSING APPLICATION";
+	public static final String NOTIFICATION_SHOW_STILL_ONGOING = "Client's show is still ongoing.";
 	public static final String PROMPT_FOR_NAME = "Please enter a name:";
 	public static final String PROMPT_FOR_ADDRESS = "Please enter an address:";	
 	public static final String PROMPT_FOR_PHONE_NUMBER = "Please enter a phone number:";

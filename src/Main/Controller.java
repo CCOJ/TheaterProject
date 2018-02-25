@@ -7,8 +7,10 @@ import Abstract.Person;
 import GUI.CL_Gui;
 import Serializer.Serializer;
 import Theatre.Client;
+import Theatre.ClientList;
 import Theatre.CreditCard;
 import Theatre.Customer;
+import Theatre.ShowList;
 import Theatre.Theater;
 import Utils.InputUtils;
 import Utils.Strings;
@@ -199,17 +201,28 @@ public class Controller implements Application_API
 		cL_Gui.displayPageHeader(Strings.HEADER_REMOVE_CLIENT);
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
 		clientID = inputUtils.getLongInput();
-
+		
 		if(clientID > 0)
 		{
-			if(theater.removeClient(clientID))
+			ShowList showList = theater.getShowsList();
+			
+			if(showList.isEveryShowListingInPast(clientID))
 			{
-				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED_SUCCESS);
+				if(theater.removeClient(clientID))
+				{
+					cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED_SUCCESS);
+				}
+				else
+				{
+					cL_Gui.displaySystemNotify(Strings.ERROR_CLIENT_ID_NOT_FOUND);
+					cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED_FAILED);
+				}	
 			}
 			else
 			{
-				cL_Gui.displaySystemNotify(Strings.ERROR_CLIENT_ID_NOT_FOUND);
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_STILL_ONGOING);
 				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLIENT_REMOVED_FAILED);
+				//return;
 			}
 		}
 		else
@@ -504,8 +517,8 @@ public class Controller implements Application_API
 		//CHECK IF DATE HAS ANY OVERLAP FAILS IF TRUE
 		//CHECK IF ID EXISTS
 
-		Calendar begDate = new GregorianCalendar(begYear, begMonth, begDay);
-		Calendar endDate = new GregorianCalendar(endYear, endMonth, endDay);
+		Calendar begDate = new GregorianCalendar(begYear, begMonth, begDay, 23, 59, 59);
+		Calendar endDate = new GregorianCalendar(endYear, endMonth, endDay, 23, 59, 59);
 		//begDate = new Date(begYear, begMonth, begDay);
 		//endDate = new Date(endYear, endMonth, endDay);
 
