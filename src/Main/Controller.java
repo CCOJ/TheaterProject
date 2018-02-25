@@ -301,11 +301,15 @@ public class Controller implements Application_API
 		
 		customer = new Customer(customerName, address, phoneNumber);
 		creditCard = new CreditCard(customer.getUniqueID(), cardNumber, expirationDate);
-		theater.addCustomer(customer);
-		theater.addCustomerCreditCard(creditCard);
-		
-		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CUSTOMER_SUCCESS);
-
+                if(theater.getCustomerCreditCard(cardNumber) == null){
+                    theater.addCustomer(customer);
+                    theater.addCustomerCreditCard(creditCard);
+                    cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CUSTOMER_SUCCESS);
+                    cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CREDIT_CARD_SUCCESS);
+                }
+                else{
+                    cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CREDIT_CARD_EXISTS);
+                }		
 		//customer = new Customer(customerName, address, phoneNumber, cardNumber, expirationDate);
 		//theater.addCustomer(customer);
 	}
@@ -386,10 +390,19 @@ public class Controller implements Application_API
 			return;
 		}
 
-		creditCard = new CreditCard(customerID, cardNumber, expirationDate);
-		theater.addCustomerCreditCard(creditCard);
+                if(theater.getCustomerCreditCard(cardNumber) == null){
+                    creditCard = new CreditCard(customerID, cardNumber,
+                            expirationDate);
+                    theater.addCustomerCreditCard(creditCard);
+                    cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CREDIT_CARD_SUCCESS);
+                }
+                else{
+                    cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CREDIT_CARD_EXISTS);
+                }
+                    
 		
-		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_CREDIT_CARD_SUCCESS);
+		
+		
 		//creditCard = new CreditCard(cardNumber, expirationDate);
 		//theater.addCustomerCreditCard(customerID, creditCard);
 	}

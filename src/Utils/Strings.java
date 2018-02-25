@@ -48,6 +48,7 @@ public class Strings
 	public static final String NOTIFICATION_CUSTOMER_REMOVED_FAILED = "Customer not found. Customer removal failed.";
 	public static final String NOTIFICATION_ADD_CREDIT_CARD_FAILED = "Add customer credit card failed";
 	public static final String NOTIFICATION_ADD_CREDIT_CARD_SUCCESS = "Customer credit card added successfully";
+        public static final String NOTIFICATION_CREDIT_CARD_EXISTS = "Credit card is already in use";
 	public static final String NOTIFICATION_REMOVE_CREDIT_CARD_FAILED = "Remove credit card failed";
 	public static final String NOTIFICATION_REMOVE_CREDIT_CARD_SUCCESS = "Remove credit card successful";
 	public static final String NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED = "Add show or play failed";
