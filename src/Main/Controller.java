@@ -7,7 +7,6 @@ import Abstract.Person;
 import GUI.CL_Gui;
 import Serializer.Serializer;
 import Theatre.Client;
-import Theatre.ClientList;
 import Theatre.CreditCard;
 import Theatre.Customer;
 import Theatre.ShowList;
@@ -443,8 +442,8 @@ public class Controller implements Application_API
 	@Override
 	public void addShowOrPlay()
 	{
-		String showName;
-		int begYear, begMonth, begDay, endYear, endMonth, endDay;
+		String showName, dateInput;
+		int[] inputBegDate, inputEndDate;
 		long clientID;
 		//Date begDate, endDate;
 
@@ -467,68 +466,30 @@ public class Controller implements Application_API
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
 			return;
 		}
-
-		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_YEAR);
-		begYear = inputUtils.getIntInput();
-		if(begYear < 0)
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_WHOLE_BEGIN_DATE);
+		inputBegDate = inputUtils.getDateInput(inputUtils.getStringInput());
+		if(inputBegDate == null)
 		{
-			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INT_INPUT);
+			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT);
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
 			return;
 		}
-
-		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_MONTH);
-		begMonth = inputUtils.getIntInput();
-		if(begMonth < 0)
+		
+		cL_Gui.displayPrompt(Strings.PROMPT_FOR_WHOLE_END_DATE);
+		inputEndDate = inputUtils.getDateInput(inputUtils.getStringInput());
+		if(inputEndDate == null)
 		{
-			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INT_INPUT);
+			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT);
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
 			return;
-		}
-
-		cL_Gui.displayPrompt(Strings.PROMPT_FOR_BEGIN_DAY);
-		begDay = inputUtils.getIntInput();
-		if(begDay < 0)
-		{
-			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INT_INPUT);
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
-			return;
-		}
-
-		cL_Gui.displayPrompt(Strings.PROMPT_FOR_END_YEAR);
-		endYear = inputUtils.getIntInput();
-		if(endYear < 0)
-		{
-			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INT_INPUT);
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
-			return;
-		}
-
-		cL_Gui.displayPrompt(Strings.PROMPT_FOR_END_MONTH);
-		endMonth = inputUtils.getIntInput();
-		if(endMonth < 0)
-		{
-			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INT_INPUT);
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
-			return;
-		}
-
-		cL_Gui.displayPrompt(Strings.PROMPT_FOR_END_DAY);
-		endDay = inputUtils.getIntInput();
-		if(endDay < 0)
-		{
-			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INT_INPUT);
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
-			return;
-		}
-
+		}	
 		//CHECK IF DATE HAS ANY OVERLAP FAILS IF TRUE
 		//CHECK IF ID EXISTS
-
-		Calendar begDate = new GregorianCalendar(begYear, begMonth, begDay, 0, 0, 0);
-		Calendar endDate = new GregorianCalendar(endYear, endMonth, endDay, 23, 59, 59);
-		//begDate = new Date(begYear, begMonth, begDay);
-		//endDate = new Date(endYear, endMonth, endDay);
+		
+		//inputDate is in format -> [0] = Year, [1] = Month, [2] = Day
+		Calendar begDate = new GregorianCalendar(inputBegDate[0], inputBegDate[1], inputBegDate[2], 0, 0, 0);
+		Calendar endDate = new GregorianCalendar(inputEndDate[0], inputEndDate[1], inputEndDate[2], 23, 59, 59);
 
 		//Show show = new Show(showName, clientID, begDate, endDate);
 		//theater.addShow(showName, clientID, begDate, endDate); 

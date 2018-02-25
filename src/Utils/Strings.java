@@ -76,7 +76,8 @@ public class Strings
 	public static final String PROMPT_FOR_END_DAY = "Please enter an ending day";
 	public static final String PROMPT_MENU_OPTION = "input the numbered option you would like to execute";
 	public static final String PROMPT_RETRIEVE_DATA = "Would you like to retrieve previous data? Y/N";
-
+	public static final String PROMPT_FOR_WHOLE_BEGIN_DATE ="Please enter a beginning date: YYYY/MM/DD";
+	public static final String PROMPT_FOR_WHOLE_END_DATE = "Please enter an ending date: YYYY/MM/DD";
 	//Miscellaneous
 	public static final String HELP_MENU = "Details of possible user application commands";
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";

@@ -1,5 +1,7 @@
 package Utils;
 
+import java.util.Date;
+
 //import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.util.Scanner;
@@ -30,6 +32,24 @@ public class InputUtils
 			//System.out.println(nfe);
 			return -1;
 		}
+	}
+	
+	public int[] getDateInput(String strDate)
+	{
+		System.out.println("starting getDateInput()");
+		int[] date = new int[3];
+		String[] parsedDate = strDate.split("/");
+
+		for(int i = 0; i < date.length; ++i)
+		{
+			date[i] = Integer.parseInt(parsedDate[i]);
+		}
+		
+		date[1] = date[1] - 1;
+		
+		System.out.println("returning date");
+		return date;
+		
 	}
 
 	public long getLongInput()
@@ -74,6 +94,7 @@ public class InputUtils
 		}
 		return input;
 	}
+	
 
 	/**
 	 * Ensures phone number input is 10 digits long and numbers only.
