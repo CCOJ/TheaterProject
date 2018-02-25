@@ -412,12 +412,20 @@ public class Controller implements Application_API
 			return;
 		}
 
-		if(theater.removeCustomerCard(cardNumber)) //If customer Credit Card removed successfully
+		if(!theater.getCreditCardList().isCustomersOnlyCreditCard(cardNumber))
 		{
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_REMOVE_CREDIT_CARD_SUCCESS);
+			if(theater.removeCustomerCard(cardNumber)) //If customer Credit Card removed successfully
+			{
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_REMOVE_CREDIT_CARD_SUCCESS);
+			}
+			else
+			{
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_REMOVE_CREDIT_CARD_FAILED);
+			}	
 		}
 		else
 		{
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CUSTOMER_HAS_ONLY_ONE_CARD);
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_REMOVE_CREDIT_CARD_FAILED);
 		}
 	}
