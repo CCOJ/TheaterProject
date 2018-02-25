@@ -5,6 +5,8 @@ import java.util.Date;
 //import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.util.Scanner;
+
+import javax.xml.crypto.Data;
 /**
  * This class is called for user input. It will do error checks on the data 
  * to make sure proper input is used. (EG - Asking for int and receiving a 
@@ -36,18 +38,20 @@ public class InputUtils
 	
 	public int[] getDateInput(String strDate)
 	{
-		System.out.println("starting getDateInput()");
 		int[] date = new int[3];
 		String[] parsedDate = strDate.split("/");
 
-		for(int i = 0; i < date.length; ++i)
+		if(parsedDate.length == 3)
 		{
-			date[i] = Integer.parseInt(parsedDate[i]);
+			date[0] = Integer.parseInt(parsedDate[0]);
+			date[1] = Integer.parseInt(parsedDate[1]) - 1; //-1 for month-1
+			date[2] = Integer.parseInt(parsedDate[2]);
+		}
+		else
+		{
+			return null;
 		}
 		
-		date[1] = date[1] - 1;
-		
-		System.out.println("returning date");
 		return date;
 		
 	}

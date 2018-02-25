@@ -97,7 +97,7 @@ public class CL_Gui
 	{
 		ArrayList<Show> shows = showsList.getShowsList();
 
-		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CLIENTS);
+		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_SHOWS);
 
 		for(int i = 0; i < shows.size(); ++i)
 		{

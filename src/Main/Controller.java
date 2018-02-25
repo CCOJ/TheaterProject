@@ -138,10 +138,13 @@ public class Controller implements Application_API
 		
 		if(storeData())
 		{
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SERIALIZE_SUCCESS);
+		}
+		else
+		{
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SERIALIZE_FAILED);
 		}
 		
-		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SERIALIZE_SUCCESS);
 		cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CLOSE_SUCCESS);
 		running = false;
 	}
