@@ -1,5 +1,6 @@
 package Theatre;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
@@ -10,7 +11,7 @@ import java.util.Calendar;
  * @author Ricky, Noah, Randy
  *
  */
-public class Show
+public class Show implements Serializable
 {
 	private String showName;
 	private long clientID;

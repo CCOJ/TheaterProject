@@ -82,6 +82,35 @@ public class CreditCardList implements Serializable
 		}
 		return false;
 	}
+	
+	public boolean isCustomersOnlyCreditCard(String cardNumber)
+	{
+		int totalCards = 0;
+		long customerID = -1;
+		
+		for(int i = 0; i < creditCards.size(); ++i)
+		{
+			if(creditCards.get(i).getCreditCardNumber().equals(cardNumber))
+			{
+				customerID = creditCards.get(i).getCustomerID();
+				break;
+			}
+		}
+		
+		for(int i = 0; i < creditCards.size(); ++i)
+		{
+			if(creditCards.get(i).getCustomerID() == customerID)
+			{
+				++totalCards;
+				
+				if(totalCards > 1)
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 	/**
 	 * 
 	 * @param customerID

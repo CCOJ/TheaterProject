@@ -425,12 +425,20 @@ public class Controller implements Application_API
 			return;
 		}
 
-		if(theater.removeCustomerCard(cardNumber)) //If customer Credit Card removed successfully
+		if(!theater.getCreditCardList().isCustomersOnlyCreditCard(cardNumber))
 		{
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_REMOVE_CREDIT_CARD_SUCCESS);
+			if(theater.removeCustomerCard(cardNumber)) //If customer Credit Card removed successfully
+			{
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_REMOVE_CREDIT_CARD_SUCCESS);
+			}
+			else
+			{
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_REMOVE_CREDIT_CARD_FAILED);
+			}	
 		}
 		else
 		{
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_CUSTOMER_HAS_ONLY_ONE_CARD);
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_REMOVE_CREDIT_CARD_FAILED);
 		}
 	}
@@ -530,21 +538,30 @@ public class Controller implements Application_API
 		//CHECK IF DATE HAS ANY OVERLAP FAILS IF TRUE
 		//CHECK IF ID EXISTS
 
-		Calendar begDate = new GregorianCalendar(begYear, begMonth, begDay, 23, 59, 59);
+		Calendar begDate = new GregorianCalendar(begYear, begMonth, begDay, 0, 0, 0);
 		Calendar endDate = new GregorianCalendar(endYear, endMonth, endDay, 23, 59, 59);
 		//begDate = new Date(begYear, begMonth, begDay);
 		//endDate = new Date(endYear, endMonth, endDay);
 
 		//Show show = new Show(showName, clientID, begDate, endDate);
 		//theater.addShow(showName, clientID, begDate, endDate); 
-		if(theater.addShow(showName, clientID, begDate, endDate)) //Need to check for overlap of show dates.
+		if(!theater.getShowsList().isShowOverlappingOtherShows(begDate, endDate))
 		{
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_ADDED_SUCCESS);
+			if(theater.addShow(showName, clientID, begDate, endDate)) //Need to check for overlap of show dates.
+			{
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_ADDED_SUCCESS);
+			}
+			else
+			{
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_ADDED_FAILED);
+			}
 		}
 		else
 		{
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_ADDED_FAILED);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_OVERLAP);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
 		}
+
 		//Add an error check for overlapping dates.
 	}
 	/**

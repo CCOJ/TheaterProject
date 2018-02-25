@@ -35,6 +35,7 @@ public class Strings
 	public static final String HEADER_REMOVE_CUSTOMER = "REMOVE CUSTOMER";
 	public static final String HEADER_REMOVE_CLIENT = "REMOVE CLIENT";
 	public static final String MESSAGE_WELCOME = "Welcome";
+	public static final String NOTIFICATION_CUSTOMER_HAS_ONLY_ONE_CARD = "Customer only has one credit card";
 	public static final String NOTIFICATION_SHOW_ADDED_FAILED = "Show added successfully";
 	public static final String NOTIFICATION_ADD_CUSTOMER_SUCCESS = "Customer Added Successfully";
 	public static final String NOTIFICATION_ADD_CUSTOMER_FAILED = "Add Customer Failed";
@@ -59,6 +60,7 @@ public class Strings
 	public static final String NOTIFICATION_SERIALIZE_FAILED = "Serialization failed";
 	public static final String NOTIFICATION_CLOSE_SUCCESS = "SUCCESS CLOSING APPLICATION";
 	public static final String NOTIFICATION_SHOW_STILL_ONGOING = "Client's show is still ongoing.";
+	public static final String NOTIFICATION_SHOW_OVERLAP = "Show overlaps with another show";
 	public static final String PROMPT_FOR_NAME = "Please enter a name:";
 	public static final String PROMPT_FOR_ADDRESS = "Please enter an address:";	
 	public static final String PROMPT_FOR_PHONE_NUMBER = "Please enter a phone number:";
