@@ -71,7 +71,9 @@ public class Theater implements Serializable
 	{
 		creditCardList.addCreditCard(creditCard);
 	}
-
+        public CreditCard getCustomerCreditCard(String creditCardNumber){
+            return creditCardList.getCreditCard(creditCardNumber);
+        }
 	public boolean removeCustomer(long customerID)
 	{
 		Customer customer = customerList.getCustomer(customerID);
