@@ -507,7 +507,6 @@ public class Controller implements Application_API
 			return;
 		}	
 		//CHECK IF DATE HAS ANY OVERLAP FAILS IF TRUE
-		//CHECK IF ID EXISTS
 		
 		//inputDate is in format -> [0] = Year, [1] = Month, [2] = Day
 		Calendar begDate = new GregorianCalendar(inputBegDate[0], inputBegDate[1], inputBegDate[2], 0, 0, 0);
