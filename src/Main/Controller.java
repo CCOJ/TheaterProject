@@ -482,6 +482,12 @@ public class Controller implements Application_API
 			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
 			return;
 		}
+		else if (!theater.getClientList().hasClient(clientID))
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_CLIENT_ID_NOT_FOUND);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
+			return;
+		}
 		
 		cL_Gui.displayPrompt(Strings.PROMPT_FOR_WHOLE_BEGIN_DATE);
 		inputBegDate = inputUtils.getDateInput(inputUtils.getStringInput());

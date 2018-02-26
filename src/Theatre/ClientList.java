@@ -45,7 +45,20 @@ public class ClientList implements Serializable
 		return false;
 	}
 
+	/**
+	 * Finds if the client exists in the client list
+	 * @param clientID Client's ID
+	 * @return true if exists, false if doesn't
+	 */
+	public boolean hasClient(long clientID)
+	{
+		if (getClient(clientID) != null)
+		{
+			return true;
+		}
 
+		return false;
+	}
 
 	/**
 	 * Finds the Client object via clientID
