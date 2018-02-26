@@ -67,13 +67,16 @@ public class Theater implements Serializable
 		return showsList;
 	}
 
-	public void addCustomerCreditCard(CreditCard creditCard)
+	public boolean addCustomerCreditCard(CreditCard creditCard)
 	{
-		creditCardList.addCreditCard(creditCard);
+		return creditCardList.addCreditCard(creditCard);
 	}
-        public CreditCard getCustomerCreditCard(String creditCardNumber){
-            return creditCardList.getCreditCard(creditCardNumber);
-        }
+
+	public CreditCard getCustomerCreditCard(String creditCardNumber)
+	{
+		return creditCardList.getCreditCard(creditCardNumber);
+	}
+
 	public boolean removeCustomer(long customerID)
 	{
 		Customer customer = customerList.getCustomer(customerID);
@@ -123,9 +126,9 @@ public class Theater implements Serializable
 		clientList.addClient((Client) client);
 	}
 
-	public void addClient(Client client)
+	public boolean addClient(Client client)
 	{
-		clientList.addClient(client);
+		return clientList.addClient(client);
 	}
 
 	public void addClient(String name, String address, String phoneNumber)

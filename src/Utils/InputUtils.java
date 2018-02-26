@@ -22,7 +22,7 @@ public class InputUtils
 	 * Returns the user input as an int
 	 * @return user int selection if no exceptions, -1 if there is bad input
 	 */
-	public int getIntInput() throws NumberFormatException
+	public int getIntInput()
 	{
 		try
 		{
@@ -65,7 +65,7 @@ public class InputUtils
 		}
 		catch(NumberFormatException nfe)
 		{
-			System.out.println(nfe);
+			//System.out.println(nfe);
 			return -1;
 		}
 	}

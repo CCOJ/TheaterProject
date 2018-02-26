@@ -85,4 +85,15 @@ public class CustomerList implements Serializable
 		}
 		return false;
 	}
+	public boolean customerExists(long customerID)
+	{
+		for(int i = 0; i < customerList.size(); ++i)
+		{
+			if(customerList.get(i).getUniqueID() == customerID)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

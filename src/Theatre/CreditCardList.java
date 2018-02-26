@@ -50,9 +50,9 @@ public class CreditCardList implements Serializable
 	 * @param creditCard the credit card object
 	 * @return true when added
 	 */
-	public void addCreditCard(CreditCard creditCard)
+	public boolean addCreditCard(CreditCard creditCard)
 	{     
-		creditCards.add(creditCard);
+		return creditCards.add(creditCard);
 	}
 
 	/**
@@ -137,5 +137,16 @@ public class CreditCardList implements Serializable
 			return false;
 		}
 
+	}
+	public boolean creditCardExists(String cardNumber)
+	{
+		for(int i = 0; i < creditCards.size(); ++i)
+		{
+			if(creditCards.get(i).getCreditCardNumber().equals(cardNumber))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }

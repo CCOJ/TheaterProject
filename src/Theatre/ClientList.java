@@ -84,4 +84,16 @@ public class ClientList implements Serializable
 		return clientList.remove(client);
 	}
 
+	public boolean clientExists(long clientID)
+	{
+		for(int i = 0; i < clientList.size(); ++i)
+		{
+			if(clientList.get(i).getID() == clientID)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 }
