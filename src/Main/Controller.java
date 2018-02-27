@@ -673,6 +673,7 @@ public class Controller implements Application_API
 	@Override
 	public void help()
 	{
+		cL_Gui.displayHelp();
 		cL_Gui.displayMainMenu();
 		commandSwitch(inputUtils.getIntInput());
 	}

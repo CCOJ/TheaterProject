@@ -38,29 +38,32 @@ public class CL_Gui
 		inputUtils = new InputUtils();
 	}
 	/**
-	 * 
+	 * Display system notifications
 	 * @param message
 	 */
 	public void displaySystemNotify(String message)
 	{
 		System.out.printf("%s\n", message);
 	}
+
 	/**
-	 * 
+	 * Display system prompt for user
 	 * @param prompt
 	 */
 	public void displayPrompt(String prompt)
 	{
 		System.out.printf("%s\n", prompt);
 	}
+
 	/**
-	 * 
+	 * Display header of selected category
 	 * @param header
 	 */
 	public void displayPageHeader(String header)
 	{
 		System.out.printf("%s\n", header);
 	}
+
 	/**
 	 * Display welcome message, list of options, and getting user input. 
 	 * 
@@ -76,21 +79,9 @@ public class CL_Gui
 			System.out.printf(i + ". %s \n", commands[i]);
 		}
 	}
-	/**
-	 * 
-	 * @param shows
-	 */
-	public void displayAllShowsList(ArrayList<Show> shows)
-	{
-		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_SHOWS);
 
-		for(int i = 0; i < shows.size(); ++i)
-		{
-			System.out.println(shows.get(i).toString());
-		}
-	}
 	/**
-	 * 
+	 * Displays all show listings
 	 * @param showsList
 	 */
 	public void displayAllShowsList(ShowList showsList)
@@ -104,21 +95,9 @@ public class CL_Gui
 			System.out.println(shows.get(i).toString());
 		}
 	}
-	/**
-	 * 
-	 * @param clients
-	 */
-	public void displayAllClientsList(ArrayList<Client> clients)
-	{
-		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CLIENTS);
 
-		for(int i = 0; i < clients.size(); ++i)
-		{
-			System.out.println(clients.get(i).toString());
-		}
-	}
 	/**
-	 * 
+	 * Displays all clients
 	 * @param clientList
 	 */
 	public void displayAllClientsList(ClientList clientList)
@@ -132,43 +111,16 @@ public class CL_Gui
 			System.out.println(clients.get(i).toString());
 		}
 	}
-	/**
-	 * 
-	 * @param customers
-	 */
-	public void displayAllCustomersList(ArrayList<Customer> customers)
-	{
-		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CUSTOMERS);
 
-		for(int i = 0; i < customers.size(); ++i)
-		{
-			System.out.println(customers.get(i).toString());
-		}
-	}
 	/**
-	 * 
-	 * @param customerList
-	 */
-	public void displayAllCustomersList(CustomerList customerList)
-	{
-		ArrayList<Customer> customers = customerList.getCustomerList();
-
-		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_CUSTOMERS);
-
-		for(int i = 0; i < customers.size(); ++i)
-		{
-			System.out.println(customers.get(i).toString());
-		}
-	}
-	/**
-	 * 
+	 * Displays help info of all commands
 	 */
 	public void displayHelp()
 	{
-
+		System.out.println("\n\n" + Strings.HELP_MENU);
 	}
 	/**
-	 * 
+	 * Displays all customers with their credit card info
 	 * @param customerList
 	 * @param creditCardList
 	 */

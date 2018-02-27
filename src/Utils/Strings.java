@@ -11,9 +11,7 @@ public class Strings
 	public static final String[] ALL_API_CALLS = {"Exit Application", "Add Client", "Remove Client", "List All Clients", "Add Customer",
 												"Remove Customer", "Add Credit Card", "Remove Credit Card",	"List All Customers", 
 												"Add a Show or Play", "List All Shows", "Store Data", "Retrieve Data", "Help"};
-	public static final String[] API_HELP_DETAILS = {
-														};
-	
+
 	//System Strings
 	public static final String ERROR_SELECTION_NOT_IN_RANGE =  "ERROR: Selection input not within proper range";
 	public static final String ERROR_BAD_INPUT = "ERROR: Input value not within range";
@@ -86,9 +84,26 @@ public class Strings
 	public static final String PROMPT_FOR_WHOLE_BEGIN_DATE ="Please enter a beginning date: YYYY/MM/DD";
 	public static final String PROMPT_FOR_WHOLE_END_DATE = "Please enter an ending date: YYYY/MM/DD";
 	//Miscellaneous
-	public static final String HELP_MENU = "Details of possible user application commands";
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";
 	public static final String CINEMA_NAME = "Cinema 10";
+
+	//Help menu info
+
+	public static final String HELP_EXIT_APPLICATION = "0: Exit Application - Exits the theater program and saves all information\n" +
+														"from customer list, client list, credit card list, and show list.\n";
+	public static final String HELP_ADD_CLIENT = "1: Add Client - Adds a client and prompts for name, address, phone number. An id is generator as well.\n";
+	/*public static final String HELP_REMOVE_CLIENT;
+	public static final String HELP_LIST_CLIENT;
+	public static final String HELP_ADD_CUSTOMER;
+	public static final String HELP_REMOVE_CUSTOMER;
+	public static final String HELP_ADD_CREDIT_CARD;
+	public static final String HELP_REMOVE_CREDIT_CARD;
+	public static final String HELP_LIST_CUSTOMER;
+	public static final String HELP_ADD_SHOW;
+	public static final String HELP_LIST_SHOW;
+	public static final String HELP_STORE_DATA;
+	public static final String HELP_RETRIEVE_DATA; */
+	public static final String HELP_MENU = HELP_EXIT_APPLICATION + HELP_ADD_CLIENT;
 
 
 
