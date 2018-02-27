@@ -30,7 +30,7 @@ public class CreditCardList implements Serializable
 	 * Finds the credit card in creditCardList if they exist.
 	 * Iterates through creditCardList until the number matches or not.
 	 *
-	 * @param number Credit card number
+	 * @param cardNumber Credit card number
 	 * @return creditCard object
 	 */
 	public CreditCard getCreditCard(String cardNumber)
@@ -51,7 +51,7 @@ public class CreditCardList implements Serializable
 	 * @return true when added
 	 */
 	public boolean addCreditCard(CreditCard creditCard)
-	{     
+	{
 		return creditCards.add(creditCard);
 	}
 
