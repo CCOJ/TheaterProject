@@ -56,7 +56,9 @@ public class Controller implements Application_API
 
 		while(running)	//Running is defaulted to true. False when user selects close program.
 		{
-			help(); //Displays main menu options, gets the input, checks the Command Switch
+			//help(); //Displays main menu options, gets the input, checks the Command Switch
+			cL_Gui.displayMainMenu();
+			commandSwitch(inputUtils.getIntInput());
 		}
 	}
 	/**
@@ -674,7 +676,5 @@ public class Controller implements Application_API
 	public void help()
 	{
 		cL_Gui.displayHelp();
-		cL_Gui.displayMainMenu();
-		commandSwitch(inputUtils.getIntInput());
 	}
 }
