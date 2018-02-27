@@ -52,26 +52,11 @@ public class CustomerList implements Serializable
 	{
 		customerList.add(customer);
 	}
+
 	/**
 	 * Removes the specified customer from the list
-	 * @param customer
-	 * @return 
-	 */
-	public void removeCustomer(Customer customer)
-	{
-		for(int i = 0; i < customerList.size(); ++i)
-		{
-			if(customerList.get(i).equals(customer))
-			{
-				customerList.remove(i);
-				
-			}
-		}
-	}
-	/**
-	 * Removes the specified customer from the list
-	 * @param customer
-	 * @return 
+	 * @param customerID customer ID
+	 * @return true when removed, false if not
 	 */
 	public boolean removeCustomer(long customerID)
 	{
@@ -85,6 +70,12 @@ public class CustomerList implements Serializable
 		}
 		return false;
 	}
+
+	/**
+	 * Checks if customer exists
+	 * @param customerID customer ID
+	 * @return true if exists, false if not
+	 */
 	public boolean customerExists(long customerID)
 	{
 		for(int i = 0; i < customerList.size(); ++i)
