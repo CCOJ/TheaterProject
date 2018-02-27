@@ -77,12 +77,19 @@ public class Theater implements Serializable
 		return creditCardList.getCreditCard(creditCardNumber);
 	}
 
+	/**
+	 * Finds customer via customerID. Once found, removes all credit cards
+	 * then the customer itself from the lists.
+	 * @param customerID Customer ID
+	 * @return true if removed, false if not
+	 */
 	public boolean removeCustomer(long customerID)
 	{
 		Customer customer = customerList.getCustomer(customerID);
 		
 		if(customer != null)
 		{
+			creditCardList.removeAllCustomerCards(customerID);
 			return customerList.removeCustomer(customerID);
 		}
 		return false;

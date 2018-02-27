@@ -10,9 +10,10 @@ import Abstract.Person;
  */
 public class Customer extends Person implements Serializable
 {
+
 	/**
 	 * Creates the customer object with the supplied name, address phone number
-	 * credit card and creadit card expiration.
+	 * credit card and credit card expiration.
 	 * 
 	 * @param name
 	 * @param address
@@ -22,6 +23,7 @@ public class Customer extends Person implements Serializable
 	{
 		super(name, address, phoneNumber);
 	}
+
 	/**
 	 * Returns the string form of the client object's information
 	 */
