@@ -1,5 +1,0 @@
-Client:
--A way to generate a unique ID
-
-Show:
--Period is currently a String type. Maybe we can use a Calendar type?
