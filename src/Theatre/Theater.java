@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.Calendar;
 import Abstract.Person;
 /**
- *
+ * Theater has a name and set seating capacity.
+ * It holds all four lists: credit cards, customers, shows, and clients.
+ * This also maintains a variety of functions that has a relationship
+ * to each four lists when derived from a command sent by the Controller.
  * @author Noah, Randy, Ricky
  */
 public class Theater implements Serializable
 {
-
 	private String name;
 	private int seatingCapacity = 3000;
 
@@ -31,6 +33,7 @@ public class Theater implements Serializable
 	 * Get name of theater
 	 * @return name of theater
 	 */
+
 	public String getName()
 	{
 		return name;
@@ -173,7 +176,6 @@ public class Theater implements Serializable
 	 */
 	public boolean addShow(String showName, long clientID, Calendar begDate, Calendar endDate)
 	{
-		//Need to check if date overlaps any other events.
 		Show show = new Show(showName, clientID, begDate, endDate);
 		return showsList.addShow(show);
 	}
