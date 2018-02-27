@@ -89,21 +89,25 @@ public class Strings
 
 	//Help menu info
 
-	public static final String HELP_EXIT_APPLICATION = "0: Exit Application - Exits the theater program and saves all information\n" +
+	public static final String HELP_EXIT_APPLICATION = "0. Exit Application - Exits the theater program and saves all information\n" +
 														"from customer list, client list, credit card list, and show list.\n";
-	public static final String HELP_ADD_CLIENT = "1: Add Client - Adds a client and prompts for name, address, phone number. An id is generator as well.\n";
-	/*public static final String HELP_REMOVE_CLIENT;
-	public static final String HELP_LIST_CLIENT;
-	public static final String HELP_ADD_CUSTOMER;
-	public static final String HELP_REMOVE_CUSTOMER;
-	public static final String HELP_ADD_CREDIT_CARD;
-	public static final String HELP_REMOVE_CREDIT_CARD;
-	public static final String HELP_LIST_CUSTOMER;
-	public static final String HELP_ADD_SHOW;
-	public static final String HELP_LIST_SHOW;
-	public static final String HELP_STORE_DATA;
-	public static final String HELP_RETRIEVE_DATA; */
-	public static final String HELP_MENU = HELP_EXIT_APPLICATION + HELP_ADD_CLIENT;
+	public static final String HELP_ADD_CLIENT = "1. Add Client - Prompts for name, address, phone number. An id is generated as well.\n";
+	public static final String HELP_REMOVE_CLIENT = "2. Remove Client - Removes client by prompting for client ID. Cannot remove if there is a show ongoing.\n";
+	public static final String HELP_LIST_CLIENT = "3. List All Clients - Lists all client information.\n";
+	public static final String HELP_ADD_CUSTOMER = "4. Add Customer - Prompts for name, address, phone number, credit card number, and expiry date.\n" +
+													"An id if generated as well.\n";
+	public static final String HELP_REMOVE_CUSTOMER = "5. Remove Customer - Removes customer by prompting for customer ID.\n";
+	public static final String HELP_ADD_CREDIT_CARD = "6. Add Credit Card - Prompts for credit card number, expiry date, and customer ID. Must be an existing customer. \n";
+	public static final String HELP_REMOVE_CREDIT_CARD = "7. Remove Credit Card - Removes credit card by prompting for credit card number.\n" +
+														"Must not be the only credit card for the customer.\n";
+	public static final String HELP_LIST_CUSTOMER = "8. List All Customers - Lists all customer information.\n";
+	public static final String HELP_ADD_SHOW = "9. Add a Show or Play - Prompts for show name, client ID, start date, and end date. Cannot add overlapping shows. \n";
+	public static final String HELP_LIST_SHOW = "10. List All Shows - Lists all shows.\n";
+	public static final String HELP_STORE_DATA = "11. Store Data - Serializes data to theater.ser\n";
+	public static final String HELP_RETRIEVE_DATA = "12. Retrieve Data - Loads data from theater.ser";
+	public static final String HELP_MENU = HELP_EXIT_APPLICATION + HELP_ADD_CLIENT + HELP_REMOVE_CLIENT + HELP_LIST_CLIENT +
+											HELP_ADD_CUSTOMER + HELP_REMOVE_CUSTOMER + HELP_ADD_CREDIT_CARD + HELP_REMOVE_CREDIT_CARD +
+											HELP_LIST_CUSTOMER + HELP_ADD_SHOW + HELP_LIST_SHOW + HELP_STORE_DATA + HELP_RETRIEVE_DATA;
 
 
 
