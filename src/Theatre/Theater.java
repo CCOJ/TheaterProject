@@ -27,51 +27,93 @@ public class Theater implements Serializable
 		clientList = new ClientList();
 	}
 
+	/**
+	 * Get name of theater
+	 * @return name of theater
+	 */
 	public String getName()
 	{
 		return name;
 	}
 
+	/**
+	 * Set name of theater
+	 * @param name name of theater
+	 */
 	public void setName(String name)
 	{
 		this.name = name;
 	}
 
+	/**
+	 * Get seating capacity of theater
+	 * @return seating capacity of theater
+	 */
 	public int getSeatingCapacity()
 	{
 		return seatingCapacity;
 	}
 
+	/**
+	 * Set seating capacity of theater
+	 * @param seatingCapacity Seating capacity of theater
+	 */
 	public void setSeatingCapacity(int seatingCapacity)
 	{
 		this.seatingCapacity = seatingCapacity;
 	}
 
+	/**
+	 * Get customer list for theater
+	 * @return customerList
+	 */
 	public CustomerList getCustomerList()
 	{
 		return customerList;
 	}
 
+	/**
+	 * Get credit card list for theater
+	 * @return creditCardList
+	 */
 	public CreditCardList getCreditCardList()
 	{
 		return creditCardList;
-	}	
+	}
 
+	/**
+	 * Get client list for theater
+	 * @return clientList
+	 */
 	public ClientList getClientList()
 	{
 		return clientList;
 	}
 
+	/**
+	 * Get show list for theater
+	 * @return showsList
+	 */
 	public ShowList getShowsList()
 	{
 		return showsList;
 	}
 
+	/**
+	 * Add a customer's credit card to credit card list
+	 * @param creditCard credit card object
+	 * @return true if added, false if not
+	 */
 	public boolean addCustomerCreditCard(CreditCard creditCard)
 	{
 		return creditCardList.addCreditCard(creditCard);
 	}
 
+	/**
+	 * Gets customer's credit card using the credit card number
+	 * @param creditCardNumber credit card number
+	 * @return credit card object
+	 */
 	public CreditCard getCustomerCreditCard(String creditCardNumber)
 	{
 		return creditCardList.getCreditCard(creditCardNumber);
@@ -95,9 +137,14 @@ public class Theater implements Serializable
 		return false;
 	}
 
-	public boolean removeCustomerCard(String cardNumber)
+	/**
+	 * Remove the customer credit card by credit card number
+	 * @param creditCardNumber
+	 * @return
+	 */
+	public boolean removeCustomerCard(String creditCardNumber)
 	{
-		return creditCardList.removeCreditCard(cardNumber);
+		return creditCardList.removeCreditCard(creditCardNumber);
 	}
 
 	/**
@@ -116,6 +163,14 @@ public class Theater implements Serializable
 		return false;
 	}
 
+	/**
+	 * Add show to theater
+	 * @param showName name of show
+	 * @param clientID client ID
+	 * @param begDate start date
+	 * @param endDate end date
+	 * @return true if added, false if not
+	 */
 	public boolean addShow(String showName, long clientID, Calendar begDate, Calendar endDate)
 	{
 		//Need to check if date overlaps any other events.
@@ -123,27 +178,20 @@ public class Theater implements Serializable
 		return showsList.addShow(show);
 	}
 
-	public boolean addShow(Show show)
-	{
-		return showsList.addShow(show);
-	}
-
-	public void addClient(Person client)
-	{
-		clientList.addClient((Client) client);
-	}
-
+	/**
+	 * Add client to theater
+	 * @param client client object
+	 * @return true if added, false if didn't
+	 */
 	public boolean addClient(Client client)
 	{
 		return clientList.addClient(client);
 	}
 
-	public void addClient(String name, String address, String phoneNumber)
-	{
-		Person client = new Client(name, address, phoneNumber);
-		clientList.addClient((Client) client);
-	}
-
+	/**
+	 * Add customer to theater
+	 * @param customer customer object
+	 */
 	public void addCustomer(Customer customer)
 	{
 		customerList.addCustomer(customer);
