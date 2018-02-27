@@ -65,6 +65,7 @@ public class CreditCardList implements Serializable
 	{ 
 		creditCards.remove(creditCard);
 	}
+
 	/**
 	 * 
 	 * @param cardNumber
@@ -82,7 +83,12 @@ public class CreditCardList implements Serializable
 		}
 		return false;
 	}
-	
+
+	/**
+	 * Checks if this is the customer's only credit card
+	 * @param cardNumber credit card number
+	 * @return true if only card, false if not
+	 */
 	public boolean isCustomersOnlyCreditCard(String cardNumber)
 	{
 		int totalCards = 0;
@@ -112,8 +118,8 @@ public class CreditCardList implements Serializable
 		return true;
 	}
 	/**
-	 * 
-	 * @param customerID
+	 * Removes all customer cards, used only when customer is removed
+	 * @param customerID customer ID
 	 */
 	public boolean removeAllCustomerCards(long customerID)
 	{
@@ -138,6 +144,12 @@ public class CreditCardList implements Serializable
 		}
 
 	}
+
+	/**
+	 * Checks if the credit card exists
+	 * @param cardNumber credit card number
+	 * @return true if exists, false if not
+	 */
 	public boolean creditCardExists(String cardNumber)
 	{
 		for(int i = 0; i < creditCards.size(); ++i)

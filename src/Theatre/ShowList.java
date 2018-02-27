@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 
 import Utils.DateUtils;
 /**
- * 
+ * ShowList holds show objects and checks for any overlaps.
  * @author Ricky, Noah, Randy
  * 
  */
@@ -20,39 +20,54 @@ public class ShowList implements Serializable{
 		showsList = new ArrayList<Show>();
 	}
 
+	/**
+	 * Get shows list
+	 * @return showsList
+	 */
 	public ArrayList<Show> getShowsList()
 	{
 		return showsList;
 	}
 
+	/**
+	 * Add show to shows list
+	 * @param show show object
+	 * @return true when added, false when not
+	 */
 	public boolean addShow(Show show)
 	{
-		//Check to make sure that dates do not overlap
 		showsList.add(show);
 		return true;
 	}
-	
+
+	/**
+	 * Checks if every show is in the past
+	 * @param clientID client ID
+	 * @return true if they are, false if not
+	 */
 	public boolean isEveryShowListingInPast(long clientID)
 	{
 		for(int i = 0; i < showsList.size(); ++i)
 		{
 			if(showsList.get(i).getClientID() == clientID)
 			{
-				//Calendar today = new GregorianCalendar(); //gets the current time and date
-				//today = DateUtils.setGregorianCalendarToBeginningOfDay(today);
 				Calendar today = DateUtils.getGregorianCalendarStartingTodayAtBeginningOfDay();
 		
 				if(showsList.get(i).getEndDate().getTimeInMillis() >= today.getTimeInMillis()) //if end date of the show is later in the future than right now, then client can't be removed
 				{
-					//System.out.println(showsList.get(i).getEndDate().getTime() + " " + today.getTime());
-					//System.out.println(showsList.get(i).getEndDate().getTimeInMillis() + " " + today.getTimeInMillis());
 					return false;
 				}
 			}
 		} 
 		return true;
 	}
-	
+
+	/**
+	 * Checks if the show overlaps other shows
+	 * @param begDate start date
+	 * @param endDate end date
+	 * @return true if overlap, false if no overlap
+	 */
 	public boolean isShowOverlappingOtherShows(Calendar begDate, Calendar endDate) //returns true if show overlaps other shows
 	{
 		for(int i = 0; i < showsList.size(); ++i)
