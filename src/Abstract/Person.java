@@ -6,8 +6,9 @@ import Utils.ID_Generator;
  * This abstract class will allow for specific kinds of people classes for the 
  * theater project to be created with this class being the first building block
  * 
- * @author Noah
+ * @author Noah, Randy, Ricky
  */
+@SuppressWarnings("serial")
 public abstract class Person implements Serializable
 {
 	protected long uniqueID;
@@ -33,7 +34,7 @@ public abstract class Person implements Serializable
 	 * Gets unique ID for person
 	 * @return uniqueID
 	 */
-	public long getUniqueID()
+	public long getID()
 	{
 		return uniqueID;
 	}
@@ -42,7 +43,7 @@ public abstract class Person implements Serializable
 	 * Set unique ID for person
 	 * @param uniqueID unique ID for person
 	 */
-	public void setUniqueID(long uniqueID)
+	public void setID(long uniqueID)
 	{
 		this.uniqueID = uniqueID;
 	}

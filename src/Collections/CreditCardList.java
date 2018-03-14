@@ -1,22 +1,37 @@
-package Theatre;
+package Collections;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import Theatre.CreditCard;
 /**
  * 
  * @author Noah, Randy, Ricky
  *
  */
+@SuppressWarnings("serial")
 public class CreditCardList implements Serializable
 {
+	private static CreditCardList instance;
 	private ArrayList<CreditCard> creditCards;
 
 	/**
 	 * Private constructor designed for singleton pattern
 	 */
-	public CreditCardList()
+	private CreditCardList()
 	{
 		creditCards = new ArrayList<>();
+	}
+	/**
+	 * 
+	 */
+	public static CreditCardList getInstanceOf()
+	{
+		if(instance == null)
+		{
+			instance = new CreditCardList();
+		}
+		return instance;
 	}
 	/**
 	 * 

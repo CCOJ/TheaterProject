@@ -1,23 +1,39 @@
-package Theatre;
+package Collections;
 
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import Theatre.Customer;
 /**
  * 
- * @author Ricky, Noah, Randy
+ * @author Noah, Randy, Ricky
  *
  */
+@SuppressWarnings("serial")
 public class CustomerList implements Serializable
 {
+	private static CustomerList instance;
 	private ArrayList<Customer> customerList;
 
 	/**
 	 * Private constructor, for singleton pattern
 	 */
-	public CustomerList()
+	private CustomerList()
 	{
 		customerList = new ArrayList<Customer>();
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public static CustomerList getInstanceOf()
+	{
+		if(instance == null)
+		{
+			instance = new CustomerList();
+		}
+		return instance;
 	}
 	/*
 	 * 
@@ -36,7 +52,7 @@ public class CustomerList implements Serializable
 	{
 		for(int i = 0; i < customerList.size(); ++i)
 		{
-			if(customerList.get(i).getUniqueID() == customerID)
+			if(customerList.get(i).getID() == customerID)
 			{
 				return customerList.get(i);
 			}
@@ -62,7 +78,7 @@ public class CustomerList implements Serializable
 	{
 		for(int i = 0; i < customerList.size(); ++i)
 		{
-			if(customerList.get(i).getUniqueID() == customerID)
+			if(customerList.get(i).getID() == customerID)
 			{
 				customerList.remove(i);
 				return true;
@@ -80,7 +96,7 @@ public class CustomerList implements Serializable
 	{
 		for(int i = 0; i < customerList.size(); ++i)
 		{
-			if(customerList.get(i).getUniqueID() == customerID)
+			if(customerList.get(i).getID() == customerID)
 			{
 				return true;
 			}

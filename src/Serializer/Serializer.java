@@ -11,10 +11,13 @@ import Theatre.Theater;
 /**
  * This class saves and loads theater data upon running the program.
  * It also checks for any previous saved data and reloads it.
+ * 
+ * @author Noah, Randy, Ricky
+ * 
  */
+@SuppressWarnings("serial")
 public class Serializer implements Serializable
 {
-
 	/**
 	 * Saves the theater to theater.ser
 	 * @param theater theater object
@@ -49,6 +52,7 @@ public class Serializer implements Serializable
 			FileInputStream fileIn = new FileInputStream("theater.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			Theater theater = (Theater) in.readObject();
+			in.close();
 			return theater;
 		}
 		catch (IOException i)
@@ -75,12 +79,16 @@ public class Serializer implements Serializable
 			FileInputStream fileIn = new FileInputStream("theater.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			//Theater theater = (Theater) in.readObject();
+			in.close();
 			return true;
 		}
 		catch (IOException i)
 		{
 			//i.printStackTrace();
 			return false;
+		}
+		finally
+		{
 		}
 	}
 }

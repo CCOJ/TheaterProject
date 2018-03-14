@@ -1,11 +1,11 @@
 package Main;
 
 import Main.Controller;
-import Utils.Strings;
-
 /**
  * This class is the starting point of the application and simply starts 
  * itself to start the controller. Keeps the controller less cluttered.
+ * 
+ * @author Noah, Randy, Ricky
  * 
  */
 public class Runner
@@ -30,6 +30,6 @@ public class Runner
 	{
 		Controller controller = new Controller();
 		controller.run();
-		System.out.println(Strings.NOTIFICATION_APPLICATION_CLOSED);
+		//System.out.println(Strings.NOTIFICATION_APPLICATION_CLOSED);
 	}
 }

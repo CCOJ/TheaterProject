@@ -1,23 +1,34 @@
-package Theatre;
+package Collections;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
+import Theatre.Show;
 import Utils.DateUtils;
 /**
  * ShowList holds show objects and checks for any overlaps.
- * @author Ricky, Noah, Randy
+ * @author Noah, Randy, Ricky
  * 
  */
+@SuppressWarnings("serial")
 public class ShowList implements Serializable{
 
+	private static ShowList instance;
 	private ArrayList<Show> showsList;
 	
-	public ShowList()
+	private ShowList()
 	{
 		showsList = new ArrayList<Show>();
+	}
+	
+	public static ShowList getInstanceOf()
+	{
+		if(instance == null)
+		{
+			instance = new ShowList();
+		}
+		return instance;
 	}
 
 	/**
@@ -45,7 +56,7 @@ public class ShowList implements Serializable{
 	 * @param clientID client ID
 	 * @return true if they are, false if not
 	 */
-	public boolean isEveryShowListingInPast(long clientID)
+	public boolean isEveryShowListingInClientsPast(long clientID)
 	{
 		for(int i = 0; i < showsList.size(); ++i)
 		{

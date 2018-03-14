@@ -1,7 +1,13 @@
 package Theatre;
 
 import java.io.Serializable;
-
+/**
+ * 
+ * 
+ * @author Noah, Randy, Ricky
+ *
+ */
+@SuppressWarnings("serial")
 public class CreditCard implements Serializable {
 
 	private String creditCardNumber;

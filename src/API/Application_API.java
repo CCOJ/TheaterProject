@@ -3,23 +3,26 @@ package API;
  * This interface contains the basic functionality of 
  * the application
  * 
- * @author Ricky
+ * @author Noah, Randy, Ricky
  *
  */
 public interface Application_API
 {
 	/**
 	 * Exit application
+	 * @return 
 	 */
-	public void exitApplication();
+	public boolean exitApplication();
 
 	/**
 	 * Add client to client list
+	 * @return 
 	 */
 	public void addClient();
 
 	/**
 	 * Remove client from client list
+	 * @return 
 	 */
 	public void removeClient();
 
@@ -67,7 +70,7 @@ public interface Application_API
 	 * Serialize data
 	 * @return true if saved, false if not
 	 */
-	public boolean storeData();
+	public void storeData();
 
 	/**
 	 * Deserialize data
@@ -76,6 +79,14 @@ public interface Application_API
 
 	/**
 	 * Returns information for help information
+	 * @return 
 	 */
 	public void help();
+	
+	public void sellRegularTickets();
+	public void sellAdvanceTickets();
+	public void sellStudentAdvanceTickets();
+	public void payClient();
+	public void printAllTicketsForGivenDay();
+	
 }

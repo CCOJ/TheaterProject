@@ -2,7 +2,12 @@ package Utils;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
+/**
+ * 
+ * 
+ * @author Noah, Randy, Ricky
+ *
+ */
 public class DateUtils
 {
 	/**

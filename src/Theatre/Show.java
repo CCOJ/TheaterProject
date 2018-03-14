@@ -8,9 +8,10 @@ import java.util.Calendar;
  * Show holds information of show name, client ID, and period (range of dates)
  * of the show playing.
  *
- * @author Ricky, Noah, Randy
+ * @author Noah, Randy, Ricky
  *
  */
+@SuppressWarnings("serial")
 public class Show implements Serializable
 {
 	private String showName;

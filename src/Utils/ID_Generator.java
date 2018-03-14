@@ -1,9 +1,15 @@
 package Utils;
-
+/**
+ * 
+ * 
+ * @author Noah, Randy, Ricky
+ * 
+ */
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@SuppressWarnings("serial")
 public class ID_Generator implements Serializable
 {
 	public static Long getUniqueGeneratedID()

@@ -1,18 +1,14 @@
 package Utils;
 
-import java.util.Date;
-
 //import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
 import java.util.Scanner;
 
-import javax.xml.crypto.Data;
 /**
  * This class is called for user input. It will do error checks on the data 
  * to make sure proper input is used. (EG - Asking for int and receiving a 
  * character instead)
  * 
- * @author Ricky
+ * @author Noah, Randy, Ricky
  *
  */
 public class InputUtils

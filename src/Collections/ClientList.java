@@ -1,22 +1,24 @@
-package Theatre;
+package Collections;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import Theatre.Client;
 
 /**
  * 
- * @author Ricky, Noah, Randy
+ * @author Noah, Randy, Ricky
  *
  */
+@SuppressWarnings("serial")
 public class ClientList implements Serializable
 {
+	private static ClientList instance;
 	private ArrayList<Client> clientList;
 
-	public ClientList()
+	private ClientList()
 	{
 		clientList = new ArrayList<Client>();
 	}
-
 	/**
 	 * Gets the list of clients
 	 * @return clientList
@@ -24,6 +26,15 @@ public class ClientList implements Serializable
 	public ArrayList<Client> getClientList()
 	{
 		return clientList;
+	}
+	
+	public static ClientList getInstanceOf()
+	{
+		if(instance == null)
+		{
+			instance = new ClientList();
+		}
+		return instance;
 	}
 
 	/**
