@@ -14,8 +14,6 @@ public abstract class Ticket
 	private String type;
 	private double price;
 	
-	
-	
 	public Ticket(String date, String type, double price)
 	{
 		serialNumber = ID_Generator.getUniqueGeneratedID();
@@ -23,5 +21,4 @@ public abstract class Ticket
 		this.type = type;
 		this.price = price;
 	}
-	
 }

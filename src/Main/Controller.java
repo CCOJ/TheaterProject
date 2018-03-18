@@ -95,7 +95,17 @@ public class Controller implements Application_API
 						break;
 			case 12:	retrieveData();
 						break;
-			case 13:	help();
+			case 13:	sellRegularTickets();
+						break;
+			case 14:	sellAdvanceTickets();
+						break;
+			case 15:	sellStudentAdvanceTickets();
+						break;
+			case 16:	payClient();
+						break;
+			case 17:	printAllTicketsForGivenDay();
+						break;
+			case 18:	help();
 						break;
 			default:	cL_Gui.displaySystemNotify(Strings.ERROR_SELECTION_NOT_IN_RANGE);
 		}
