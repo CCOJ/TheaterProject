@@ -12,7 +12,9 @@ public class Strings
 												"Remove Customer", "Add Credit Card", "Remove Credit Card",	"List All Customers", 
 												"Add a Show or Play", "List All Shows", "Store Data", "Retrieve Data", "Help"};
 
-	//System Strings
+	/**
+	 * Error messages
+	 */
 	public static final String ERROR_SELECTION_NOT_IN_RANGE =  "ERROR: Selection input not within proper range";
 	public static final String ERROR_BAD_INPUT = "ERROR: Input value not within range";
 	public static final String ERROR_BAD_INPUT_YES_NO = "ERROR: Input value must be: Y/N";
@@ -22,6 +24,12 @@ public class Strings
 	public static final String ERROR_BAD_INT_INPUT = "ERROR: Value must be an integer";
 	public static final String ERROR_CLIENT_ID_NOT_FOUND = "ERROR: Client ID not found";
 	public static final String ERROR_CUSTOMER_ID_NOT_FOUND = "ERROR: Customer ID not found";
+	public static final String ERROR_CREDIT_CARD_NOT_FOUND = "ERROR: Credit card not found";
+	public static final String ERROR_BAD_DATE_INPUT = "ERROR: Invalid date must be: YYYY/MM/DD";
+
+	/**
+	 * Header messages
+	 */
 	public static final String HEADER_ADD_CLIENT = "Add a Client:";
 	public static final String ERROR_DESERIALIZING_DATA = "Error: Deserialization unsuccessful.";
 	public static final String HEADER_ADD_SHOW = "Add a Show:";
@@ -34,6 +42,10 @@ public class Strings
 	public static final String HEADER_REMOVE_CUSTOMER = "Remove a Customer:";
 	public static final String HEADER_REMOVE_CLIENT = "Remove a Client";
 	public static final String MESSAGE_WELCOME = "Welcome";
+
+	/**
+	 * Notification messages
+	 */
 	public static final String NOTIFICATION_NO_CREDIT_CARDS_REMOVED = "No Credit Cards were able to be removed";
 	public static final String NOTIFICATION_NO_PREVIOUS_DATA_FOUND = "No previous data found. Loading new session.";
 	public static final String NOTIFICATION_CUSTOMER_HAS_ONLY_ONE_CARD = "Customer only has one credit card";
@@ -65,6 +77,11 @@ public class Strings
 	public static final String NOTIFICATION_CLIENT_DNE = "Client does not exist";
 	public static final String NOTIFICATION_CREDIT_CARD_DNE = "Credit Card does not exist";
 	public static final String NOTIFICATION_CLOSED_FAILED_TO_SERIALIZE = "Closed application successfully. Failed to Serialize.";
+	public static final String NOTIFICATION_EXTRA_MESSAGE = "Must show valid student id.";
+
+	/**
+	 * Prompt messages
+	 */
 	public static final String PROMPT_FOR_NAME = "Please enter a name:";
 	public static final String PROMPT_FOR_ADDRESS = "Please enter an address:";	
 	public static final String PROMPT_FOR_PHONE_NUMBER = "Please enter a phone number: xxx-xxx-xxxx";
@@ -79,16 +96,19 @@ public class Strings
 	public static final String PROMPT_FOR_END_YEAR = "Please enter an ending year";
 	public static final String PROMPT_FOR_END_MONTH = "Please enter an ending month";
 	public static final String PROMPT_FOR_END_DAY = "Please enter an ending day";
+	public static final String PROMPT_FOR_DATE = "Please input show data: YYY/MM/DD";
 	public static final String PROMPT_MENU_OPTION = "input the numbered option you would like to execute";
 	public static final String PROMPT_RETRIEVE_DATA = "Would you like to retrieve previous data? Y/N";
 	public static final String PROMPT_FOR_WHOLE_BEGIN_DATE ="Please enter a beginning date: YYYY/MM/DD";
 	public static final String PROMPT_FOR_WHOLE_END_DATE = "Please enter an ending date: YYYY/MM/DD";
+	public static final String PROMPT_FOR_TICKET_QUANTITY = "Please input ticket quantity: ";
 	//Miscellaneous
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";
 	public static final String CINEMA_NAME = "Cinema 10";
 
-	//Help menu info
-
+	/**
+	 * Help messages
+	 */
 	public static final String HELP_EXIT_APPLICATION = "0. Exit Application - Exits the theater program and saves all information" +
 														"from customer list, client list, credit card list, and show list.";
 	public static final String HELP_ADD_CLIENT = "1. Add Client - Prompts for name, address, phone number. An id is generated as well.";
@@ -111,7 +131,6 @@ public class Strings
 												HELP_LIST_CUSTOMER, HELP_ADD_SHOW, HELP_LIST_SHOW, 
 												HELP_STORE_DATA, HELP_RETRIEVE_DATA};
 
-	public static final String NOTIFICATION_EXTRA_MESSAGE = "Must show valid student id.";
 
 
 

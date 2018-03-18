@@ -87,14 +87,12 @@ public class InputUtils
 	public String getStringInput()
 	{
 		String input = scanner.nextLine();
-		
-		if(input.length() == 0)
-		{
+
+		if (input.length() == 0) {
 			return null;
 		}
 		return input;
 	}
-	
 
 	/**
 	 * Ensures phone number input is 10 digits long and numbers only.

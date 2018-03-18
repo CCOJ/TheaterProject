@@ -448,6 +448,70 @@ public class CL_Gui
 	}
 
 	/**
+	 * Sells tickets and prompts for quantity, customer ID, card number, and date
+	 * Works for all three tickets: regular, advance, and student advance
+	 * @return
+	 */
+	public Map<String, Object> sellTickets() {
+		Map<String, Object> userInput = new HashMap<String, Object>();
+
+		int quantity;
+		long customerID;
+		String cardNumber;
+		int[] date;
+
+		//Quantity prompt
+		displayPrompt(Strings.PROMPT_FOR_TICKET_QUANTITY);
+		quantity = inputUtils.getIntInput();
+		if (quantity < 0) {
+			displaySystemNotify(Strings.ERROR_BAD_INT_INPUT);
+			return null;
+		} else
+		{
+			userInput.put("quantity", quantity);
+		}
+
+		//Client ID prompt
+		displayPrompt(Strings.PROMPT_FOR_CUSTOMER_ID);
+		customerID = inputUtils.getLongInput();
+		if (customerID < 0)
+		{
+			displaySystemNotify(Strings.ERROR_BAD_LONG_INPUT);
+			return null;
+		} else
+		{
+			userInput.put("customerID", customerID);
+		}
+
+		//cardNumber
+		displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
+		cardNumber = inputUtils.getStringInput();
+		if (cardNumber == null)
+		{
+			displaySystemNotify(Strings.ERROR_BAD_INPUT);
+			return null;
+		} else
+		{
+			userInput.put("cardNumber", cardNumber);
+		}
+
+		//date
+		displayPrompt(Strings.PROMPT_FOR_DATE);
+		date = inputUtils.getDateInput(inputUtils.getStringInput());
+		if (date == null)
+		{
+			displaySystemNotify(Strings.ERROR_BAD_DATE_INPUT);
+			return null;
+		} else
+		{
+			userInput.put("date", date);
+		}
+
+		//returns userInput to Controller
+		return userInput;
+	}
+
+	/**
 	 * Display welcome message, list of options, and getting user input. 
 	 * 
 	 */

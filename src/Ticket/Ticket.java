@@ -13,7 +13,7 @@ public abstract class Ticket
 	private String date;
 	private String type;
 	private double price;
-	
+
 	public Ticket(String date, String type, double price)
 	{
 		serialNumber = ID_Generator.getUniqueGeneratedID();

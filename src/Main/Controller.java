@@ -508,18 +508,10 @@ public class Controller implements Application_API
 			cL_Gui.displaySystemNotify(Strings.ERROR_DESERIALIZING_DATA);
 		}
 	}
-	/**
-	 * Displays main menu options, gets the input, then checks the command switch for instruction
-	 * 
-	 */
 	@Override
-	public void help()
+	public void sellRegularTickets()
 	{
-		cL_Gui.displayHelp();
-	}
-	@Override
-	public void sellRegularTickets() {
-		// TODO Auto-generated method stub
+	Map<String, Object> userInput = cL_Gui.sellRegularTickets();
 		
 	}
 	@Override
@@ -541,5 +533,14 @@ public class Controller implements Application_API
 	public void printAllTicketsForGivenDay() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	/**
+	 * Displays main menu options, gets the input, then checks the command switch for instruction
+	 *
+	 */
+	public void help()
+	{
+		cL_Gui.displayHelp();
 	}
 }
