@@ -12,6 +12,7 @@ import Theatre.CreditCard;
 import Theatre.Customer;
 import Theatre.Show;
 import Theatre.Theater;
+import Ticket.RegularTicket;
 import Utils.Strings;
 /**
  * This class is the main controller or the application. It will call on the 
@@ -508,11 +509,45 @@ public class Controller implements Application_API
 			cL_Gui.displaySystemNotify(Strings.ERROR_DESERIALIZING_DATA);
 		}
 	}
-	@Override
-	public void sellRegularTickets()
-	{
-	Map<String, Object> userInput = cL_Gui.sellRegularTickets();
-		
+
+	/**
+	 * This will sell regular Tickets. It also checks to make sure there is a valid
+	 * customer ID, credit card number, and show date.
+	 *
+	 * This updates customer that attaches tickets to its customer object.
+	 *
+	 * This updates client that updates balance to its customer object.
+	 */
+	public void sellRegularTickets() {
+		Map<String, Object> userInput = cL_Gui.sellTickets();
+
+		boolean valid = true;
+
+		int quantity = (int) userInput.get("quantity");
+		long customerID = (long) userInput.get("customerID");
+		String cardNumber = (String) userInput.get("cardNumber");
+		int[] date = (int[]) userInput.get("date");
+
+		//Checks for customer ID
+		if (!theater.getCustomerList().customerExists(customerID)) {
+			cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
+			valid = false;
+		}
+
+		//Checks for cardNumber
+		if (!theater.getCreditCardList().creditCardExists(cardNumber)) {
+			cL_Gui.displaySystemNotify(Strings.ERROR_CREDIT_CARD_NOT_FOUND);
+			valid = false;
+		}
+
+		//Checks for date of show
+
+		//Sells tickets if valid
+		if (valid) {
+			for (int sell = 0; sell < quantity; sell++) {
+				RegularTicket regularTicket = new RegularTicket(); //TODO: FINISH MAKING TICKET OBJECTS
+			}
+		}
 	}
 	@Override
 	public void sellAdvanceTickets() {
