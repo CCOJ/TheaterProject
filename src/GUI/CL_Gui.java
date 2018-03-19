@@ -446,6 +446,10 @@ public class CL_Gui
 			displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
 			return null;
 		}
+		else
+		{
+			userInput.put("price", price);
+		}
 
 		return userInput;
 	}

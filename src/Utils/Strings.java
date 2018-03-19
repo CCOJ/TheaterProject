@@ -10,7 +10,8 @@ public class Strings
 {
 	public static final String[] ALL_API_CALLS = {"Exit Application", "Add Client", "Remove Client", "List All Clients", "Add Customer",
 												"Remove Customer", "Add Credit Card", "Remove Credit Card",	"List All Customers", 
-												"Add a Show or Play", "List All Shows", "Store Data", "Retrieve Data", "Help"};
+												"Add a Show or Play", "List All Shows", "Store Data", "Retrieve Data", "Sell Regular Tickets",
+												"Sell Advance Tickets", "Sell Student Advance Tickets", "Pay Client", "Print all tickets for day", "Help"};
 
 	/**
 	 * Error messages
