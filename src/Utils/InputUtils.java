@@ -57,7 +57,12 @@ public class InputUtils
 	{
 		return Math.round(price*100.0)/100.0;
 	}
-	
+
+	/**
+	 * Retrieves a String and converts to a Date if possible
+	 * @param strDate String format of date
+	 * @return the date as int[]
+	 */
 	public int[] getDateInput(String strDate)
 	{
 		int[] date = new int[3];
@@ -78,6 +83,10 @@ public class InputUtils
 		
 	}
 
+	/**
+	 * Retrieves long input from user
+	 * @return long input, or -1 if there is an exception
+	 */
 	public long getLongInput()
 	{
 		try
@@ -92,6 +101,10 @@ public class InputUtils
 		}
 	}
 
+	/**
+	 * Retrieves yes or no input
+	 * @return YES if yes, NO if no, and null if invalid input
+	 */
 	public String getYesOrNo()
 	{
 		String input = scanner.nextLine();
@@ -110,6 +123,10 @@ public class InputUtils
 		}
 	}
 
+	/**
+	 * Retrives string input and ensures there is a valid input
+	 * @return the string input
+	 */
 	public String getStringInput()
 	{
 		String input = scanner.nextLine();
@@ -143,11 +160,18 @@ public class InputUtils
 		}
 	}
 
+	/**
+	 * Prompts user to press enter to continue
+	 */
 	public void enterToContinue()
 	{
 		scanner.nextLine();
 	}
 
+	/**
+	 * Prompts user to press enter to continue, with passed in message
+	 * @param message
+	 */
 	public void enterToContinue(String message)
 	{
 		System.out.println(message);
