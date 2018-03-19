@@ -536,6 +536,11 @@ public class CL_Gui
 		return userInput;
 	}
 
+	public void payClient()
+	{
+		displayPageHeader(Strings.HEADER_PAY_CLIENT);
+	}
+
 	/**
 	 * Display welcome message, list of options, and getting user input. 
 	 * 

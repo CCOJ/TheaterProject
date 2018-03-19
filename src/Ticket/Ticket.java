@@ -29,6 +29,77 @@ public abstract class Ticket
 	}
 
 	/**
+	 * Gets the serial number of the ticket
+	 * @return serial number
+	 */
+	public long getSerialNumber()
+	{
+		return serialNumber;
+	}
+
+	/**
+	 * Gets date of ticket
+	 * @return date
+	 */
+	public Calendar getDate()
+	{
+		return date;
+	}
+
+	/**
+	 * Return type of ticket
+	 * @return ticket type
+	 */
+	public String getType()
+	{
+		return type;
+	}
+
+	/**
+	 * Return price of ticket
+	 * @return price of ticket
+	 */
+	public double getPrice()
+	{
+		return price;
+	}
+
+	/**
+	 * Set serial number for ticket
+	 * @param serialNumber new serial number
+	 */
+	public void setSerialNumber(long serialNumber)
+	{
+		this.serialNumber = serialNumber;
+	}
+
+	/**
+	 * Set date for ticket
+	 * @param date new date
+	 */
+	public void setDate(Calendar date)
+	{
+		this.date = date;
+	}
+
+	/**
+	 * Set type for ticket
+	 * @param type new type
+	 */
+	public void setType(String type)
+	{
+		this.type = type;
+	}
+
+	/**
+	 * Set price for ticket
+	 * @param price new price
+	 */
+	public void setPrice(double price)
+	{
+		this.price = price;
+	}
+	/**
 	 * Converts the date to string
 	 * @return string format of the ticket's date for showing
 	 */

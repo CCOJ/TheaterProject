@@ -12,7 +12,7 @@ import Abstract.Person;
 @SuppressWarnings("serial")
 public class Client extends Person implements Serializable
 {
-	private int balance;
+	private double balance;
 	/**
 	 * A client object is created with given inputs, unique ID, and balance set to 0.
 	 * 
@@ -37,11 +37,28 @@ public class Client extends Person implements Serializable
 	 * Set the client's balance
 	 * @param balance Client's balance
 	 */
-	public void setBalance(int balance)
+	public void setBalance(double balance)
 	{
 		this.balance = balance;
 	}
-	
+
+	/**
+	 * Add to client's balance
+	 * @param revenue the amount of money earned
+	 */
+	public void addBalance(double revenue)
+	{
+		balance += revenue;
+	}
+
+	/**
+	 * Pay to client with the balance stored
+	 * @param paid amount to pay to client
+	 */
+	public void payClient(double paid)
+	{
+		balance -= paid;
+	}
     public String toString()
     {
 		return "id:" + uniqueID + ", name:" + name + ", address:" + address + 

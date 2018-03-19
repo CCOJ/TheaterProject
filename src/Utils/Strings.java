@@ -44,6 +44,10 @@ public class Strings
 	public static final String HEADER_REMOVE_CUSTOMER = "Remove a Customer:";
 	public static final String HEADER_REMOVE_CLIENT = "Remove a Client";
 	public static final String MESSAGE_WELCOME = "Welcome";
+	public static final String HEADER_SELL_REGULAR_TICKET = "Sell Regular Ticket:";
+	public static final String HEADER_SELL_ADVANCE_TICKET = "Sell Advance Ticket:";
+	public static final String HEADER_SELL_STUDENT_ADVANCE_TICKET = "Sell Student Advance Ticket:";
+	public static final String HEADER_PAY_CLIENT = "Pay Client:";
 
 	/**
 	 * Notification messages

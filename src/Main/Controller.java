@@ -547,21 +547,24 @@ public class Controller implements Application_API
 	 */
 	public void sellRegularTickets()
 	{
+		cL_Gui.displayPageHeader(Strings.HEADER_SELL_REGULAR_TICKET);
 		Map<String, Object> userInput = cL_Gui.sellTickets();
 
 		int quantity = (int) userInput.get("quantity");
 		long customerID = (long) userInput.get("customerID");
 		String cardNumber = (String) userInput.get("cardNumber");
 		Calendar date = (Calendar) userInput.get("date");
-		double price;
 
 		//Sells tickets if valid
 		if (validTickets(customerID, cardNumber, date))
 		{
-			price = theater.getShowsList().getShow(date).getPrice();
+			Show show = theater.getShowsList().getShow(date);
+			Client client = theater.getClientList().getClient(show.getClientID());
+
 			for (int sell = 0; sell < quantity; sell++)
 			{
-				RegularTicket regularTicket = new RegularTicket(date, price);
+				RegularTicket ticket = new RegularTicket(date, show.getPrice()); //Create ticket
+				client.addBalance(ticket.getPrice()/2); 					 //Add revenue to client
 			}
 		}
 	}
@@ -570,21 +573,24 @@ public class Controller implements Application_API
 	 * Sells advanced tickets 70% of regular tickets
 	 */
 	public void sellAdvanceTickets() {
+		cL_Gui.displayPageHeader(Strings.HEADER_SELL_ADVANCE_TICKET);
 		Map<String, Object> userInput = cL_Gui.sellTickets();
 
 		int quantity = (int) userInput.get("quantity");
 		long customerID = (long) userInput.get("customerID");
 		String cardNumber = (String) userInput.get("cardNumber");
 		Calendar date = (Calendar) userInput.get("date");
-		double price;
 
 		//Sells tickets if valid
 		if (validTickets(customerID, cardNumber, date))
 		{
-			price = theater.getShowsList().getShow(date).getPrice();
+			Show show = theater.getShowsList().getShow(date);
+			Client client = theater.getClientList().getClient(show.getClientID());
+
 			for (int sell = 0; sell < quantity; sell++)
 			{
-				AdvanceTicket advanceTicket = new AdvanceTicket(date, price);
+				AdvanceTicket ticket = new AdvanceTicket(date, show.getPrice()); //Create ticket
+				client.addBalance(ticket.getPrice()/2);					 //Add revenue to client
 			}
 		}
 	}
@@ -593,6 +599,7 @@ public class Controller implements Application_API
 	 * Sells student advance tickets 50% of regular tickets
 	 */
 	public void sellStudentAdvanceTickets() {
+		cL_Gui.displayPageHeader(Strings.HEADER_SELL_STUDENT_ADVANCE_TICKET);
 		Map<String, Object> userInput = cL_Gui.sellTickets();
 
 		int quantity = (int) userInput.get("quantity");
@@ -604,18 +611,25 @@ public class Controller implements Application_API
 		//Sells tickets if valid
 		if (validTickets(customerID, cardNumber, date))
 		{
-			price = theater.getShowsList().getShow(date).getPrice();
+			Show show = theater.getShowsList().getShow(date);
+			Client client = theater.getClientList().getClient(show.getClientID());
+
 			for (int sell = 0; sell < quantity; sell++)
 			{
-				StudentAdvanceTicket studentAdvanceTicket = new StudentAdvanceTicket(date, price);
+				StudentAdvanceTicket ticket = new StudentAdvanceTicket(date, show.getPrice()); //Create ticket
+				client.addBalance(ticket.getPrice()/2);								   //Add revenue to client
 			}
 		}
 	}
-	@Override
+
+	/**
+	 * Pays the client, but ensures paid amount is no more than balance;
+	 */
 	public void payClient() {
-		// TODO Auto-generated method stub
+
 		
 	}
+
 	@Override
 	public void printAllTicketsForGivenDay() {
 		// TODO Auto-generated method stub
