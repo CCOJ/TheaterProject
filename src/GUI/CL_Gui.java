@@ -365,6 +365,11 @@ public class CL_Gui
 		}
 	}
 
+	/**
+	 * Adds a show or play with given inputs of
+	 * showName, beginning date, end date, client ID, and price
+	 * @return Hashmap of inputs for show or play
+	 */
 	public Map<String, Object> addShowOrPlay()
 	{
 		Map<String, Object> userInput = new HashMap<String, Object>();
@@ -372,9 +377,11 @@ public class CL_Gui
 		String showName;
 		int[] inputBegDate, inputEndDate;
 		long clientID;
+		double price;
 	
 		displayPageHeader(Strings.HEADER_ADD_SHOW);
-	
+
+		//Show name
 		displayPrompt(Strings.PROMPT_FOR_SHOW_NAME);
 		showName = inputUtils.getStringInput();
 		if(showName == null)
@@ -387,7 +394,8 @@ public class CL_Gui
 		{
 			userInput.put("showName", showName);
 		}
-	
+
+		//Client ID
 		displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
 		clientID = inputUtils.getLongInput();
 		if(clientID < 0)
@@ -400,7 +408,8 @@ public class CL_Gui
 		{
 			userInput.put("clientID", clientID);
 		}
-		
+
+		//Beginning date
 		displayPrompt(Strings.PROMPT_FOR_WHOLE_BEGIN_DATE);
 		inputBegDate = inputUtils.getDateInput(inputUtils.getStringInput());
 		if(inputBegDate == null)
@@ -413,7 +422,8 @@ public class CL_Gui
 		{
 			userInput.put("inputBegDate", inputBegDate);
 		}
-		
+
+		//End date
 		displayPrompt(Strings.PROMPT_FOR_WHOLE_END_DATE);
 		inputEndDate = inputUtils.getDateInput(inputUtils.getStringInput());
 		if(inputEndDate == null)
@@ -426,7 +436,17 @@ public class CL_Gui
 		{
 			userInput.put("inputEndDate", inputEndDate);
 		}
-		
+
+		//Price
+		displayPrompt(Strings.PROMPT_FOR_PRICE);
+		price = inputUtils.getPriceInput(inputUtils.getDoubleInput());
+		if (price < 0)
+		{
+			displaySystemNotify(Strings.ERROR_BAD_INPUT);
+			displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
+			return null;
+		}
+
 		return userInput;
 	}
 

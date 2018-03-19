@@ -429,6 +429,7 @@ public class Controller implements Application_API
 			int[] inputBegDate = (int[]) userInput.get("inputBegDate");
 			int[] inputEndDate = (int[]) userInput.get("inputEndDate");
 			long clientID = (long) userInput.get("clientID");
+			double price = (double) userInput.get("price");
 
 			if(theater.getClientList().clientExists(clientID)) //Checking that the clientID exists in the system
 			{
@@ -438,7 +439,7 @@ public class Controller implements Application_API
 
 				if(!theater.getShowsList().isShowOverlappingOtherShows(begDate, endDate)) //Check for overlapping day. 1/1/2018 00:00:00 - 1/4/2018 23:59:59
 				{
-					Show show = new Show(showName, clientID, begDate, endDate);
+					Show show = new Show(showName, clientID, begDate, endDate, price);
 					if(theater.getShowsList().addShow(show))
 					{
 						cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SHOW_ADDED_SUCCESS);

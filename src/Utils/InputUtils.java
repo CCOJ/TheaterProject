@@ -1,6 +1,5 @@
 package Utils;
 
-//import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import java.util.Scanner;
 
 /**
@@ -30,6 +29,33 @@ public class InputUtils
 			//System.out.println(nfe);
 			return -1;
 		}
+	}
+
+	/**
+	 * Returns user input as double
+	 * @return user double selection if no exceptions, -1.0 if there is bad input
+	 */
+	public double getDoubleInput()
+	{
+		try
+		{
+			String input = scanner.nextLine();
+			return Double.parseDouble(input);
+		}
+		catch(NumberFormatException nfe)
+		{
+			return -1.0;
+		}
+	}
+
+	/**
+	 * Return price in format $x.xx
+	 * @param price double input
+	 * @return price in format $x.xx
+	 */
+	public double getPriceInput(Double price)
+	{
+		return Math.round(price*100.0)/100.0;
 	}
 	
 	public int[] getDateInput(String strDate)

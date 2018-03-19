@@ -147,6 +147,6 @@ public class Show implements Serializable
 	public String toString()
 	{
 		return "showName:" + showName + ", clientID:" + clientID +
-				", dates:" + showingDatesToString();
+				", dates:" + showingDatesToString() + ", price: $" + getPrice();
 	}
 }

@@ -103,6 +103,8 @@ public class Strings
 	public static final String PROMPT_FOR_WHOLE_BEGIN_DATE ="Please enter a beginning date: YYYY/MM/DD";
 	public static final String PROMPT_FOR_WHOLE_END_DATE = "Please enter an ending date: YYYY/MM/DD";
 	public static final String PROMPT_FOR_TICKET_QUANTITY = "Please input ticket quantity: ";
+	public static final String PROMPT_FOR_PRICE = "Please input price: x.xx";
+
 	//Miscellaneous
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";
 	public static final String CINEMA_NAME = "Cinema 10";
