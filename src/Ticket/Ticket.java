@@ -28,6 +28,10 @@ public abstract class Ticket
 		this.price = price;
 	}
 
+	/**
+	 * Converts the date to string
+	 * @return string format of the ticket's date for showing
+	 */
 	public String DateToString()
 	{
 		StringBuilder strBuild = new StringBuilder();
@@ -40,6 +44,10 @@ public abstract class Ticket
 		return dateString;
 	}
 
+	/**
+	 * Converts the ticket object to a string format
+	 * @return ticket information
+	 */
 	public String toString() {
 		return type + " ticket; $" + price + "; date sold " + DateToString();
 	}
