@@ -518,7 +518,7 @@ public class Controller implements Application_API
 	 *
 	 * This updates client that updates balance to its customer object.
 	 */
-	public boolean validTickets(long customerID, String cardNumber, int[] date) {
+	public boolean validTickets(long customerID, String cardNumber, Calendar date) {
 		//Checks for customer ID
 		if (!theater.getCustomerList().customerExists(customerID)) {
 			cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
@@ -546,12 +546,12 @@ public class Controller implements Application_API
 		int quantity = (int) userInput.get("quantity");
 		long customerID = (long) userInput.get("customerID");
 		String cardNumber = (String) userInput.get("cardNumber");
-		int[] date = (int[]) userInput.get("date");
+		Calendar date = (Calendar) userInput.get("date");
 
 		//Sells tickets if valid
 		if (validTickets(customerID, cardNumber, date)) {
 			for (int sell = 0; sell < quantity; sell++) {
-				RegularTicket regularTicket = new RegularTicket(); //TODO: FINISH MAKING TICKET OBJECTS
+				RegularTicket regularTicket = new RegularTicket(date,); //TODO: FINISH MAKING TICKET OBJECTS
 			}
 		}
 	}

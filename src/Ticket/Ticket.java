@@ -2,6 +2,8 @@ package Ticket;
 
 import Utils.ID_Generator;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 
 /***
@@ -24,5 +26,21 @@ public abstract class Ticket
 		this.date = date;
 		this.type = type;
 		this.price = price;
+	}
+
+	public String DateToString()
+	{
+		StringBuilder strBuild = new StringBuilder();
+		String dateString;
+
+		LocalDate localStartDate = this.date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		strBuild.append(localStartDate.getYear() + "/" + localStartDate.getMonthValue() + "/"+ localStartDate.getDayOfMonth());
+		dateString = strBuild.toString();
+
+		return dateString;
+	}
+
+	public String toString() {
+		return type + " ticket; $" + price + "; date sold " + DateToString();
 	}
 }

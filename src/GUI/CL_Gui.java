@@ -1,8 +1,7 @@
 package GUI;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 import Collections.ClientList;
 import Collections.CreditCardList;
 import Collections.CustomerList;
@@ -458,7 +457,8 @@ public class CL_Gui
 		int quantity;
 		long customerID;
 		String cardNumber;
-		int[] date;
+		int[] dateInput;
+		Calendar date;
 
 		//Quantity prompt
 		displayPrompt(Strings.PROMPT_FOR_TICKET_QUANTITY);
@@ -483,7 +483,7 @@ public class CL_Gui
 			userInput.put("customerID", customerID);
 		}
 
-		//cardNumber
+		//cardNumber prompt
 		displayPrompt(Strings.PROMPT_FOR_CREDIT_CARD_NUMBER);
 		cardNumber = inputUtils.getStringInput();
 		if (cardNumber == null)
@@ -495,15 +495,16 @@ public class CL_Gui
 			userInput.put("cardNumber", cardNumber);
 		}
 
-		//date
+		//date prompt and converts input to Calendar type
 		displayPrompt(Strings.PROMPT_FOR_DATE);
-		date = inputUtils.getDateInput(inputUtils.getStringInput());
-		if (date == null)
+		dateInput = inputUtils.getDateInput(inputUtils.getStringInput());
+		if (dateInput == null)
 		{
 			displaySystemNotify(Strings.ERROR_BAD_DATE_INPUT);
 			return null;
 		} else
 		{
+			date = new GregorianCalendar(dateInput[0], dateInput[1], dateInput[2], 0, 0, 0);
 			userInput.put("date", date);
 		}
 
