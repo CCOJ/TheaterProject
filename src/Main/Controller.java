@@ -518,43 +518,55 @@ public class Controller implements Application_API
 	 *
 	 * This updates client that updates balance to its customer object.
 	 */
+	public boolean validTickets(long customerID, String cardNumber, int[] date) {
+		//Checks for customer ID
+		if (!theater.getCustomerList().customerExists(customerID)) {
+			cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
+			return false;
+		}
+
+		//Checks for cardNumber
+		if (!theater.getCreditCardList().creditCardExists(cardNumber)) {
+			cL_Gui.displaySystemNotify(Strings.ERROR_CREDIT_CARD_NOT_FOUND);
+			return false;
+		}
+
+		//Checks for date of show
+
+		return true;
+
+	}
+
+	/**
+	 * Sells regular priced tickets
+	 */
 	public void sellRegularTickets() {
 		Map<String, Object> userInput = cL_Gui.sellTickets();
-
-		boolean valid = true;
 
 		int quantity = (int) userInput.get("quantity");
 		long customerID = (long) userInput.get("customerID");
 		String cardNumber = (String) userInput.get("cardNumber");
 		int[] date = (int[]) userInput.get("date");
 
-		//Checks for customer ID
-		if (!theater.getCustomerList().customerExists(customerID)) {
-			cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
-			valid = false;
-		}
-
-		//Checks for cardNumber
-		if (!theater.getCreditCardList().creditCardExists(cardNumber)) {
-			cL_Gui.displaySystemNotify(Strings.ERROR_CREDIT_CARD_NOT_FOUND);
-			valid = false;
-		}
-
-		//Checks for date of show
-
 		//Sells tickets if valid
-		if (valid) {
+		if (validTickets(customerID, cardNumber, date)) {
 			for (int sell = 0; sell < quantity; sell++) {
 				RegularTicket regularTicket = new RegularTicket(); //TODO: FINISH MAKING TICKET OBJECTS
 			}
 		}
 	}
-	@Override
+
+	/**
+	 * Sells advanced tickets 70% of regular tickets
+	 */
 	public void sellAdvanceTickets() {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
+
+	/**
+	 * Sells student advance tickets 50% of regular tickets
+	 */
 	public void sellStudentAdvanceTickets() {
 		// TODO Auto-generated method stub
 		
