@@ -12,7 +12,9 @@ import Theatre.CreditCard;
 import Theatre.Customer;
 import Theatre.Show;
 import Theatre.Theater;
+import Ticket.AdvanceTicket;
 import Ticket.RegularTicket;
+import Ticket.StudentAdvanceTicket;
 import Utils.Strings;
 /**
  * This class is the main controller or the application. It will call on the 
@@ -567,16 +569,46 @@ public class Controller implements Application_API
 	 * Sells advanced tickets 70% of regular tickets
 	 */
 	public void sellAdvanceTickets() {
-		// TODO Auto-generated method stub
-		
+		Map<String, Object> userInput = cL_Gui.sellTickets();
+
+		int quantity = (int) userInput.get("quantity");
+		long customerID = (long) userInput.get("customerID");
+		String cardNumber = (String) userInput.get("cardNumber");
+		Calendar date = (Calendar) userInput.get("date");
+		double price;
+
+		//Sells tickets if valid
+		if (validTickets(customerID, cardNumber, date))
+		{
+			price = theater.getShowsList().getShow(date).getPrice();
+			for (int sell = 0; sell < quantity; sell++)
+			{
+				AdvanceTicket advanceTicket = new AdvanceTicket(date, price);
+			}
+		}
 	}
 
 	/**
 	 * Sells student advance tickets 50% of regular tickets
 	 */
 	public void sellStudentAdvanceTickets() {
-		// TODO Auto-generated method stub
-		
+		Map<String, Object> userInput = cL_Gui.sellTickets();
+
+		int quantity = (int) userInput.get("quantity");
+		long customerID = (long) userInput.get("customerID");
+		String cardNumber = (String) userInput.get("cardNumber");
+		Calendar date = (Calendar) userInput.get("date");
+		double price;
+
+		//Sells tickets if valid
+		if (validTickets(customerID, cardNumber, date))
+		{
+			price = theater.getShowsList().getShow(date).getPrice();
+			for (int sell = 0; sell < quantity; sell++)
+			{
+				StudentAdvanceTicket studentAdvanceTicket = new StudentAdvanceTicket(date, price);
+			}
+		}
 	}
 	@Override
 	public void payClient() {
