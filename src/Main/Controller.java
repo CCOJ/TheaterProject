@@ -15,6 +15,7 @@ import Theatre.Theater;
 import Ticket.AdvanceTicket;
 import Ticket.RegularTicket;
 import Ticket.StudentAdvanceTicket;
+import Utils.InputUtils;
 import Utils.Strings;
 /**
  * This class is the main controller or the application. It will call on the 
@@ -623,11 +624,47 @@ public class Controller implements Application_API
 	}
 
 	/**
-	 * Pays the client, but ensures paid amount is no more than balance;
+	 * Gets passed clientID from CL_GUI
+	 * If existing client exists, it displays the balance
+	 * Then prompts to pay client no more than existing balance
 	 */
 	public void payClient() {
+		long clientID = cL_Gui.payClient();
+		double pay;
 
-		
+		//Checks if client exists
+		if (!theater.getClientList().hasClient(clientID) || clientID < 0)
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_CLIENT_ID_NOT_FOUND);
+		} else
+		{
+			//Message to show client balance
+			Client client = theater.getClientList().getClient(clientID);
+			cL_Gui.displaySystemNotify("Balance: " + client.getBalance());
+
+			//Prompt for amount to pay client
+			pay = cL_Gui.pay();
+
+			if (pay < 0)
+			{
+				//Invalid input
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATIOM_PAY_CLIENT_FAILED);
+			}
+			else if (pay > client.getBalance())
+			{
+				//More than balance
+				cL_Gui.displaySystemNotify(Strings.ERROR_ABOVE_BALANCE);
+			}
+			else
+			{
+				//Successfully paid client
+				client.payClient(pay);
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_PAY_CLIENT_SUCCESS);
+
+			}
+
+		}
+
 	}
 
 	@Override

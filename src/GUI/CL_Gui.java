@@ -536,9 +536,40 @@ public class CL_Gui
 		return userInput;
 	}
 
-	public void payClient()
+	/**
+	 * Asks for clientID and passes to controller
+	 * @return clientID
+	 */
+	public long payClient()
 	{
 		displayPageHeader(Strings.HEADER_PAY_CLIENT);
+
+		displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
+
+		long clientID = inputUtils.getLongInput();
+		if (clientID < 0)
+		{
+			displaySystemNotify(Strings.ERROR_BAD_LONG_INPUT);
+		}
+
+		return clientID;
+	}
+
+	/**
+	 * Asks for pay amount for client and passes to controller
+	 * @return pay
+	 */
+	public double pay()
+	{
+		displayPrompt(Strings.PROMPT_FOR_PAY);
+		double pay = inputUtils.getPriceInput(inputUtils.getDoubleInput());
+
+		if(pay < 0)
+		{
+			displaySystemNotify(Strings.ERROR_BAD_PRICE);
+		}
+
+		return pay;
 	}
 
 	/**

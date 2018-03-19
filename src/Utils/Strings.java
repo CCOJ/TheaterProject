@@ -28,7 +28,8 @@ public class Strings
 	public static final String ERROR_CREDIT_CARD_NOT_FOUND = "ERROR: Credit card not found";
 	public static final String ERROR_BAD_DATE_INPUT = "ERROR: Invalid date must be: YYYY/MM/DD";
 	public static final String ERROR_SHOW_NOT_FOUND = "ERROR: Show not found, invalid date";
-
+	public static final String ERROR_BAD_PRICE = "ERROR: Price invalid: x.xx";
+	public static final String ERROR_ABOVE_BALANCE = "ERROR: Payment is more than Client's current balance.";
 	/**
 	 * Header messages
 	 */
@@ -84,6 +85,8 @@ public class Strings
 	public static final String NOTIFICATION_CREDIT_CARD_DNE = "Credit Card does not exist";
 	public static final String NOTIFICATION_CLOSED_FAILED_TO_SERIALIZE = "Closed application successfully. Failed to Serialize.";
 	public static final String NOTIFICATION_EXTRA_MESSAGE = "Must show valid student id.";
+	public static final String NOTIFICATIOM_PAY_CLIENT_FAILED = "Failed to pay client.";
+	public static final String NOTIFICATION_PAY_CLIENT_SUCCESS = "Paid client successfully";
 
 	/**
 	 * Prompt messages
@@ -109,6 +112,7 @@ public class Strings
 	public static final String PROMPT_FOR_WHOLE_END_DATE = "Please enter an ending date: YYYY/MM/DD";
 	public static final String PROMPT_FOR_TICKET_QUANTITY = "Please input ticket quantity: ";
 	public static final String PROMPT_FOR_PRICE = "Please input price: x.xx";
+	public static final String PROMPT_FOR_PAY = "How much would you like to pay the client? Must be less than balance: x.xx";
 
 	//Miscellaneous
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";
