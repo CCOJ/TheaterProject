@@ -18,13 +18,15 @@ public class Show implements Serializable
 	private long clientID;
 	private Calendar begDate;
 	private Calendar endDate;
+	private double price;
 
-	public Show(String showName, long clientID2, Calendar begDate, Calendar endDate)
+	public Show(String showName, long clientID2, Calendar begDate, Calendar endDate, double price)
 	{
 		this.showName = showName;
 		this.clientID = clientID2;
 		this.begDate = begDate;
 		this.endDate = endDate;
+		this.price = price;
 	}
 	/**
 	 * Get the show's name
@@ -63,6 +65,15 @@ public class Show implements Serializable
 	}
 
 	/**
+	 * Get the show's end date
+	 * @return price
+	 */
+	public double getPrice()
+	{
+		return price;
+	}
+
+	/**
 	 * Set the show's name
 	 * @param showName Name of show
 	 */
@@ -82,7 +93,7 @@ public class Show implements Serializable
 
 	/**
 	 * Set the show's beginning date
-	 * @param begDate
+	 * @param begDate beginning date
 	 */
 	public void setBegDate(Calendar begDate)
 	{
@@ -91,11 +102,20 @@ public class Show implements Serializable
 
 	/**
 	 * Set the show's end date
-	 * @param endDate
+	 * @param endDate end date
 	 */
 	public void setEndDate(Calendar endDate)
 	{
 		this.endDate = endDate;
+	}
+
+	/**
+	 * Set the show's price
+	 * @param price show price
+	 */
+	public void setPrice(double price)
+	{
+		this.price = price;
 	}
 
 	/**

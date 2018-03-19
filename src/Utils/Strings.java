@@ -26,6 +26,7 @@ public class Strings
 	public static final String ERROR_CUSTOMER_ID_NOT_FOUND = "ERROR: Customer ID not found";
 	public static final String ERROR_CREDIT_CARD_NOT_FOUND = "ERROR: Credit card not found";
 	public static final String ERROR_BAD_DATE_INPUT = "ERROR: Invalid date must be: YYYY/MM/DD";
+	public static final String ERROR_SHOW_NOT_FOUND = "ERROR: Show not found, invalid date";
 
 	/**
 	 * Header messages

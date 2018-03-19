@@ -104,4 +104,23 @@ public class ShowList implements Serializable{
 		}
 		return false;
 	}
+
+	/**
+	 * Finds show with the given date
+	 * @param date
+	 * 		show date
+	 * @return the Show object
+	 */
+	public Show getShow(Calendar date) {
+		for (int i = 0; i < showsList.size(); i++)
+		{
+			if (date.getTimeInMillis() > showsList.get(i).getBegDate().getTimeInMillis() &&
+					date.getTimeInMillis() < showsList.get(i).getEndDate().getTimeInMillis())
+			{
+				return showsList.get(i);
+			}
+		}
+
+		return null;
+	}
 }

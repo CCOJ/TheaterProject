@@ -531,27 +531,34 @@ public class Controller implements Application_API
 			return false;
 		}
 
-		//Checks for date of show
+		//Checks for show if valid date
+		if (theater.getShowsList().getShow(date) == null) {
+			cL_Gui.displaySystemNotify(Strings.ERROR_SHOW_NOT_FOUND);
+		}
 
 		return true;
-
 	}
 
 	/**
 	 * Sells regular priced tickets
 	 */
-	public void sellRegularTickets() {
+	public void sellRegularTickets()
+	{
 		Map<String, Object> userInput = cL_Gui.sellTickets();
 
 		int quantity = (int) userInput.get("quantity");
 		long customerID = (long) userInput.get("customerID");
 		String cardNumber = (String) userInput.get("cardNumber");
 		Calendar date = (Calendar) userInput.get("date");
+		double price;
 
 		//Sells tickets if valid
-		if (validTickets(customerID, cardNumber, date)) {
-			for (int sell = 0; sell < quantity; sell++) {
-				RegularTicket regularTicket = new RegularTicket(date,); //TODO: FINISH MAKING TICKET OBJECTS
+		if (validTickets(customerID, cardNumber, date))
+		{
+			price = theater.getShowsList().getShow(date).getPrice();
+			for (int sell = 0; sell < quantity; sell++)
+			{
+				RegularTicket regularTicket = new RegularTicket(date, price);
 			}
 		}
 	}
