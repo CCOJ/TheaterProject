@@ -1,6 +1,9 @@
 package Ticket;
 
 import Utils.ID_Generator;
+import Theatre.Client;
+import Theatre.Customer;
+import java.io.Serializable;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -12,13 +15,15 @@ import java.util.Calendar;
 	ticket price;
  */
 
-public abstract class Ticket
+public abstract class Ticket implements Serializable
 {
 
 	private long serialNumber;
 	private Calendar date;
 	private String type;
 	private double price;
+        protected Customer customer;
+        protected Client client;
 
 	public Ticket(Calendar date, String type, double price)
 	{

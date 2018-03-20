@@ -6,6 +6,7 @@ import Collections.ClientList;
 import Collections.CreditCardList;
 import Collections.CustomerList;
 import Collections.ShowList;
+import Collections.TicketList;
 /**
  * Theater has a name and set seating capacity.
  * It holds all four lists: credit cards, customers, shows, and clients.
@@ -24,6 +25,7 @@ public class Theater implements Serializable
 	private CustomerList customerList;
 	private ShowList showsList;
 	private ClientList clientList;
+        private TicketList ticketList;
 
 	public Theater(String name)
 	{
@@ -32,6 +34,7 @@ public class Theater implements Serializable
 		customerList = CustomerList.getInstanceOf();
 		showsList = ShowList.getInstanceOf();
 		clientList = ClientList.getInstanceOf();
+                ticketList = TicketList.getInstanceOf();
 	}
 	/**
 	 * Get name of theater
@@ -103,4 +106,13 @@ public class Theater implements Serializable
 	{
 		return showsList;
 	}
+        /**
+	 * Get ticket list for theater
+	 * @return ticketList
+	 */
+        public TicketList getTicketList() {
+                return ticketList;
+        }
+        
+        
 }

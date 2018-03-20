@@ -49,6 +49,7 @@ public class Strings
 	public static final String HEADER_SELL_ADVANCE_TICKET = "Sell Advance Ticket:";
 	public static final String HEADER_SELL_STUDENT_ADVANCE_TICKET = "Sell Student Advance Ticket:";
 	public static final String HEADER_PAY_CLIENT = "Pay Client:";
+        public static final String HEADER_LIST_ALL_TICKETS = "Listing all tickets for ";
 
 	/**
 	 * Notification messages
@@ -105,7 +106,7 @@ public class Strings
 	public static final String PROMPT_FOR_END_YEAR = "Please enter an ending year";
 	public static final String PROMPT_FOR_END_MONTH = "Please enter an ending month";
 	public static final String PROMPT_FOR_END_DAY = "Please enter an ending day";
-	public static final String PROMPT_FOR_DATE = "Please input show data: YYY/MM/DD";
+	public static final String PROMPT_FOR_DATE = "Please input show date: YYYY/MM/DD";
 	public static final String PROMPT_MENU_OPTION = "input the numbered option you would like to execute";
 	public static final String PROMPT_RETRIEVE_DATA = "Would you like to retrieve previous data? Y/N";
 	public static final String PROMPT_FOR_WHOLE_BEGIN_DATE ="Please enter a beginning date: YYYY/MM/DD";
@@ -113,6 +114,7 @@ public class Strings
 	public static final String PROMPT_FOR_TICKET_QUANTITY = "Please input ticket quantity: ";
 	public static final String PROMPT_FOR_PRICE = "Please input price: x.xx";
 	public static final String PROMPT_FOR_PAY = "How much would you like to pay the client? Must be less than balance: x.xx";
+        public static final String PROMPT_FOR_TICKET_DATE = "Please input date: YYYY/MM/DD";
 
 	//Miscellaneous
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";

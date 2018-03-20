@@ -1,13 +1,14 @@
 package Ticket;
 
 import Utils.Strings;
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  * Student tickets that cost only 50% of regular tickets.
  * Requires student ID for purchase.
  */
-public class StudentAdvanceTicket extends Ticket
+public class StudentAdvanceTicket extends Ticket implements Serializable
 {
 	private String extraMessage;
 	

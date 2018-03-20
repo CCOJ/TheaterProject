@@ -564,8 +564,11 @@ public class Controller implements Application_API
 
 			for (int sell = 0; sell < quantity; sell++)
 			{
+                                
 				RegularTicket ticket = new RegularTicket(date, show.getPrice()); //Create ticket
-				client.addBalance(ticket.getPrice()/2); 					 //Add revenue to client
+                                theater.getTicketList().addTicket(ticket);
+                                theater.getCustomerList().getCustomer(customerID).buyTicket(ticket);
+				client.addBalance(ticket.getPrice()/2); 	 //Add revenue to client
 			}
 		}
 	}
@@ -591,6 +594,8 @@ public class Controller implements Application_API
 			for (int sell = 0; sell < quantity; sell++)
 			{
 				AdvanceTicket ticket = new AdvanceTicket(date, show.getPrice()); //Create ticket
+                                theater.getTicketList().addTicket(ticket);
+                                theater.getCustomerList().getCustomer(customerID).buyTicket(ticket);
 				client.addBalance(ticket.getPrice()/2);					 //Add revenue to client
 			}
 		}
@@ -607,7 +612,6 @@ public class Controller implements Application_API
 		long customerID = (long) userInput.get("customerID");
 		String cardNumber = (String) userInput.get("cardNumber");
 		Calendar date = (Calendar) userInput.get("date");
-		double price;
 
 		//Sells tickets if valid
 		if (validTickets(customerID, cardNumber, date))
@@ -618,6 +622,8 @@ public class Controller implements Application_API
 			for (int sell = 0; sell < quantity; sell++)
 			{
 				StudentAdvanceTicket ticket = new StudentAdvanceTicket(date, show.getPrice()); //Create ticket
+                                theater.getTicketList().addTicket(ticket);
+                                theater.getCustomerList().getCustomer(customerID).buyTicket(ticket);
 				client.addBalance(ticket.getPrice()/2);								   //Add revenue to client
 			}
 		}
@@ -669,7 +675,7 @@ public class Controller implements Application_API
 
 	@Override
 	public void printAllTicketsForGivenDay() {
-		// TODO Auto-generated method stub
+		cL_Gui.displayAllTicketList(theater.getTicketList());
 		
 	}
 

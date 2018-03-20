@@ -6,10 +6,12 @@ import Collections.ClientList;
 import Collections.CreditCardList;
 import Collections.CustomerList;
 import Collections.ShowList;
+import Collections.TicketList;
 import Theatre.Client;
 import Theatre.CreditCard;
 import Theatre.Customer;
 import Theatre.Show;
+import Ticket.Ticket;
 import Utils.InputUtils;
 import Utils.Strings;
 /**
@@ -169,7 +171,25 @@ public class CL_Gui
 			System.out.println(clients.get(i).toString());
 		}
 	}
-
+        public void displayAllTicketList(TicketList ticketList)
+	{
+                int[] dateInput;
+                Calendar date;
+                String dateString;
+		ArrayList<Ticket> tickets = ticketList.getTicketList();
+                displayPrompt(Strings.PROMPT_FOR_TICKET_DATE);
+                dateString = inputUtils.getStringInput();
+                dateInput = inputUtils.getDateInput(dateString);
+		System.out.print("\n\n" + Strings.HEADER_LIST_ALL_TICKETS);
+                date = new GregorianCalendar(dateInput[0], dateInput[1], dateInput[2], 0, 0, 0);
+                System.out.print(dateString + ":" + "\n\n");
+		for(int i = 0; i < tickets.size(); ++i)
+		{
+                    if(tickets.get(i).getDate().equals(date)){
+			System.out.println(tickets.get(i).toString());
+                    }
+		}
+	}
 	public Map<String, Object> addCustomer()
 	{
 		Map<String, Object> userInput = new HashMap<String, Object>();
