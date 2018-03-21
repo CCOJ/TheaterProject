@@ -171,8 +171,18 @@ public class CL_Gui
 			System.out.println(clients.get(i).toString());
 		}
 	}
-        public void displayAllTicketList(TicketList ticketList)
+    
+	public void displayAllTicketList(TicketList ticketList)
 	{
+		ArrayList<Ticket> tickets = ticketList.getTicketList();
+		
+		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_TICKETS);
+		
+		for(int i = 0; i < tickets.size(); ++i)
+		{
+			System.out.println(tickets.get(i).toString());
+		}
+		/*
                 int[] dateInput;
                 Calendar date;
                 String dateString;
@@ -189,7 +199,23 @@ public class CL_Gui
 			System.out.println(tickets.get(i).toString());
                     }
 		}
+		*/
 	}
+	public void displayAllTicketList(TicketList ticketList, Calendar date)
+	{
+		ArrayList<Ticket> tickets = ticketList.getTicketList();
+		
+		System.out.println("\n\n" + Strings.HEADER_LIST_ALL_TICKETS_FOR_GIVEN_DATE);
+		
+		for(int i = 0; i < tickets.size(); ++i)
+		{
+			if(tickets.get(i).getDate().compareTo(date) == 0)
+			{
+				System.out.println(tickets.get(i).toString());
+			}
+		}
+	}
+	
 	public Map<String, Object> addCustomer()
 	{
 		Map<String, Object> userInput = new HashMap<String, Object>();
@@ -495,7 +521,8 @@ public class CL_Gui
 	 * Works for all three tickets: regular, advance, and student advance
 	 * @return
 	 */
-	public Map<String, Object> sellTickets() {
+	public Map<String, Object> sellTickets(String header)
+	{
 		Map<String, Object> userInput = new HashMap<String, Object>();
 
 		int quantity;
@@ -504,6 +531,8 @@ public class CL_Gui
 		int[] dateInput;
 		Calendar date;
 
+		displayPageHeader(header); //Display ticket time being sold
+		
 		//Quantity prompt
 		displayPrompt(Strings.PROMPT_FOR_TICKET_QUANTITY);
 		quantity = inputUtils.getIntInput();
@@ -560,37 +589,40 @@ public class CL_Gui
 	 * Asks for clientID and passes to controller
 	 * @return clientID
 	 */
-	public long payClient()
+	public Map<String, Object> payClient()
 	{
+		Map<String, Object> userInput = new HashMap<String, Object>();
+		long clientID;
+		double pay;
+		
 		displayPageHeader(Strings.HEADER_PAY_CLIENT);
 
 		displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
-
-		long clientID = inputUtils.getLongInput();
+		clientID = inputUtils.getLongInput();
 		if (clientID < 0)
 		{
 			displaySystemNotify(Strings.ERROR_BAD_LONG_INPUT);
+			return null;
 		}
-
-		return clientID;
-	}
-
-	/**
-	 * Asks for pay amount for client and passes to controller
-	 * @return pay
-	 */
-	public double pay()
-	{
+		else
+		{
+			userInput.put("clientID", clientID);
+		}
+		
 		displayPrompt(Strings.PROMPT_FOR_PAY);
-		double pay = inputUtils.getPriceInput(inputUtils.getDoubleInput());
-
+		pay = inputUtils.getPriceInput(inputUtils.getDoubleInput());
 		if(pay < 0)
 		{
 			displaySystemNotify(Strings.ERROR_BAD_PRICE);
+			return null;
 		}
-
-		return pay;
+		else
+		{
+			userInput.put("pay", pay);
+		}
+		return userInput;
 	}
+
 
 	/**
 	 * Display welcome message, list of options, and getting user input. 
@@ -642,6 +674,11 @@ public class CL_Gui
 		System.out.printf("%s\n", prompt);
 	}
 	
+	public void displayPrompt(String prompt, double balance)
+	{
+		System.out.printf(prompt, balance);
+	}
+	
 	/**
 	 * Display header of selected category
 	 * @param header
@@ -650,4 +687,62 @@ public class CL_Gui
 	{
 		System.out.printf("%s\n", header);
 	}
+
+	public Calendar promptDate()
+	{
+		int[] dateInput;
+		Calendar date;
+		
+		//date prompt and converts input to Calendar type
+		displayPrompt(Strings.PROMPT_FOR_DATE);
+		dateInput = inputUtils.getDateInput(inputUtils.getStringInput());
+		
+		if (dateInput == null)
+		{
+			displaySystemNotify(Strings.ERROR_BAD_DATE_INPUT);
+			return null;
+		}
+		else
+		{
+			date = new GregorianCalendar(dateInput[0], dateInput[1], dateInput[2], 0, 0, 0);
+			return date;
+		}
+	}
+
+	public long promptClientID()
+	{
+		long clientID;
+		
+		//Client ID
+		displayPrompt(Strings.PROMPT_FOR_CLIENT_ID);
+		clientID = inputUtils.getLongInput();
+		if(clientID < 0)
+		{
+			displaySystemNotify(Strings.ERROR_BAD_LONG_INPUT);
+			displaySystemNotify(Strings.NOTIFICATION_ADD_SHOW_OR_PLAY_FAILED);
+			return -1;
+		}
+		else
+		{
+			return clientID;
+		}
+	}
+
+	public double promptPaymentAmount(double balance)
+	{
+		double pay;
+		displayPrompt(Strings.PROMPT_FOR_PAY, balance);
+		pay = inputUtils.getPriceInput(inputUtils.getDoubleInput());
+		if(pay < 0)
+		{
+			displaySystemNotify(Strings.ERROR_BAD_PRICE);
+			return -1;
+		}
+		else
+		{
+			return pay;
+		}
+	}
+
+
 }

@@ -19,22 +19,24 @@ import Collections.TicketList;
 public class Theater implements Serializable
 {
 	private String name;
+	private double balance;
 	private int seatingCapacity = 3000;
 
 	private CreditCardList creditCardList;
 	private CustomerList customerList;
 	private ShowList showsList;
 	private ClientList clientList;
-        private TicketList ticketList;
+    private TicketList ticketList;
 
 	public Theater(String name)
 	{
 		this.name = name;
+		this.balance = 0;
 		creditCardList = CreditCardList.getInstanceOf();
 		customerList = CustomerList.getInstanceOf();
 		showsList = ShowList.getInstanceOf();
 		clientList = ClientList.getInstanceOf();
-                ticketList = TicketList.getInstanceOf();
+        ticketList = TicketList.getInstanceOf();
 	}
 	/**
 	 * Get name of theater
@@ -110,9 +112,15 @@ public class Theater implements Serializable
 	 * Get ticket list for theater
 	 * @return ticketList
 	 */
-        public TicketList getTicketList() {
-                return ticketList;
-        }
+     public TicketList getTicketList()
+     {
+        return ticketList;
+     }
+     
+     public void addBalance(double amount)
+	{
+		balance += amount;
+	}
         
         
 }

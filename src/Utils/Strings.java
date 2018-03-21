@@ -49,7 +49,8 @@ public class Strings
 	public static final String HEADER_SELL_ADVANCE_TICKET = "Sell Advance Ticket:";
 	public static final String HEADER_SELL_STUDENT_ADVANCE_TICKET = "Sell Student Advance Ticket:";
 	public static final String HEADER_PAY_CLIENT = "Pay Client:";
-        public static final String HEADER_LIST_ALL_TICKETS = "Listing all tickets for ";
+    public static final String HEADER_LIST_ALL_TICKETS = "Listing all tickets";
+    public static final String HEADER_LIST_ALL_TICKETS_FOR_GIVEN_DATE = "Listing all Tickets for a date";
 
 	/**
 	 * Notification messages
@@ -113,8 +114,8 @@ public class Strings
 	public static final String PROMPT_FOR_WHOLE_END_DATE = "Please enter an ending date: YYYY/MM/DD";
 	public static final String PROMPT_FOR_TICKET_QUANTITY = "Please input ticket quantity: ";
 	public static final String PROMPT_FOR_PRICE = "Please input price: x.xx";
-	public static final String PROMPT_FOR_PAY = "How much would you like to pay the client? Must be less than balance: x.xx";
-        public static final String PROMPT_FOR_TICKET_DATE = "Please input date: YYYY/MM/DD";
+	public static final String PROMPT_FOR_PAY = "How much would you like to pay the client? Must be less than balance: %s";
+    public static final String PROMPT_FOR_TICKET_DATE = "Please input date: YYYY/MM/DD";
 
 	//Miscellaneous
 	public static final String CONTINUE_ON_ENTER = "Press [ENTER] to continue";
@@ -144,6 +145,7 @@ public class Strings
 												HELP_ADD_CREDIT_CARD, HELP_REMOVE_CREDIT_CARD, 
 												HELP_LIST_CUSTOMER, HELP_ADD_SHOW, HELP_LIST_SHOW, 
 												HELP_STORE_DATA, HELP_RETRIEVE_DATA};
+
 
 
 

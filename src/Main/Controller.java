@@ -15,6 +15,7 @@ import Theatre.Theater;
 import Ticket.AdvanceTicket;
 import Ticket.RegularTicket;
 import Ticket.StudentAdvanceTicket;
+import Ticket.Ticket;
 import Utils.InputUtils;
 import Utils.Strings;
 /**
@@ -513,7 +514,6 @@ public class Controller implements Application_API
 			cL_Gui.displaySystemNotify(Strings.ERROR_DESERIALIZING_DATA);
 		}
 	}
-
 	/**
 	 * This will sell regular Tickets. It also checks to make sure there is a valid
 	 * customer ID, credit card number, and show date.
@@ -521,92 +521,104 @@ public class Controller implements Application_API
 	 * This updates customer that attaches tickets to its customer object.
 	 *
 	 * This updates client that updates balance to its customer object.
-	 */
-	public boolean validTickets(long customerID, String cardNumber, Calendar date) {
-		//Checks for customer ID
-		if (!theater.getCustomerList().customerExists(customerID)) {
-			cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
-			return false;
-		}
-
-		//Checks for cardNumber
-		if (!theater.getCreditCardList().creditCardExists(cardNumber)) {
-			cL_Gui.displaySystemNotify(Strings.ERROR_CREDIT_CARD_NOT_FOUND);
-			return false;
-		}
-
-		//Checks for show if valid date
-		if (theater.getShowsList().getShow(date) == null) {
-			cL_Gui.displaySystemNotify(Strings.ERROR_SHOW_NOT_FOUND);
-		}
-
-		return true;
-	}
-
-	/**
+	 * 
 	 * Sells regular priced tickets
 	 */
 	public void sellRegularTickets()
 	{
-		cL_Gui.displayPageHeader(Strings.HEADER_SELL_REGULAR_TICKET);
-		Map<String, Object> userInput = cL_Gui.sellTickets();
+		Map<String, Object> userInput = cL_Gui.sellTickets(Strings.HEADER_SELL_REGULAR_TICKET);
 
 		int quantity = (int) userInput.get("quantity");
 		long customerID = (long) userInput.get("customerID");
 		String cardNumber = (String) userInput.get("cardNumber");
 		Calendar date = (Calendar) userInput.get("date");
 
-		//Sells tickets if valid
-		if (validTickets(customerID, cardNumber, date))
+		if(theater.getCustomerList().customerExists(customerID))
 		{
-			Show show = theater.getShowsList().getShow(date);
-			Client client = theater.getClientList().getClient(show.getClientID());
-
-			for (int sell = 0; sell < quantity; sell++)
+			if(theater.getCreditCardList().creditCardExists(cardNumber))
 			{
-                                
-				RegularTicket ticket = new RegularTicket(date, show.getPrice()); //Create ticket
-                                theater.getTicketList().addTicket(ticket);
-                                theater.getCustomerList().getCustomer(customerID).buyTicket(ticket);
-				client.addBalance(ticket.getPrice()/2); 	 //Add revenue to client
+				if(theater.getShowsList().getShow(date) != null)
+				{
+					Show show = theater.getShowsList().getShow(date);
+					Client client = theater.getClientList().getClient(show.getClientID());
+
+					for(int i = 0; i < quantity; ++i)
+					{
+						RegularTicket ticket = new RegularTicket(date, show.getPrice()); //Create ticket
+		                theater.getTicketList().addTicket(ticket);
+		                theater.getCustomerList().getCustomer(customerID).buyTicket(ticket);
+						theater.addBalance(ticket.getPrice() / 2.0);
+						client.addBalance(ticket.getPrice() / 2.0); 	 //Add revenue to client
+					}
+				}
+				else
+				{
+					cL_Gui.displaySystemNotify(Strings.ERROR_SHOW_NOT_FOUND);
+				}
 			}
+			else
+			{
+				cL_Gui.displaySystemNotify(Strings.ERROR_CREDIT_CARD_NOT_FOUND);
+			}
+		}
+		else
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
 		}
 	}
 
 	/**
 	 * Sells advanced tickets 70% of regular tickets
 	 */
-	public void sellAdvanceTickets() {
-		cL_Gui.displayPageHeader(Strings.HEADER_SELL_ADVANCE_TICKET);
-		Map<String, Object> userInput = cL_Gui.sellTickets();
+	public void sellAdvanceTickets()
+	{
+		Map<String, Object> userInput = cL_Gui.sellTickets(Strings.HEADER_SELL_ADVANCE_TICKET);
 
 		int quantity = (int) userInput.get("quantity");
 		long customerID = (long) userInput.get("customerID");
 		String cardNumber = (String) userInput.get("cardNumber");
 		Calendar date = (Calendar) userInput.get("date");
 
-		//Sells tickets if valid
-		if (validTickets(customerID, cardNumber, date))
+		if(theater.getCustomerList().customerExists(customerID))
 		{
-			Show show = theater.getShowsList().getShow(date);
-			Client client = theater.getClientList().getClient(show.getClientID());
-
-			for (int sell = 0; sell < quantity; sell++)
+			if(theater.getCreditCardList().creditCardExists(cardNumber))
 			{
-				AdvanceTicket ticket = new AdvanceTicket(date, show.getPrice()); //Create ticket
-                                theater.getTicketList().addTicket(ticket);
-                                theater.getCustomerList().getCustomer(customerID).buyTicket(ticket);
-				client.addBalance(ticket.getPrice()/2);					 //Add revenue to client
+				if(theater.getShowsList().getShow(date) != null)
+				{
+					Show show = theater.getShowsList().getShow(date);
+					Client client = theater.getClientList().getClient(show.getClientID());
+
+					for(int i = 0; i < quantity; ++i)
+					{
+						AdvanceTicket ticket = new AdvanceTicket(date, show.getPrice()); //Create ticket
+		                theater.getTicketList().addTicket(ticket);
+		                theater.getCustomerList().getCustomer(customerID).buyTicket(ticket);
+						theater.addBalance(ticket.getPrice() / 2.0);
+						client.addBalance(ticket.getPrice() / 2.0); 	 //Add revenue to client
+					}
+				}
+				else
+				{
+					cL_Gui.displaySystemNotify(Strings.ERROR_SHOW_NOT_FOUND);
+				}
 			}
+			else
+			{
+				cL_Gui.displaySystemNotify(Strings.ERROR_CREDIT_CARD_NOT_FOUND);
+			}
+		}
+		else
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
 		}
 	}
 
 	/**
 	 * Sells student advance tickets 50% of regular tickets
 	 */
-	public void sellStudentAdvanceTickets() {
-		cL_Gui.displayPageHeader(Strings.HEADER_SELL_STUDENT_ADVANCE_TICKET);
-		Map<String, Object> userInput = cL_Gui.sellTickets();
+	public void sellStudentAdvanceTickets()
+	{
+		Map<String, Object> userInput = cL_Gui.sellTickets(Strings.HEADER_SELL_STUDENT_ADVANCE_TICKET);
 
 		int quantity = (int) userInput.get("quantity");
 		long customerID = (long) userInput.get("customerID");
@@ -614,18 +626,37 @@ public class Controller implements Application_API
 		Calendar date = (Calendar) userInput.get("date");
 
 		//Sells tickets if valid
-		if (validTickets(customerID, cardNumber, date))
+		if(theater.getCustomerList().customerExists(customerID))
 		{
-			Show show = theater.getShowsList().getShow(date);
-			Client client = theater.getClientList().getClient(show.getClientID());
-
-			for (int sell = 0; sell < quantity; sell++)
+			if(theater.getCreditCardList().creditCardExists(cardNumber))
 			{
-				StudentAdvanceTicket ticket = new StudentAdvanceTicket(date, show.getPrice()); //Create ticket
-                                theater.getTicketList().addTicket(ticket);
-                                theater.getCustomerList().getCustomer(customerID).buyTicket(ticket);
-				client.addBalance(ticket.getPrice()/2);								   //Add revenue to client
+				if(theater.getShowsList().getShow(date) != null)
+				{
+					Show show = theater.getShowsList().getShow(date);
+					Client client = theater.getClientList().getClient(show.getClientID());
+
+					for(int i = 0; i < quantity; ++i)
+					{
+						StudentAdvanceTicket ticket = new StudentAdvanceTicket(date, show.getPrice()); //Create ticket
+		                theater.getTicketList().addTicket(ticket);
+		                theater.getCustomerList().getCustomer(customerID).buyTicket(ticket);
+						theater.addBalance(ticket.getPrice() / 2.0);
+						client.addBalance(ticket.getPrice() / 2.0); 	 //Add revenue to client
+					}
+				}
+				else
+				{
+					cL_Gui.displaySystemNotify(Strings.ERROR_SHOW_NOT_FOUND);
+				}
 			}
+			else
+			{
+				cL_Gui.displaySystemNotify(Strings.ERROR_CREDIT_CARD_NOT_FOUND);
+			}
+		}
+		else
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
 		}
 	}
 
@@ -634,49 +665,48 @@ public class Controller implements Application_API
 	 * If existing client exists, it displays the balance
 	 * Then prompts to pay client no more than existing balance
 	 */
-	public void payClient() {
-		long clientID = cL_Gui.payClient();
+	public void payClient()
+	{
+		long clientID = cL_Gui.promptClientID();
 		double pay;
 
-		//Checks if client exists
-		if (!theater.getClientList().hasClient(clientID) || clientID < 0)
+		if(clientID > 0)
 		{
-			cL_Gui.displaySystemNotify(Strings.ERROR_CLIENT_ID_NOT_FOUND);
-		} else
-		{
-			//Message to show client balance
-			Client client = theater.getClientList().getClient(clientID);
-			cL_Gui.displaySystemNotify("Balance: " + client.getBalance());
-
-			//Prompt for amount to pay client
-			pay = cL_Gui.pay();
-
-			if (pay < 0)
+			if(theater.getClientList().hasClient(clientID))
 			{
-				//Invalid input
-				cL_Gui.displaySystemNotify(Strings.NOTIFICATIOM_PAY_CLIENT_FAILED);
-			}
-			else if (pay > client.getBalance())
-			{
-				//More than balance
-				cL_Gui.displaySystemNotify(Strings.ERROR_ABOVE_BALANCE);
+				Client client = theater.getClientList().getClient(clientID);
+				pay = cL_Gui.promptPaymentAmount(client.getBalance());
+				
+				if(pay <= client.getBalance() && pay > 0)
+				{
+					client.payClient(pay);
+					cL_Gui.displaySystemNotify(Strings.NOTIFICATION_PAY_CLIENT_SUCCESS);
+				}
+				else
+				{
+					cL_Gui.displaySystemNotify(Strings.ERROR_ABOVE_BALANCE);
+					cL_Gui.displaySystemNotify(Strings.NOTIFICATIOM_PAY_CLIENT_FAILED);
+				}
 			}
 			else
 			{
-				//Successfully paid client
-				client.payClient(pay);
-				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_PAY_CLIENT_SUCCESS);
-
+				cL_Gui.displaySystemNotify(Strings.ERROR_CLIENT_ID_NOT_FOUND);
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATIOM_PAY_CLIENT_FAILED);
 			}
-
 		}
-
+		else
+		{
+			cL_Gui.displaySystemNotify(Strings.ERROR_BAD_INPUT);	
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATIOM_PAY_CLIENT_FAILED);
+		}
 	}
 
 	@Override
-	public void printAllTicketsForGivenDay() {
-		cL_Gui.displayAllTicketList(theater.getTicketList());
+	public void printAllTicketsForGivenDay()
+	{
+		Calendar date = cL_Gui.promptDate();
 		
+		cL_Gui.displayAllTicketList(theater.getTicketList(), date);
 	}
 
 	/**

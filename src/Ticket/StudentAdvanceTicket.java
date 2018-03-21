@@ -10,12 +10,18 @@ import java.util.Calendar;
  */
 public class StudentAdvanceTicket extends Ticket implements Serializable
 {
+	private static final double MODIFIER = .5;
 	private String extraMessage;
 	
 	public StudentAdvanceTicket(Calendar date, double price)
 	{
-		super(date, "Advance", price*.5); //Student advance ticket price is 50% of regular tickets
+		super(date, "Advance", price*MODIFIER); //Student advance ticket price is 50% of regular tickets
 		extraMessage = Strings.NOTIFICATION_EXTRA_MESSAGE;
-		
+	}
+	
+	@Override
+	public String toString()
+	{
+		return super.toString() + ", extraMessage:" + extraMessage;
 	}
 }

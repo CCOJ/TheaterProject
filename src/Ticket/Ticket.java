@@ -1,10 +1,7 @@
 package Ticket;
 
 import Utils.ID_Generator;
-import Theatre.Client;
-import Theatre.Customer;
 import java.io.Serializable;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
@@ -15,15 +12,15 @@ import java.util.Calendar;
 	ticket price;
  */
 
+@SuppressWarnings("serial")
 public abstract class Ticket implements Serializable
 {
-
-	private long serialNumber;
-	private Calendar date;
-	private String type;
-	private double price;
-        protected Customer customer;
-        protected Client client;
+	protected long serialNumber;
+	protected Calendar date;
+	protected String type;
+	protected double price;
+    //protected Customer customer;
+    //protected Client client;
 
 	public Ticket(Calendar date, String type, double price)
 	{
@@ -124,7 +121,8 @@ public abstract class Ticket implements Serializable
 	 * Converts the ticket object to a string format
 	 * @return ticket information
 	 */
-	public String toString() {
-		return type + " ticket; $" + price + "; date sold " + DateToString();
+	public String toString()
+	{
+		return "Ticket[serialNumber:" + serialNumber + ", type:" + type + ", price:$" + price + ", showDate:" + DateToString() + "]";
 	}
 }

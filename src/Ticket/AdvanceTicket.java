@@ -9,8 +9,10 @@ import java.util.Calendar;
  */
 public class AdvanceTicket extends Ticket implements Serializable
 {
+	private static final double MODIFIER = .7;
+
 	public AdvanceTicket(Calendar date, double price)
 	{
-		super(date, "Advance", price*.7); //Advanced ticket price is 70% of regular tickets
+		super(date, "Advance", price*MODIFIER); //Advanced ticket price is 70% of regular tickets
 	}
 }
