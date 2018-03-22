@@ -81,10 +81,10 @@ public class Strings
 	public static final String NOTIFICATION_SELL_ADVANCE_TICKET_SUCCESS = "Advance Ticket Sale Successful";
 	public static final String NOTIFICATION_SELL_ADVANCE_TICKET_FAILED = "Advance Ticket Sale Failed";
 	public static final String NOTIFICATION_MUST_BE_IN_ADVANCE = "Ticket must be purchased at least the day before the show starts.";
+	public static final String NOTIFICATION_SELL_STUDENT_TICKET_SUCCESS = "Student advance ticket sale successful.";
 	public static final String NOTIFICATION_SELL_TICKET_FAILED = "Ticket sale failed.";
 	public static final String NOTIFICATION_SELL_TICKET_SUCCESS = "Ticket sale successful.";
-	public static final String NOTIFICATION_SELL_STUDENT_TICKET_SUCCESS = "Student advance ticket sale successful.";
-
+	
 
 	public static final String NOTIFICATION_SERIALIZE_SUCCESS = "Serialization successful";
 	public static final String NOTIFICATION_SERIALIZE_FAILED = "Serialization failed";
@@ -97,6 +97,8 @@ public class Strings
 	public static final String NOTIFICATION_EXTRA_MESSAGE = "Must show valid student id.";
 	public static final String NOTIFICATIOM_PAY_CLIENT_FAILED = "Failed to pay client.";
 	public static final String NOTIFICATION_PAY_CLIENT_SUCCESS = "Paid client successfully";
+	public static final String NOTIFICATION_DATE_IS_ADVANCE = "Date is in advance, advance price must be given";
+	public static final String NOTIFICATION_SELL_STUDENT_ADVANCE_TICKET_FAILED = "Sell Student Advance Ticket has Failed";
 
 	/**
 	 * Prompt messages
@@ -153,6 +155,8 @@ public class Strings
 												HELP_ADD_CREDIT_CARD, HELP_REMOVE_CREDIT_CARD, 
 												HELP_LIST_CUSTOMER, HELP_ADD_SHOW, HELP_LIST_SHOW, 
 												HELP_STORE_DATA, HELP_RETRIEVE_DATA};
+
+
 
 
 

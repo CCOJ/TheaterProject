@@ -709,7 +709,7 @@ public class Controller implements Application_API
 						}
 						else
 						{
-							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_MUST_BE_IN_ADVANCE);
+							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_DATE_IS_ADVANCE);
 							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_TICKET_FAILED);
 						}
 					}
@@ -780,30 +780,30 @@ public class Controller implements Application_API
 						else
 						{
 							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_MUST_BE_IN_ADVANCE);
-							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_STUDENT_ADVANCE_TICKET_FAILED);
 						}
 					}
 					else
 					{
 						cL_Gui.displaySystemNotify(Strings.ERROR_SHOW_NOT_FOUND);
-						cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+						cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_STUDENT_ADVANCE_TICKET_FAILED);
 					}
 				}
 				else
 				{
 					cL_Gui.displaySystemNotify(Strings.ERROR_CREDIT_CARD_NOT_FOUND);
-					cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+					cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_STUDENT_ADVANCE_TICKET_FAILED);
 				}
 			}
 			else
 			{
 				cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
-				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_STUDENT_ADVANCE_TICKET_FAILED);
 			}
 		}
 		else
 		{
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_STUDENT_ADVANCE_TICKET_FAILED);
 			return;
 		}
 	}
