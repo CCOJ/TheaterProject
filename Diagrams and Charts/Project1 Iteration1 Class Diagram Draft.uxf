@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>154</x>
-      <y>161</y>
+      <x>147</x>
+      <y>238</y>
       <w>147</w>
       <h>217</h>
     </coordinates>
@@ -34,8 +34,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>7</x>
-      <y>427</y>
+      <x>0</x>
+      <y>504</y>
       <w>434</w>
       <h>308</h>
     </coordinates>
@@ -72,8 +72,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>469</x>
-      <y>259</y>
+      <x>462</x>
+      <y>336</y>
       <w>280</w>
       <h>140</h>
     </coordinates>
@@ -94,8 +94,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>805</x>
-      <y>217</y>
+      <x>798</x>
+      <y>294</y>
       <w>343</w>
       <h>175</h>
     </coordinates>
@@ -118,8 +118,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>483</x>
-      <y>434</y>
+      <x>476</x>
+      <y>511</y>
       <w>196</w>
       <h>161</h>
     </coordinates>
@@ -139,8 +139,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>532</x>
-      <y>609</y>
+      <x>525</x>
+      <y>686</y>
       <w>245</w>
       <h>126</h>
     </coordinates>
@@ -160,8 +160,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>266</x>
-      <y>777</y>
+      <x>259</x>
+      <y>854</y>
       <w>385</w>
       <h>112</h>
     </coordinates>
@@ -179,8 +179,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>819</x>
-      <y>602</y>
+      <x>812</x>
+      <y>679</y>
       <w>308</w>
       <h>105</h>
     </coordinates>
@@ -195,8 +195,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>420</y>
+      <x>763</x>
+      <y>497</y>
       <w>287</w>
       <h>133</h>
     </coordinates>
@@ -215,8 +215,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>791</x>
-      <y>728</y>
+      <x>784</x>
+      <y>805</y>
       <w>357</w>
       <h>196</h>
     </coordinates>
@@ -243,8 +243,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1617</x>
-      <y>1092</y>
+      <x>1610</x>
+      <y>1169</y>
       <w>301</w>
       <h>182</h>
     </coordinates>
@@ -269,8 +269,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>7</x>
-      <y>0</y>
+      <x>0</x>
+      <y>77</y>
       <w>448</w>
       <h>133</h>
     </coordinates>
@@ -290,8 +290,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>126</y>
+      <x>217</x>
+      <y>203</y>
       <w>21</w>
       <h>49</h>
     </coordinates>
@@ -301,8 +301,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>371</y>
+      <x>203</x>
+      <y>448</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -312,8 +312,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>434</x>
-      <y>707</y>
+      <x>427</x>
+      <y>784</y>
       <w>42</w>
       <h>84</h>
     </coordinates>
@@ -323,8 +323,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>434</x>
-      <y>378</y>
+      <x>427</x>
+      <y>455</y>
       <w>49</w>
       <h>63</h>
     </coordinates>
@@ -334,8 +334,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>434</x>
-      <y>504</y>
+      <x>427</x>
+      <y>581</y>
       <w>63</w>
       <h>35</h>
     </coordinates>
@@ -345,8 +345,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>434</x>
-      <y>637</y>
+      <x>427</x>
+      <y>714</y>
       <w>112</w>
       <h>35</h>
     </coordinates>
@@ -356,8 +356,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>693</y>
+      <x>763</x>
+      <y>770</y>
       <w>63</w>
       <h>21</h>
     </coordinates>
@@ -367,8 +367,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>644</x>
-      <y>826</y>
+      <x>637</x>
+      <y>903</y>
       <w>161</w>
       <h>28</h>
     </coordinates>
@@ -378,8 +378,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1470</x>
-      <y>1078</y>
+      <x>1463</x>
+      <y>1155</y>
       <w>161</w>
       <h>49</h>
     </coordinates>
@@ -389,8 +389,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1470</x>
-      <y>1197</y>
+      <x>1463</x>
+      <y>1274</y>
       <w>161</w>
       <h>119</h>
     </coordinates>
@@ -400,8 +400,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
-      <y>490</y>
+      <x>665</x>
+      <y>567</y>
       <w>112</w>
       <h>35</h>
     </coordinates>
@@ -411,12 +411,153 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>742</x>
-      <y>336</y>
+      <x>735</x>
+      <y>413</y>
       <w>77</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>161</y>
+      <w>280</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>TicketList
+--
+- ticket : ArrayList&lt;Ticket&gt;
+--
++ Ticket() 
++ getTicketList() : ArrayList&lt;Ticket&gt;
++ addTicket(ticket : Ticket); boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>322</x>
+      <y>245</y>
+      <w>154</w>
+      <h>266</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;10.0;360.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1134</x>
+      <y>70</y>
+      <w>287</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>RegularTicket
+--
++ Ticket(date : Calendar, type : String, price : double)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>735</x>
+      <y>203</y>
+      <w>56</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>777</x>
+      <y>91</y>
+      <w>287</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>Ticket
+--
+# serialNumber : long
+# date : Calendar
+# type : String
+# price : double
+--
++ Ticket(date : Calendar, type : String, price : double)
++ getSerialNumber() : long
++ getPrice() : double
++ getDate() : Calendar
++ getType() : String
++ setSerialNumber(long : number) : void
++ setPrice(price : double)
++ setDate(date : Calendar) : void
++ setType(type : String)
++ toString() : String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1134</x>
+      <y>140</y>
+      <w>287</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>AdvanceTicket
+--
++ Ticket(date : Calendar, type : String, price : double)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1127</x>
+      <y>217</y>
+      <w>287</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>StudentAdvanceTicket
+--
++ Ticket(date : Calendar, type : String, price : double)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1057</x>
+      <y>91</y>
+      <w>91</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1057</x>
+      <y>161</y>
+      <w>91</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1057</x>
+      <y>231</y>
+      <w>84</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>
