@@ -81,6 +81,9 @@ public class Strings
 	public static final String NOTIFICATION_SELL_ADVANCE_TICKET_SUCCESS = "Advance Ticket Sale Successful";
 	public static final String NOTIFICATION_SELL_ADVANCE_TICKET_FAILED = "Advance Ticket Sale Failed";
 	public static final String NOTIFICATION_MUST_BE_IN_ADVANCE = "Ticket must be purchased at least the day before the show starts.";
+	public static final String NOTIFICATION_SELL_TICKET_FAILED = "Ticket sale failed.";
+	public static final String NOTIFICATION_SELL_TICKET_SUCCESS = "Ticket sale successful.";
+	public static final String NOTIFICATION_SELL_STUDENT_TICKET_SUCCESS = "Student advance ticket sale successful.";
 
 
 	public static final String NOTIFICATION_SERIALIZE_SUCCESS = "Serialization successful";

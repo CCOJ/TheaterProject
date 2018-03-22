@@ -673,7 +673,7 @@ public class Controller implements Application_API
 	 */
 	public void sellRegularTickets()
 	{
-		Map<String, Object> userInput = cL_Gui.sellTickets(Strings.HEADER_SELL_STUDENT_ADVANCE_TICKET);
+		Map<String, Object> userInput = cL_Gui.sellTickets(Strings.HEADER_SELL_REGULAR_TICKET);
 
 		if(userInput != null)
 		{
@@ -705,35 +705,35 @@ public class Controller implements Application_API
 								theater.addBalance(ticket.getPrice() / 2.0);
 								client.addBalance(ticket.getPrice() / 2.0); 	 //Add revenue to client
 							}
-							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_SUCCESS);
+							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_TICKET_SUCCESS);
 						}
 						else
 						{
 							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_MUST_BE_IN_ADVANCE);
-							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_TICKET_FAILED);
 						}
 					}
 					else
 					{
 						cL_Gui.displaySystemNotify(Strings.ERROR_SHOW_NOT_FOUND);
-						cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+						cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_TICKET_FAILED);
 					}
 				}
 				else
 				{
 					cL_Gui.displaySystemNotify(Strings.ERROR_CREDIT_CARD_NOT_FOUND);
-					cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+					cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_TICKET_FAILED);
 				}
 			}
 			else
 			{
 				cL_Gui.displaySystemNotify(Strings.ERROR_CUSTOMER_ID_NOT_FOUND);
-				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+				cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_TICKET_FAILED);
 			}
 		}
 		else
 		{
-			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_FAILED);
+			cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_TICKET_FAILED);
 			return;
 		}
 	}
@@ -775,7 +775,7 @@ public class Controller implements Application_API
 								theater.addBalance(ticket.getPrice() / 2.0);
 								client.addBalance(ticket.getPrice() / 2.0); 	 //Add revenue to client
 							}
-							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_ADVANCE_TICKET_SUCCESS);
+							cL_Gui.displaySystemNotify(Strings.NOTIFICATION_SELL_STUDENT_TICKET_SUCCESS);
 						}
 						else
 						{
