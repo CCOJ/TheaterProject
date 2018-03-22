@@ -15,10 +15,14 @@ public class ClientList implements Serializable
 	private static ClientList instance;
 	private ArrayList<Client> clientList;
 
+	/**
+	 * 
+	 */
 	private ClientList()
 	{
 		clientList = new ArrayList<Client>();
 	}
+	
 	/**
 	 * Gets the list of clients
 	 * @return clientList
@@ -28,6 +32,10 @@ public class ClientList implements Serializable
 		return clientList;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public static ClientList getInstanceOf()
 	{
 		if(instance == null)
@@ -85,8 +93,10 @@ public class ClientList implements Serializable
 				return clientList.get(i);
 			}
 		}
+		
 		return null;
 	}
+	
 	/**
 	 * Add client to list of clients
 	 * 
@@ -108,6 +118,11 @@ public class ClientList implements Serializable
 		return clientList.remove(client);
 	}
 
+	/**
+	 * 
+	 * @param clientID
+	 * @return
+	 */
 	public boolean clientExists(long clientID)
 	{
 		for(int i = 0; i < clientList.size(); ++i)
@@ -117,7 +132,7 @@ public class ClientList implements Serializable
 				return true;
 			}
 		}
+		
 		return false;
 	}
-
 }

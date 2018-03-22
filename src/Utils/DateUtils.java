@@ -2,6 +2,7 @@ package Utils;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 /**
  * 
  * 
@@ -10,6 +11,14 @@ import java.util.GregorianCalendar;
  */
 public class DateUtils
 {
+	/**
+	 * Prevents instantiation of the class in other classes.
+	 */
+	private DateUtils()
+	{
+		
+	}
+	
 	/**
 	 * This function returns a Gregorian Calendar set at the 
 	 * first hour, minute, and second of today's date
@@ -23,6 +32,7 @@ public class DateUtils
 		today.set(Calendar.SECOND, 0);
 		return today;
 	}
+	
 	/**
 	 * This function returns a Gregorian Calendar set at the 
 	 * last hour, minute, and second of today's date
@@ -36,6 +46,7 @@ public class DateUtils
 		today.set(Calendar.SECOND, 59);
 		return today;
 	}
+	
 	/**
 	 * This function takes a Calendar day and sets the hours
 	 * to 0, 0, 0. This is the first hour, minute, second, 
@@ -50,6 +61,7 @@ public class DateUtils
 		day.set(Calendar.SECOND, 0);
 		return day;
 	}
+	
 	/**
 	 * This function takes a Calendar day and sets the hours 
 	 * to 23, 59, 59. This is the last hour, minute, second, 

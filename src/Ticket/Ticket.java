@@ -11,7 +11,6 @@ import java.util.Calendar;
 	number, the date of the show, the type of ticket (regular, advance, student advance), and the
 	ticket price;
  */
-
 @SuppressWarnings("serial")
 public abstract class Ticket implements Serializable
 {
@@ -22,9 +21,15 @@ public abstract class Ticket implements Serializable
     //protected Customer customer;
     //protected Client client;
 
+	/**
+	 * 
+	 * @param date
+	 * @param type
+	 * @param price
+	 */
 	public Ticket(Calendar date, String type, double price)
 	{
-		serialNumber = ID_Generator.getUniqueGeneratedID();
+		serialNumber = ID_Generator.getUniqueGeneratedTicketID();
 		this.date = date;
 		this.type = type;
 		this.price = price;

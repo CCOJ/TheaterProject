@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
+
 /**
  * Show holds information of show name, client ID, and period (range of dates)
  * of the show playing.
@@ -20,6 +21,14 @@ public class Show implements Serializable
 	private Calendar endDate;
 	private double price;
 
+	/**
+	 * 
+	 * @param showName
+	 * @param clientID2
+	 * @param begDate
+	 * @param endDate
+	 * @param price
+	 */
 	public Show(String showName, long clientID2, Calendar begDate, Calendar endDate, double price)
 	{
 		this.showName = showName;
@@ -28,6 +37,7 @@ public class Show implements Serializable
 		this.endDate = endDate;
 		this.price = price;
 	}
+	
 	/**
 	 * Get the show's name
 	 * @return showName

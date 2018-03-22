@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import Theatre.CreditCard;
+
 /**
  * 
  * @author Noah, Randy, Ricky
@@ -22,6 +23,7 @@ public class CreditCardList implements Serializable
 	{
 		creditCards = new ArrayList<>();
 	}
+	
 	/**
 	 * 
 	 */
@@ -33,6 +35,7 @@ public class CreditCardList implements Serializable
 		}
 		return instance;
 	}
+	
 	/**
 	 * 
 	 * @return
@@ -41,6 +44,7 @@ public class CreditCardList implements Serializable
 	{
 		return creditCards;
 	}
+	
 	/**
 	 * Finds the credit card in creditCardList if they exist.
 	 * Iterates through creditCardList until the number matches or not.
@@ -59,6 +63,7 @@ public class CreditCardList implements Serializable
 		}
 		return null;
 	}
+	
 	/**
 	 * Adds a credit card to the list
 	 * 
@@ -132,6 +137,7 @@ public class CreditCardList implements Serializable
 		}
 		return true;
 	}
+	
 	/**
 	 * Removes all customer cards, used only when customer is removed
 	 * @param customerID customer ID
@@ -157,7 +163,6 @@ public class CreditCardList implements Serializable
 		{
 			return false;
 		}
-
 	}
 
 	/**
@@ -174,6 +179,7 @@ public class CreditCardList implements Serializable
 				return true;
 			}
 		}
+		
 		return false;
 	}
 }

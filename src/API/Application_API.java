@@ -1,4 +1,5 @@
 package API;
+
 /**
  * This interface contains the basic functionality of 
  * the application
@@ -83,10 +84,28 @@ public interface Application_API
 	 */
 	public void help();
 	
+	/**
+	 * 
+	 */
 	public void sellRegularTickets();
-	public void sellAdvanceTickets();
-	public void sellStudentAdvanceTickets();
-	public void payClient();
-	public void printAllTicketsForGivenDay();
 	
+	/**
+	 * 
+	 */
+	public void sellAdvanceTickets();
+	
+	/**
+	 * 
+	 */
+	public void sellStudentAdvanceTickets();
+	
+	/**
+	 * 
+	 */
+	public void payClient();
+	
+	/**
+	 * 
+	 */
+	public void printAllTicketsForGivenDay();
 }

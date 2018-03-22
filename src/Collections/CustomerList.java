@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import Theatre.Customer;
+
 /**
  * 
  * @author Noah, Randy, Ricky
@@ -23,6 +24,7 @@ public class CustomerList implements Serializable
 	{
 		customerList = new ArrayList<Customer>();
 	}
+	
 	/**
 	 * 
 	 * @return
@@ -35,6 +37,7 @@ public class CustomerList implements Serializable
 		}
 		return instance;
 	}
+	
 	/*
 	 * 
 	 */
@@ -42,6 +45,7 @@ public class CustomerList implements Serializable
 	{
 		return customerList;
 	}
+	
 	/**
 	 * Finds the customer in the customerList by iterating through the lsit
 	 * with customerID
@@ -57,8 +61,10 @@ public class CustomerList implements Serializable
 				return customerList.get(i);
 			}
 		}
+		
 		return null;
 	}
+	
 	/**
 	 * Adds the specified customer to the list
 	 * @param customer
@@ -101,6 +107,7 @@ public class CustomerList implements Serializable
 				return true;
 			}
 		}
+		
 		return false;
 	}
 }

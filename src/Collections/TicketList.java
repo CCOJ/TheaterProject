@@ -50,5 +50,4 @@ public class TicketList implements Serializable{
 		ticketList.add(ticket);
 		return true;
 	}
-
 }

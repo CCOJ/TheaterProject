@@ -3,9 +3,11 @@ package Collections;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import Theatre.Show;
 import Utils.DateUtils;
+
 /**
  * ShowList holds show objects and checks for any overlaps.
  * @author Noah, Randy, Ricky
@@ -17,11 +19,18 @@ public class ShowList implements Serializable{
 	private static ShowList instance;
 	private ArrayList<Show> showsList;
 	
+	/**
+	 * 
+	 */
 	private ShowList()
 	{
 		showsList = new ArrayList<Show>();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public static ShowList getInstanceOf()
 	{
 		if(instance == null)
@@ -69,7 +78,8 @@ public class ShowList implements Serializable{
 					return false;
 				}
 			}
-		} 
+		}
+		
 		return true;
 	}
 
@@ -104,6 +114,49 @@ public class ShowList implements Serializable{
 		}
 		return false;
 	}
+	
+	/**
+	 * Advance Tickets must be sold at least a day in advance. This function checks if today 
+	 * starting at YYYY/MM/DD/00:00:00 is at least one day before the start Date of the show.
+	 */
+	public boolean isTicketPurchasedInAdvance(Show show)
+	{
+		Calendar today = new GregorianCalendar();
+	
+		today.set(Calendar.HOUR_OF_DAY, 0);
+		today.set(Calendar.MINUTE, 0);
+		today.set(Calendar.SECOND, 0);
+		//today.set(Calendar.MILLISECOND, 0);
+		
+		show.getBegDate().set(Calendar.HOUR_OF_DAY, 0);
+		show.getBegDate().set(Calendar.MINUTE, 0);
+		show.getBegDate().set(Calendar.SECOND, 0);
+		
+		if(today.getTimeInMillis() < show.getBegDate().getTimeInMillis())
+		{
+			return true;
+		}
+		
+		/*
+		for(int i = 0; i < showsList.size(); ++i)
+		{
+			Calendar date = showsList.get(i).getBegDate();
+			//date.set(Calendar.DAY_OF_MONTH, -1);
+			date.set(Calendar.HOUR_OF_DAY, 0);
+			date.set(Calendar.MINUTE, 0);
+			date.set(Calendar.SECOND, 0);
+
+			System.out.println(today.getTimeInMillis() + " > " + date.getTimeInMillis());
+			
+			if(today.getTimeInMillis() < date.getTimeInMillis())
+			{
+				return true;
+			}
+		}
+		*/
+		
+		return false;
+	}
 
 	/**
 	 * Finds show with the given date
@@ -121,7 +174,6 @@ public class ShowList implements Serializable{
 				return showsList.get(i);
 			}
 		}
-
 		return null;
 	}
 }

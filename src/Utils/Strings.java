@@ -78,6 +78,11 @@ public class Strings
 	public static final String NOTIFICATION_ALL_CREDIT_CARDS_REMOVED_SUCCESS = "All customer credit cards removed successfully.";
 	public static final String NOTIFICATION_APPLICATION_CLOSED = "Application closed successfully";
 	public static final String NOTIFICATION_ADD_CLIENT_FAILED = "Add Client Failed";
+	public static final String NOTIFICATION_SELL_ADVANCE_TICKET_SUCCESS = "Advance Ticket Sale Successful";
+	public static final String NOTIFICATION_SELL_ADVANCE_TICKET_FAILED = "Advance Ticket Sale Failed";
+	public static final String NOTIFICATION_MUST_BE_IN_ADVANCE = "Ticket must be purchased at least the day before the show starts.";
+
+
 	public static final String NOTIFICATION_SERIALIZE_SUCCESS = "Serialization successful";
 	public static final String NOTIFICATION_SERIALIZE_FAILED = "Serialization failed";
 	public static final String NOTIFICATION_CLOSE_SUCCESS = "SUCCESS CLOSING APPLICATION";
@@ -145,6 +150,8 @@ public class Strings
 												HELP_ADD_CREDIT_CARD, HELP_REMOVE_CREDIT_CARD, 
 												HELP_LIST_CUSTOMER, HELP_ADD_SHOW, HELP_LIST_SHOW, 
 												HELP_STORE_DATA, HELP_RETRIEVE_DATA};
+
+
 
 
 

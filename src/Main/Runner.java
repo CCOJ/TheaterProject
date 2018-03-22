@@ -10,26 +10,8 @@ import Main.Controller;
  */
 public class Runner
 {
-	/**
-	 * Instantiates self
-	 * 
-	 * @param args
-	 * 
-	 */
 	public static void main(String[] args)
 	{
-		Runner runner = new Runner();
-		runner.run();
-	}
-	/**
-	 * Instantiates an instance of the controller and prints a message upon 
-	 * successful application termination
-	 * 
-	 */
-	private void run()
-	{
-		Controller controller = new Controller();
-		controller.run();
-		//System.out.println(Strings.NOTIFICATION_APPLICATION_CLOSED);
+		Controller.getInstanceOf().run();
 	}
 }

@@ -12,7 +12,29 @@ import java.util.Scanner;
  */
 public class InputUtils
 {
-	private final Scanner scanner = new Scanner(System.in);
+	private static InputUtils inputUtils;
+	private final Scanner scanner;
+	
+	/**
+	 * 
+	 */
+	private InputUtils()
+	{
+		scanner = new Scanner(System.in);
+	}
+	
+	/**
+	 * 
+	 */
+	public static InputUtils getInstanceOf()
+	{
+		if(inputUtils == null)
+		{
+			inputUtils = new InputUtils();
+		}
+		return inputUtils;
+	}
+	
 	/**
 	 * Returns the user input as an int
 	 * @return user int selection if no exceptions, -1 if there is bad input
@@ -80,7 +102,6 @@ public class InputUtils
 		}
 		
 		return date;
-		
 	}
 
 	/**
